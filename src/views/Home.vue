@@ -1,5 +1,6 @@
 <template>
-    {{ name }}
+    <p class="bg-red-500">{{ name }}</p>
+    e
 </template>
   
 <script lang="ts">
@@ -18,11 +19,9 @@ export default {
     }
 
 }
-
-
 </script>
   
-<style>
+<style lang="scss">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
