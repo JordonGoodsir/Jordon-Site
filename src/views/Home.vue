@@ -1,13 +1,22 @@
 <template>
-    <p class="bg-red-500">{{ name }}</p>
-    e
+    <PageWrapper>
+        <div class="flex flex justify-center items-center bg-main h-full w-full">
+            <div class="border-white flex flex-col border-4 px-10 py-52 text-center text-white gap-5">
+                <h1>Welcome, <br> I'm <span class="text-highlight-dark">Jordon</span></h1>
+                <h2>A Software Developer</h2>
+            </div>
+        </div>
+    </PageWrapper>
 </template>
   
 <script lang="ts">
 
+import PageWrapper from "@/components/PageWrapper.vue"
+
 export default {
     name: 'App',
     components: {
+        PageWrapper
     },
     data() {
         return ({
@@ -21,14 +30,5 @@ export default {
 }
 </script>
   
-<style lang="scss">
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>
   
