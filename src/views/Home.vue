@@ -1,8 +1,8 @@
 <template>
-    <PageWrapper>
+    <PageWrapper :scroll="false">
         <div :class="[`flex flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-white' : 'bg-main']">
 
-            <ul class='moving_shapes'>
+            <ul class='moving_shapes overflow-hidden'>
                 <li></li>
                 <li></li>
                 <li></li>

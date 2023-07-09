@@ -1,10 +1,15 @@
 <template>
     <div :class="[
         'flex flex-col h-screen w-screen',
-        scroll ? 'overflow-scroll' : 'overflow-hiddeb'
+        scroll ? 'overflow-scroll' : 'overflow-hidden'
     ]">
-        <Header />
-        <slot />
+        <Header :headerDark="true" />
+        <div :class="[
+            'flex flex-col h-full',
+            scroll ? 'overflow-scroll' : 'overflow-hidden'
+        ]">
+            <slot />
+        </div>
     </div>
 </template>
   
@@ -20,6 +25,10 @@ export default {
         scroll: {
             default: true,
             type: Boolean
+        },
+        headerDark: {
+            default: true,
+            type: Boolean,
         }
     },
     data() {
