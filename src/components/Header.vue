@@ -1,14 +1,18 @@
 <template>
-    <div role="navigation" :class="['', headerDark ? 'bg-main' : 'bg-white']">
-        <div @click="() => menuToggled = !menuToggled"
-            :class="['menu-toggle', menuToggled ? 'menu-active' : 'menu-inactive']">
+    <div role="navigation" :class="['', headerDark ? 'bg-main' : 'bg-sky-blue']">
+        <div @click="() => menuToggled = !menuToggled" :class="[
+            'menu-toggle',
+            headerDark ? 'menu-light' : 'menu-dark',
+            menuToggled ? 'menu-active' : 'menu-inactive',
+
+        ]">
 
             <span></span>
             <span></span>
             <span></span>
 
             <Transition name="menu-slide">
-                <ul v-if="menuToggled" class="menu">
+                <ul v-if="menuToggled" :class="['menu', headerDark ? 'bg-white text-main' : 'bg-main text-white']">
                     <a href="#">
                         <li>Home</li>
                     </a>
@@ -56,7 +60,6 @@ export default {
     @apply z-50 relative block top-14 left-14;
 
     a {
-        @apply text-main;
         text-decoration: none;
         transition: color 0.3s ease;
     }
@@ -65,7 +68,7 @@ export default {
         width: 33px;
         height: 4px;
         margin-bottom: 5px;
-        @apply bg-white relative block;
+        @apply relative block;
         border-radius: 3px;
         z-index: 1;
         transform-origin: 4px 0px;
@@ -77,6 +80,18 @@ export default {
 
 .menu-inactive {
 
+    &.menu-light {
+        span {
+            @apply bg-white
+        }
+    }
+
+    &.menu-dark {
+        span {
+            @apply bg-black
+        }
+    }
+
     span:first-child {
         transform-origin: 0% 0%;
     }
@@ -87,6 +102,19 @@ export default {
 }
 
 .menu-active {
+
+    &.menu-light {
+        span {
+            @apply bg-black
+        }
+    }
+
+    &.menu-dark {
+        span {
+            @apply bg-white
+        }
+    }
+
     span {
         transform: rotate(45deg) translate(-2px, -1px);
         @apply bg-main;
@@ -108,7 +136,7 @@ export default {
 }
 
 .menu {
-    @apply bg-white fixed list-none antialiased pl-14 pr-24 left-0 top-0 bottom-0 pt-[125px];
+    @apply fixed list-none antialiased pl-14 pr-24 left-0 top-0 bottom-0 pt-[125px];
 
     li {
         padding: 10px 0;

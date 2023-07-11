@@ -1,6 +1,6 @@
 <template>
-    <PageWrapper :scroll="false">
-        <div :class="[`flex flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-white' : 'bg-main']">
+    <PageWrapper :scroll="false" :headerDark="!powerGenerated">
+        <div :class="[`flex flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-sky-blue' : 'bg-main']">
 
             <ul class='moving_shapes overflow-hidden'>
                 <li></li>
@@ -12,14 +12,59 @@
                 <li></li>
             </ul>
 
-            <div
-                :class="['flex flex-col border-4 px-10 py-36 text-center text-white gap-10', powerGenerated ? 'border-black text-sky-blue' : 'border-white']">
-                <h1>Welcome, <br> I'm <span
-                        :class="[`text-${powerGenerated ? '!text-black' : 'highlight-dark'}`]">Jordon</span>
-                </h1>
-                <h2>A Software Developer</h2>
+            <div class="flex flex-col">
+                <div>
+                    <div id="cloud_001" style="float: left; position: absolute; left: 5em;">
+                        <div
+                            style="height:1.5em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-left-radius:0.5em 0.5em; float: left;">
+                        </div>
+                        <div
+                            style="height:2em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:1em 0.75em; border-bottom-left-radius:0.5em 0.5em; float: left;">
+                        </div>
+                        <div
+                            style="height:1em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:0.5em 0.5em; float: left;">
+                        </div>
+                    </div>
+                    <div id="cloud_002" style="float: left; position: absolute; left: 15em;">
+                        <div
+                            style="height:1em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-left-radius:0.5em 0.5em; float: left;">
+                        </div>
+                        <div
+                            style="height:2.5em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-left-radius:0.85em 1em; border-bottom-right-radius:0.5em 0.85em; float: left;">
+                        </div>
+                        <div
+                            style="height:2em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:1em 0.75em; border-bottom-left-radius:0.5em 0.5em; float: left;">
+                        </div>
+                        <div
+                            style="height:1em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:0.5em 0.5em; float: left;">
+                        </div>
+                    </div>
+                </div>
 
-                Looks like this sites going to need some power
+                <div class="flex items-end">
+                    <div id="tree_001">
+                        <div class="bg-green-500 h-56 w-56 rounded-md"></div>
+                        <div class="bg-tree-brown w-12 h-80 ml-20"></div>
+                    </div>
+                    <div id="tree_001">
+                        <div class="bg-green-500 h-56 w-56 rounded-md"></div>
+                        <div class="bg-tree-brown w-12 h-96 ml-20"></div>
+                    </div>
+                    <div id="tree_001">
+                        <div class="bg-green-500 h-48 w-56 rounded-md"></div>
+                        <div class="bg-tree-brown w-12 h-72 ml-20"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                :class="['flex flex-col border-4 px-10 py-36 text-center text-white gap-10 select-none', powerGenerated ? 'border-black text-black' : 'border-white']">
+                <h1 class="pointer-events-none">Welcome, <br> I'm <span
+                        :class="[`text-${powerGenerated ? 'white' : 'highlight-dark'}`]">Jordon</span>
+                </h1>
+                <h2 class="pointer-events-none">A Software Developer</h2>
+
+                <p class="pointer-events-none">{{ generatorMessages[generatorMessageIndex] }}</p>
 
                 <div class="container-knob-2 flex gap-20">
                     <div id="progress-bar-2"></div>
@@ -31,15 +76,6 @@
                     <div id="progress-bar-2-b"></div>
                 </div>
             </div>
-
-            <!-- <div class="handle-container ">
-                <div class="handle bg-white h-24 w-5 relative">
-                    <div class="knob h-5 w-10 bg-green-500 top-0 -left-1/2 absolute" />
-                </div>
-            </div> -->
-
-
-
 
         </div>
     </PageWrapper>
@@ -54,12 +90,15 @@ export default defineComponent({
     components: {
         PageWrapper
     },
+    created() {
+        this.powerGenerated = false
+        this.cummulativeSpin = 0
+    },
     mounted() {
         const box2 = document.getElementById("box-2");
         const progressBar2 = document.getElementById("progress-bar-2");
         const progressBar4 = document.getElementById("progress-bar-2-b");
 
-        this.cummulativeSpin = 0
 
         const run = (box: any, progressBar: any) => {
             let active = false;
@@ -95,7 +134,7 @@ export default defineComponent({
                 let y = mY - center.y;
                 let angle = Math.floor(Math.atan2(y, x) * radians);
                 let startAngle = 180;
-                const generatorGoal = 200;
+                const generatorGoal = 700;
 
 
                 // active status
@@ -105,16 +144,18 @@ export default defineComponent({
 
                     box.style.transform = `rotate(${rotate}deg)`;
 
+                    if (this.cummulativeSpin === 1 ||
+                        this.cummulativeSpin === ((generatorGoal * 0.5)) ||
+                        this.cummulativeSpin === ((generatorGoal * 0.75)) ||
+                        this.cummulativeSpin === ((generatorGoal * 1))) {
+                        this.generatorMessageIndex += 1
+                    }
+
 
                     const progress = this.cummulativeSpin < generatorGoal ? (this.cummulativeSpin / generatorGoal) * 180 : 180
                     progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
 
                     if (this.cummulativeSpin >= generatorGoal) this.powerGenerated = true
-                    // title animation
-                    // document.getElementById("title").style.backgroundImage = `linear-gradient(90deg, cyan ${progress - 100}%, lightsalmon)`
-
-                    // }
-
 
                 }
 
@@ -130,10 +171,20 @@ export default defineComponent({
             name: 'doggie',
             cummulativeSpin: 0,
             powerGenerated: false,
+            generatorMessageIndex: 0,
+            generatorMessages: [
+                'Looks like this sites going to need some power',
+                'This thing actually works!',
+                'This is hard work',
+                'Just a little more',
+                'Wow, awesome',
+            ]
         } as {
             name: string,
             cummulativeSpin: number,
-            powerGenerated: boolean
+            powerGenerated: boolean,
+            generatorMessageIndex: number,
+            generatorMessages: string[]
         })
     },
 })
@@ -334,6 +385,5 @@ export default defineComponent({
         transform: translateY(-100vh) rotate(630deg);
         opacity: 0;
     }
-}
-</style>
+}</style>
   

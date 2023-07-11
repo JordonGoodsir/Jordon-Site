@@ -3,7 +3,7 @@
         'flex flex-col h-screen w-screen',
         scroll ? 'overflow-scroll' : 'overflow-hidden'
     ]">
-        <Header :headerDark="true" />
+        <Header :headerDark="headerDark" />
         <div :class="[
             'flex flex-col h-full',
             scroll ? 'overflow-scroll' : 'overflow-hidden'
@@ -36,10 +36,6 @@ export default {
             name: 'doggie'
         })
     },
-    created() {
-        console.error('ello')
-    }
-
 }
 </script>
   
