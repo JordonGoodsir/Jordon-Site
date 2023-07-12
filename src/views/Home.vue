@@ -12,61 +12,78 @@
                 <li></li>
             </ul>
 
-            <div class="flex flex-col">
-                <div>
-                    <div id="cloud_001" style="float: left; position: absolute; left: 5em;">
-                        <div
-                            style="height:1.5em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-left-radius:0.5em 0.5em; float: left;">
+            <div v-if="powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
+                <div class="flex flex-col h-full w-full justify-between">
+                    <div class="flex justify-evenly">
+                        <div id="cloud_001" class="flex">
+                            <div class="opacity-90 bg-white w-40 h-40"
+                                style="border-bottom-left-radius:0.5em 0.5em; float: left;">
+                            </div>
+                            <div class="opacity-90 bg-white w-40 h-52"
+                                style="border-bottom-right-radius:1em 0.75em; border-bottom-left-radius:0.5em 0.5em; float: left;">
+                            </div>
+                            <div class="opacity-90 bg-white w-40 h-32"
+                                style="border-bottom-right-radius:0.5em 0.5em; float: left;">
+                            </div>
                         </div>
-                        <div
-                            style="height:2em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:1em 0.75em; border-bottom-left-radius:0.5em 0.5em; float: left;">
-                        </div>
-                        <div
-                            style="height:1em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:0.5em 0.5em; float: left;">
+                        <div id="cloud_002" class="flex">
+                            <div class="opacity-90 bg-white w-40 h-32"
+                                style="border-bottom-left-radius:0.5em 0.5em; float: left;">
+                            </div>
+                            <div class="opacity-90 bg-white w-40 h-64"
+                                style="border-bottom-left-radius:0.85em 1em; border-bottom-right-radius:0.5em 0.85em; float: left;">
+                            </div>
+                            <div class="opacity-90 bg-white w-40 h-52"
+                                style="border-bottom-right-radius:1em 0.75em; border-bottom-left-radius:0.5em 0.5em; float: left;">
+                            </div>
+                            <div class="opacity-90 bg-white w-40 h-32"
+                                style="border-bottom-right-radius:0.5em 0.5em; float: left;">
+                            </div>
                         </div>
                     </div>
-                    <div id="cloud_002" style="float: left; position: absolute; left: 15em;">
-                        <div
-                            style="height:1em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-left-radius:0.5em 0.5em; float: left;">
-                        </div>
-                        <div
-                            style="height:2.5em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-left-radius:0.85em 1em; border-bottom-right-radius:0.5em 0.85em; float: left;">
-                        </div>
-                        <div
-                            style="height:2em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:1em 0.75em; border-bottom-left-radius:0.5em 0.5em; float: left;">
-                        </div>
-                        <div
-                            style="height:1em; width:2.4em; background-color:rgba(255, 255, 255, 0.9); border-bottom-right-radius:0.5em 0.5em; float: left;">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="flex items-end">
-                    <div id="tree_001">
-                        <div class="bg-green-500 h-56 w-56 rounded-md"></div>
-                        <div class="bg-tree-brown w-12 h-80 ml-20"></div>
+                    <div class="flex items-end">
+                        <div class="flex-co w-full">
+
+                            <div class="flex items-end justify-between">
+                                <Crane />
+                                <div class="flex items-end">
+                                    <div id="tree_001">
+                                        <div class="bg-green-500 h-56 w-56 rounded-md"></div>
+                                        <div class="bg-tree-brown w-12 h-80 ml-20"></div>
+                                    </div>
+                                    <div id="tree_001">
+                                        <div class="bg-green-500 h-56 w-56 rounded-md"></div>
+                                        <div class="bg-tree-brown w-12 h-96 ml-20"></div>
+                                    </div>
+                                    <div id="tree_001">
+                                        <div class="bg-green-500 h-48 w-56 rounded-md"></div>
+                                        <div class="bg-tree-brown w-12 h-72 ml-20"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex w-full">
+                                <div class="bg-gray-500 h-5 w-1/2" />
+                                <div class="bg-green-700 h-5 w-1/2" />
+                            </div>
+                        </div>
+
                     </div>
-                    <div id="tree_001">
-                        <div class="bg-green-500 h-56 w-56 rounded-md"></div>
-                        <div class="bg-tree-brown w-12 h-96 ml-20"></div>
-                    </div>
-                    <div id="tree_001">
-                        <div class="bg-green-500 h-48 w-56 rounded-md"></div>
-                        <div class="bg-tree-brown w-12 h-72 ml-20"></div>
-                    </div>
+
                 </div>
             </div>
 
             <div
-                :class="['flex flex-col border-4 px-10 py-36 text-center text-white gap-10 select-none', powerGenerated ? 'border-black text-black' : 'border-white']">
-                <h1 class="pointer-events-none">Welcome, <br> I'm <span
-                        :class="[`text-${powerGenerated ? 'white' : 'highlight-dark'}`]">Jordon</span>
+                :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', powerGenerated ? 'border-black' : 'border-white text-white']">
+                <h1 class="pointer-events-none">Welcome, <br> I'm <span :class="['text-[#ffa449]']">Jordon</span>
                 </h1>
                 <h2 class="pointer-events-none">A Software Developer</h2>
 
                 <p class="pointer-events-none">{{ generatorMessages[generatorMessageIndex] }}</p>
 
-                <div class="container-knob-2 flex gap-20">
+                <div v-if="!powerGenerated" class="container-knob-2 flex gap-20">
                     <div id="progress-bar-2"></div>
                     <div id="box-2" class="box">
                         <div class="circle">
@@ -84,11 +101,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import PageWrapper from "@/components/PageWrapper.vue"
+import Crane from "@/components/Crane.vue"
 
 export default defineComponent({
     name: 'App',
     components: {
-        PageWrapper
+        PageWrapper,
+        Crane
     },
     created() {
         this.powerGenerated = false
@@ -385,5 +404,6 @@ export default defineComponent({
         transform: translateY(-100vh) rotate(630deg);
         opacity: 0;
     }
-}</style>
+}
+</style>
   
