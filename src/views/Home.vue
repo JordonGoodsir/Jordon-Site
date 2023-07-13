@@ -1,6 +1,6 @@
 <template>
     <PageWrapper :scroll="false" :headerDark="!powerGenerated">
-        <div :class="[`flex flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-sky-blue' : 'bg-main']">
+        <div :class="[`flex transition flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-sky-blue' : 'bg-main']">
 
             <ul class='moving_shapes overflow-hidden'>
                 <li></li>
