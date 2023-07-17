@@ -52,7 +52,29 @@
         </div>
         <div id="name">
             <section id="tethers"></section>
-            <section id="title">My skills</section>
+
+            <div id="skill-load" class="h-24 flex flex-col">
+                <div class="flex flex-col items-center gap-px">
+                    <div class="brick">
+                        Vue.js
+                    </div>
+                    <div class="flex justify-center gap-x-px">
+                        <div class="brick">
+                            JavaScript
+                        </div>
+                        <div class="brick" >
+                        TypeScript
+                        </div>
+                    </div>
+                    <div class="flex justify-center gap-x-px">
+                        <div class="brick" />
+                        <div class="brick" />
+                        <div class="brick" />
+                    </div>
+
+                </div>
+                <div class="w-full bg-black h-5" />
+            </div>
         </div>
         <div id="control-center">
             <section id="body"></section>
@@ -132,9 +154,9 @@ body {
 }
 
 #crane {
-    transform: scale(1.4);
-    margin-left: 200px;
-    margin-bottom: 34px;
+    transform: scale(2);
+    margin-left: 330px;
+    margin-bottom: 115px;
 }
 
 #peak {
@@ -448,14 +470,17 @@ body {
         }
     }
 
-    #title {
-        font-family: "Rokkitt", sans-serif;
+    #skill-load {
         font-size: 2.25em;
-        left: 127px;
+        left: 102px;
         position: absolute;
-        top: 155px;
+        top: 150px;
         width: 200px;
         display: block;
+    }
+
+    .brick {
+        @apply h-5 w-12 bg-brick-brown flex justify-center items-center text-[8px]
     }
 }
 

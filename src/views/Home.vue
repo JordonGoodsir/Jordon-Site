@@ -1,6 +1,7 @@
 <template>
     <PageWrapper :scroll="false" :headerDark="!powerGenerated">
-        <div :class="[`flex transition flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-sky-blue' : 'bg-main']">
+        <div
+            :class="[`flex transition flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-sky-blue' : 'bg-main']">
 
             <ul class='moving_shapes overflow-hidden'>
                 <li></li>
@@ -110,7 +111,7 @@ export default defineComponent({
         Crane
     },
     created() {
-        this.powerGenerated = false
+        this.powerGenerated = true
         this.cummulativeSpin = 0
     },
     mounted() {
@@ -189,7 +190,7 @@ export default defineComponent({
         return ({
             name: 'doggie',
             cummulativeSpin: 0,
-            powerGenerated: false,
+            powerGenerated: true,
             generatorMessageIndex: 0,
             generatorMessages: [
                 'Looks like this sites going to need some power',
