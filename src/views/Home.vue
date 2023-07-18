@@ -15,7 +15,7 @@
 
             <div v-if="powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
                 <div class="flex flex-col h-full w-full justify-between">
-                    <div class="flex justify-evenly">
+                    <div class="flex justify-evenly gap-10">
                         <div id="cloud_001" class="flex">
                             <div class="opacity-90 bg-white w-40 h-40"
                                 style="border-bottom-left-radius:0.5em 0.5em; float: left;">
@@ -82,7 +82,13 @@
                 </h1>
                 <h2 class="pointer-events-none">A Software Developer</h2>
 
-                <p class="pointer-events-none">{{ generatorMessages[generatorMessageIndex] }}</p>
+                <p class="pointer-events-none">
+                    {{
+                        powerGenerated ?
+                        generatorMessages[generatorMessages.length - 1] :
+                        generatorMessages[generatorMessageIndex]
+                    }}
+                </p>
 
                 <div v-if="!powerGenerated" class="container-knob-2 flex gap-20">
                     <div id="progress-bar-2"></div>

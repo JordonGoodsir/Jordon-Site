@@ -62,18 +62,20 @@
                         <div class="brick">
                             JavaScript
                         </div>
-                        <div class="brick" >
-                        TypeScript
+                        <div class="brick">
+                            TypeScript
                         </div>
                     </div>
                     <div class="flex justify-center gap-x-px">
-                        <div class="brick" />
-                        <div class="brick" />
-                        <div class="brick" />
+                        <div class="brick">React</div>
+                        <div class="brick">Node.js</div>
+                        <div class="brick">Scss</div>
                     </div>
 
                 </div>
-                <div class="w-full bg-black h-5" />
+                <div class="w-full bg-black h-5 flex text-white items-center justify-center text-[9px]">
+                    My skills
+                </div>
             </div>
         </div>
         <div id="control-center">
@@ -322,12 +324,12 @@ body {
     #nose {
         border-color: transparent $bgColour transparent transparent;
         border-style: solid;
-        border-width: 0 20px 20px 0;
+        border-width: 0px 14px 15px 0;
         display: block;
         height: 0;
-        left: 250px;
+        left: 252px;
         position: absolute;
-        top: -25px;
+        top: -23px;
         width: 0;
     }
 
@@ -426,7 +428,7 @@ body {
 #cable {
     #line {
         background: none repeat scroll 0 0 black;
-        height: 140px;
+        height: 115px;
         left: 200px;
         position: absolute;
         top: -7px;
@@ -436,9 +438,9 @@ body {
     #hook {
         font-family: "Rokkitt", sans-serif;
         font-size: 1.25em;
-        left: 197px;
+        left: 195px;
         position: absolute;
-        top: 125px;
+        top: 96px;
         transform: rotate(182deg) rotateY(180deg);
     }
 }
@@ -446,27 +448,27 @@ body {
 #name {
     #tethers {
         &:before {
-            width: 95px;
+            width: 140px;
             height: 1px;
             background: black;
-            left: 197px;
+            left: 180px;
             display: block;
             content: "";
             position: absolute;
-            top: 152px;
-            transform: rotate(16deg);
+            top: 167px;
+            transform: rotate(45deg);
         }
 
         &:after {
-            width: 72px;
+            width: 138px;
             height: 1px;
             background: black;
-            left: 130px;
+            left: 83px;
             display: block;
             content: "";
             position: absolute;
-            top: 150px;
-            transform: rotate(-15deg);
+            top: 166px;
+            transform: rotate(-45deg);
         }
     }
 
@@ -480,7 +482,9 @@ body {
     }
 
     .brick {
-        @apply h-5 w-12 bg-brick-brown flex justify-center items-center text-[8px]
+        @apply h-5 w-12 bg-brick-brown flex justify-center items-center text-[8px] text-black;
+        box-shadow: 0 0 4px 1px darken(#bd5858, 20%) inset;
+
     }
 }
 
