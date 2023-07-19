@@ -14,6 +14,15 @@
             </ul>
 
             <div v-if="powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
+                <div class="bird flex">
+                    <div class="left-wing bird-part" />
+
+                    <div class="body flex">
+                        <div class="left-body bird-part" />
+                        <div class="right-body bird-part" />
+                    </div>
+                    <div class="right-wing bird-part" />
+                </div>
                 <div class="flex flex-col h-full w-full justify-between">
                     <div class="flex justify-evenly gap-10">
                         <div id="cloud_001" class="flex">
@@ -410,6 +419,65 @@ export default defineComponent({
         -webkit-transform: translateY(-100vh) rotate(630deg);
         transform: translateY(-100vh) rotate(630deg);
         opacity: 0;
+    }
+}
+
+.bird {
+    @apply absolute top-1/4 left-1/2;
+
+    .bird-part {
+        @apply w-2 h-10 bg-black rounded-md
+    }
+
+    .left-wing {
+        @apply rotate-[30deg] mt-1;
+        transform-origin: top right;
+        animation: fly-left 0.5s ease-in-out infinite;
+    }
+
+    .body {
+        .left-body {
+            @apply -rotate-[30deg] mr-2
+        }
+
+        .right-body {
+            @apply rotate-[30deg]
+        }
+
+    }
+
+    .right-wing {
+        @apply -rotate-[30deg] mt-1;
+        transform-origin: top left;
+        animation: fly-right 0.5s ease-in-out infinite;
+    }
+}
+
+@keyframes fly-left {
+    0% {
+        transform: rotateZ(30deg);
+    }
+
+    50% {
+        transform: rotateZ(10deg);
+    }
+
+    100% {
+        transform: rotateZ(30deg);
+    }
+}
+
+@keyframes fly-right {
+    0% {
+        transform: rotateZ(-30deg);
+    }
+
+    50% {
+        transform: rotateZ(-10deg);
+    }
+
+    100% {
+        transform: rotateZ(-30deg);
     }
 }
 </style>

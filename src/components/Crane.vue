@@ -46,11 +46,9 @@
             <span id="end"></span>
             <span id="weight"></span>
         </div>
-        <div id="cable">
+        <div id="name">
             <section id="line"></section>
             <section id="hook">?</section>
-        </div>
-        <div id="name">
             <section id="tethers"></section>
 
             <div id="skill-load" class="h-24 flex flex-col">
@@ -425,7 +423,9 @@ body {
     }
 }
 
-#cable {
+#name {
+    animation: swing 3s ease-in-out infinite;
+
     #line {
         background: none repeat scroll 0 0 black;
         height: 115px;
@@ -443,9 +443,7 @@ body {
         top: 96px;
         transform: rotate(182deg) rotateY(180deg);
     }
-}
 
-#name {
     #tethers {
         &:before {
             width: 140px;
@@ -473,6 +471,7 @@ body {
     }
 
     #skill-load {
+
         font-size: 2.25em;
         left: 102px;
         position: absolute;
@@ -762,6 +761,20 @@ body {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes swing {
+    0% {
+        transform: rotateZ(1deg);
+    }
+
+    50% {
+        transform: rotateZ(-1deg);
+    }
+
+    100% {
+        transform: rotateZ(1deg);
     }
 }
 </style>
