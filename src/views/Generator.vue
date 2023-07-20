@@ -13,10 +13,6 @@ export default {
             name: 'doggie'
         })
     },
-    created() {
-        console.error('ello')
-    }
-
 }
 
 

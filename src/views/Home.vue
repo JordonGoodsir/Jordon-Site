@@ -12,9 +12,8 @@
                 <li></li>
                 <li></li>
             </ul>
-
             <div v-if="powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
-                <div class="bird flex">
+                <div v-if="bird" class="bird flex" :style="{ '--animationTime': `${birdAnimation?.animationTime}s` }">
                     <div class="left-wing bird-part" />
 
                     <div class="body flex">
@@ -127,79 +126,91 @@ export default defineComponent({
     },
     created() {
         this.powerGenerated = true
-        this.cummulativeSpin = 0
+        this.bird = this.powerGenerated
+        this.birdAnimation = { animationTime: screen.width / 150 }
+
+
+        if (this.powerGenerated) {
+            this.birdTiming()
+        }
+        this.cummulativeSpin = 0;
     },
     mounted() {
-        const box2 = document.getElementById("box-2");
-        const progressBar2 = document.getElementById("progress-bar-2");
-        const progressBar4 = document.getElementById("progress-bar-2-b");
+        if (!this.powerGenerated) {
+            const box2 = document.getElementById("box-2");
+            const progressBar2 = document.getElementById("progress-bar-2");
+            const progressBar4 = document.getElementById("progress-bar-2-b");
 
 
-        const run = (box: any, progressBar: any) => {
-            let active = false;
-            // start
-            box.addEventListener("mousedown", () => {
-                active = true;
-            });
-            // stop
-            document.addEventListener("mouseup", () => {
-                active = false;
-            });
-            // run
-            window.addEventListener("mousemove", (e: any) => {
-                // mouse position
-                let mX = e.clientX;
-                let mY = e.clientY;
-                // element data
-                let boxData = box.getBoundingClientRect();
-                let boxWidth = boxData.width;
-                let boxHeight = boxData.height;
-                let l = boxData.left;
-                let t = boxData.top;
+            const run = (box: any, progressBar: any) => {
+                let active = false;
+                // start
+                box.addEventListener("mousedown", () => {
+                    active = true;
+                });
+                // stop
+                document.addEventListener("mouseup", () => {
+                    active = false;
+                });
+                // run
+                window.addEventListener("mousemove", (e: any) => {
+                    // mouse position
+                    let mX = e.clientX;
+                    let mY = e.clientY;
+                    // element data
+                    let boxData = box.getBoundingClientRect();
+                    let boxWidth = boxData.width;
+                    let boxHeight = boxData.height;
+                    let l = boxData.left;
+                    let t = boxData.top;
 
-                // rotation
-                let rotate = 0;
-                let radians = 180 / Math.PI;
-                let center = {
-                    x: l + (boxWidth / 2),
-                    y: t + (boxHeight / 2)
-                };
-                // arc points
-                let x = mX - center.x;
-                let y = mY - center.y;
-                let angle = Math.floor(Math.atan2(y, x) * radians);
-                let startAngle = 180;
-                const generatorGoal = 700;
+                    // rotation
+                    let rotate = 0;
+                    let radians = 180 / Math.PI;
+                    let center = {
+                        x: l + (boxWidth / 2),
+                        y: t + (boxHeight / 2)
+                    };
+                    // arc points
+                    let x = mX - center.x;
+                    let y = mY - center.y;
+                    let angle = Math.floor(Math.atan2(y, x) * radians);
+                    let startAngle = 180;
+                    const generatorGoal = 700;
 
 
-                // active status
-                if (active) {
-                    this.cummulativeSpin += 1
-                    rotate = angle + startAngle;
+                    // active status
+                    if (active) {
+                        this.cummulativeSpin += 1
+                        rotate = angle + startAngle;
 
-                    box.style.transform = `rotate(${rotate}deg)`;
+                        box.style.transform = `rotate(${rotate}deg)`;
 
-                    if (this.cummulativeSpin === 1 ||
-                        this.cummulativeSpin === ((generatorGoal * 0.5)) ||
-                        this.cummulativeSpin === ((generatorGoal * 0.75)) ||
-                        this.cummulativeSpin === ((generatorGoal * 1))) {
-                        this.generatorMessageIndex += 1
+                        if (this.cummulativeSpin === 1 ||
+                            this.cummulativeSpin === ((generatorGoal * 0.5)) ||
+                            this.cummulativeSpin === ((generatorGoal * 0.75)) ||
+                            this.cummulativeSpin === ((generatorGoal * 1))) {
+                            this.generatorMessageIndex += 1
+                        }
+
+
+                        const progress = this.cummulativeSpin < generatorGoal ? (this.cummulativeSpin / generatorGoal) * 180 : 180
+                        progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
+
+                        if (this.cummulativeSpin >= generatorGoal) this.powerGenerated = true
+
                     }
 
+                });
+            }
 
-                    const progress = this.cummulativeSpin < generatorGoal ? (this.cummulativeSpin / generatorGoal) * 180 : 180
-                    progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
-
-                    if (this.cummulativeSpin >= generatorGoal) this.powerGenerated = true
-
-                }
-
-            });
+            run(box2, progressBar2);
+            run(box2, progressBar4);
         }
 
-        run(box2, progressBar2);
-        run(box2, progressBar4);
-
+    },
+    unmounted() {
+        clearTimeout(this.birdTimeout)
     },
     data() {
         return ({
@@ -213,15 +224,45 @@ export default defineComponent({
                 'This is hard work',
                 'Just a little more',
                 'Wow, awesome',
-            ]
+            ],
+            birdAnimation: {},
+            bird: false,
+            birdTimeout: null,
         } as {
             name: string,
             cummulativeSpin: number,
             powerGenerated: boolean,
             generatorMessageIndex: number,
-            generatorMessages: string[]
+            generatorMessages: string[],
+            birdAnimation: { animationTime?: number },
+            bird: boolean,
+            birdTimeout: any,
         })
     },
+    watch: {
+        powerGenerated(newVal) {
+            if (newVal) {
+                this.bird = true
+                this.birdTiming()
+            }
+        },
+    },
+    methods: {
+        birdTiming() {
+
+            this.birdTimeout = setTimeout(() => {
+                this.$nextTick(() => this.bird = false)
+
+                setTimeout(() => {
+                    this.bird = true
+                    this.birdTiming()
+
+                }, (((Math.floor(Math.random() * 6) + 3)) * 1000))
+
+
+            }, ((this.birdAnimation?.animationTime || 1) * 1000));
+        }
+    }
 })
 </script>
   
@@ -423,7 +464,8 @@ export default defineComponent({
 }
 
 .bird {
-    @apply absolute top-1/4 left-1/2;
+    @apply absolute top-1/4 -left-[60px];
+    animation: screen-fly var(--animationTime) linear infinite alternate;
 
     .bird-part {
         @apply w-2 h-10 bg-black rounded-md
@@ -478,6 +520,16 @@ export default defineComponent({
 
     100% {
         transform: rotateZ(-30deg);
+    }
+}
+
+@keyframes screen-fly {
+    0% {
+        left: -60px;
+    }
+
+    100% {
+        left: calc(100% + 60px);
     }
 }
 </style>
