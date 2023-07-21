@@ -125,18 +125,18 @@ export default defineComponent({
         Crane
     },
     created() {
-        this.powerGenerated = true
-        this.bird = this.powerGenerated
+        this.bird = this.$store.powerGenerated
         this.birdAnimation = { animationTime: screen.width / 150 }
 
 
-        if (this.powerGenerated) {
+        if (this.$store.powerGenerated) {
             this.birdTiming()
         }
         this.cummulativeSpin = 0;
     },
     mounted() {
-        if (!this.powerGenerated) {
+
+        if (!this.$store.powerGenerated) {
             const box2 = document.getElementById("box-2");
             const progressBar2 = document.getElementById("progress-bar-2");
             const progressBar4 = document.getElementById("progress-bar-2-b");
@@ -197,7 +197,11 @@ export default defineComponent({
                         const progress = this.cummulativeSpin < generatorGoal ? (this.cummulativeSpin / generatorGoal) * 180 : 180
                         progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
 
-                        if (this.cummulativeSpin >= generatorGoal) this.powerGenerated = true
+                        if (this.cummulativeSpin >= generatorGoal) {
+                            this.$store.setGenerator(true)
+                            this.bird = true
+                            this.birdTiming()
+                        }
 
                     }
 
@@ -216,7 +220,6 @@ export default defineComponent({
         return ({
             name: 'doggie',
             cummulativeSpin: 0,
-            powerGenerated: true,
             generatorMessageIndex: 0,
             generatorMessages: [
                 'Looks like this sites going to need some power',
@@ -231,21 +234,12 @@ export default defineComponent({
         } as {
             name: string,
             cummulativeSpin: number,
-            powerGenerated: boolean,
             generatorMessageIndex: number,
             generatorMessages: string[],
             birdAnimation: { animationTime?: number },
             bird: boolean,
             birdTimeout: any,
         })
-    },
-    watch: {
-        powerGenerated(newVal) {
-            if (newVal) {
-                this.bird = true
-                this.birdTiming()
-            }
-        },
     },
     methods: {
         birdTiming() {
