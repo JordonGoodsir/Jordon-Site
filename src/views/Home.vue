@@ -1,8 +1,7 @@
 <template>
-    <PageWrapper :scroll="false" :headerDark="!powerGenerated">
+    <PageWrapper :scroll="false" :headerDark="!$store.powerGenerated">
         <div
-            :class="[`flex transition flex justify-center items-center h-full w-full`, powerGenerated ? 'bg-sky-blue' : 'bg-main']">
-
+            :class="[`flex transition flex justify-center items-center h-full w-full`, $store.powerGenerated ? 'bg-sky-blue' : 'bg-main']">
             <ul class='moving_shapes overflow-hidden'>
                 <li></li>
                 <li></li>
@@ -12,7 +11,7 @@
                 <li></li>
                 <li></li>
             </ul>
-            <div v-if="powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
+            <div v-if="$store.powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
                 <div v-if="bird" class="bird flex" :style="{ '--animationTime': `${birdAnimation?.animationTime}s` }">
                     <div class="left-wing bird-part" />
 
@@ -85,20 +84,20 @@
             </div>
 
             <div
-                :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', powerGenerated ? 'border-black' : 'border-white text-white']">
+                :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', $store.powerGenerated ? 'border-black' : 'border-white text-white']">
                 <h1 class="pointer-events-none">Welcome, <br> I'm <span :class="['text-[#ffa449]']">Jordon</span>
                 </h1>
                 <h2 class="pointer-events-none">A Software Developer</h2>
 
                 <p class="pointer-events-none">
                     {{
-                        powerGenerated ?
+                        $store.powerGenerated ?
                         generatorMessages[generatorMessages.length - 1] :
                         generatorMessages[generatorMessageIndex]
                     }}
                 </p>
 
-                <div v-if="!powerGenerated" class="container-knob-2 flex gap-20">
+                <div v-if="!$store.powerGenerated" class="container-knob-2 flex gap-20">
                     <div id="progress-bar-2"></div>
                     <div id="box-2" class="box">
                         <div class="circle">
@@ -527,4 +526,3 @@ export default defineComponent({
     }
 }
 </style>
-  

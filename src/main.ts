@@ -15,6 +15,14 @@ const app = createApp(App)
 app.use(router)
 app.use(pinia)
 
-app.config.globalProperties.$store = store()
+const theStore = store()
+
+app.config.globalProperties.$store = theStore
+
+declare module "@vue/runtime-core" {
+    interface ComponentCustomProperties {
+        $store: any;
+    }
+}
 
 app.mount('#app')
