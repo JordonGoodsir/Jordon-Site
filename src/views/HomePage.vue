@@ -1,7 +1,7 @@
 <template>
-    <PageWrapper :scroll="false" :headerDark="!$store.powerGenerated">
+    <PageWrapper :scroll="false" :headerDark="!generatorData.powerGenerated">
         <div
-            :class="[`flex transition flex justify-center items-center h-full w-full`, $store.powerGenerated ? 'bg-sky-blue' : 'bg-main']">
+            :class="[`flex transition flex justify-center items-center h-full w-full`, generatorData.powerGenerated ? 'bg-sky-blue' : 'bg-main']">
             <ul class='moving_shapes overflow-hidden'>
                 <li></li>
                 <li></li>
@@ -11,7 +11,7 @@
                 <li></li>
                 <li></li>
             </ul>
-            <div v-if="$store.powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
+            <div v-if="generatorData.powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
                 <div v-if="bird" class="bird flex" :style="{ '--animationTime': `${birdAnimation?.animationTime}s` }">
                     <div class="left-wing bird-part" />
 
@@ -84,20 +84,20 @@
             </div>
 
             <div
-                :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', $store.powerGenerated ? 'border-black' : 'border-white text-white']">
+                :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', generatorData.powerGenerated ? 'border-black' : 'border-white text-white']">
                 <h1 class="pointer-events-none">Welcome, <br> I'm <span :class="['text-[#ffa449]']">Jordon</span>
                 </h1>
                 <h2 class="pointer-events-none">A Software Developer</h2>
 
                 <p class="pointer-events-none">
                     {{
-                        $store.powerGenerated ?
+                        generatorData.powerGenerated ?
                         generatorMessages[generatorMessages.length - 1] :
-                        generatorMessages[generatorMessageIndex]
+                        generatorMessages[generatorData.generatorMessageIndex]
                     }}
                 </p>
 
-                <div v-if="!$store.powerGenerated" class="container-knob-2 flex gap-20">
+                <div v-if="!generatorData.powerGenerated" class="container-knob-2 flex gap-20">
                     <div id="progress-bar-2"></div>
                     <div id="box-2" class="box">
                         <div class="circle">
@@ -112,151 +112,144 @@
     </PageWrapper>
 </template>
   
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { onMounted, nextTick, onUnmounted, reactive } from 'vue'
 import PageWrapper from "@/components/PageWrapper.vue"
 import Crane from "@/components/Crane.vue"
 
-export default defineComponent({
-    name: 'App',
-    components: {
-        PageWrapper,
-        Crane
-    },
-    created() {
-        this.bird = this.$store.powerGenerated
-        this.birdAnimation = { animationTime: screen.width / 150 }
+
+// bird code
+
+let birdTimeout: any = null;
+const birdAnimation: any = {}
+let bird: boolean = false
+
+const birdTiming = () => {
+    birdTimeout = setTimeout(() => {
+        nextTick(() => bird = false)
+
+        setTimeout(() => {
+            bird = true
+            birdTiming()
+
+        }, (((Math.floor(Math.random() * 6) + 3)) * 1000))
 
 
-        if (this.$store.powerGenerated) {
-            this.birdTiming()
-        }
-        this.cummulativeSpin = 0;
-    },
-    mounted() {
+    }, ((birdAnimation?.animationTime || 1) * 1000));
 
-        if (!this.$store.powerGenerated) {
-            const box2 = document.getElementById("box-2");
-            const progressBar2 = document.getElementById("progress-bar-2");
-            const progressBar4 = document.getElementById("progress-bar-2-b");
+}
+
+onMounted(() => {
+    bird = generatorData.powerGenerated
+    birdAnimation.animationTime = screen.width / 150
 
 
-            const run = (box: any, progressBar: any) => {
-                let active = false;
-                // start
-                box.addEventListener("mousedown", () => {
-                    active = true;
-                });
-                // stop
-                document.addEventListener("mouseup", () => {
-                    active = false;
-                });
-                // run
-                window.addEventListener("mousemove", (e: any) => {
-                    // mouse position
-                    let mX = e.clientX;
-                    let mY = e.clientY;
-                    // element data
-                    let boxData = box.getBoundingClientRect();
-                    let boxWidth = boxData.width;
-                    let boxHeight = boxData.height;
-                    let l = boxData.left;
-                    let t = boxData.top;
-
-                    // rotation
-                    let rotate = 0;
-                    let radians = 180 / Math.PI;
-                    let center = {
-                        x: l + (boxWidth / 2),
-                        y: t + (boxHeight / 2)
-                    };
-                    // arc points
-                    let x = mX - center.x;
-                    let y = mY - center.y;
-                    let angle = Math.floor(Math.atan2(y, x) * radians);
-                    let startAngle = 180;
-                    const generatorGoal = 700;
-
-
-                    // active status
-                    if (active) {
-                        this.cummulativeSpin += 1
-                        rotate = angle + startAngle;
-
-                        box.style.transform = `rotate(${rotate}deg)`;
-
-                        if (this.cummulativeSpin === 1 ||
-                            this.cummulativeSpin === ((generatorGoal * 0.5)) ||
-                            this.cummulativeSpin === ((generatorGoal * 0.75)) ||
-                            this.cummulativeSpin === ((generatorGoal * 1))) {
-                            this.generatorMessageIndex += 1
-                        }
-
-
-                        const progress = this.cummulativeSpin < generatorGoal ? (this.cummulativeSpin / generatorGoal) * 180 : 180
-                        progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
-
-                        if (this.cummulativeSpin >= generatorGoal) {
-                            this.$store.setGenerator(true)
-                            this.bird = true
-                            this.birdTiming()
-                        }
-
-                    }
-
-                });
-            }
-
-            run(box2, progressBar2);
-            run(box2, progressBar4);
-        }
-
-    },
-    unmounted() {
-        clearTimeout(this.birdTimeout)
-    },
-    data() {
-        return ({
-            name: 'doggie',
-            cummulativeSpin: 0,
-            generatorMessageIndex: 0,
-            generatorMessages: [
-                'Looks like this sites going to need some power',
-                'This thing actually works!',
-                'This is hard work',
-                'Just a little more',
-                'Wow, awesome',
-            ],
-            birdAnimation: {},
-            bird: false,
-            birdTimeout: null,
-        } as {
-            name: string,
-            cummulativeSpin: number,
-            generatorMessageIndex: number,
-            generatorMessages: string[],
-            birdAnimation: { animationTime?: number },
-            bird: boolean,
-            birdTimeout: any,
-        })
-    },
-    methods: {
-        birdTiming() {
-
-            this.birdTimeout = setTimeout(() => {
-                this.$nextTick(() => this.bird = false)
-
-                setTimeout(() => {
-                    this.bird = true
-                    this.birdTiming()
-
-                }, (((Math.floor(Math.random() * 6) + 3)) * 1000))
-
-
-            }, ((this.birdAnimation?.animationTime || 1) * 1000));
-        }
+    if (generatorData.powerGenerated) {
+        birdTiming()
     }
 })
+
+onUnmounted(() => {
+    clearTimeout(birdTimeout)
+})
+
+//generator code
+
+const generatorData = reactive({
+    powerGenerated: false,
+    generatorMessageIndex: 0
+})
+
+let cummulativeSpin = 0
+const generatorMessages = [
+    'Looks like this sites going to need some power',
+    'This thing actually works!',
+    'This is hard work',
+    'Just a little more',
+    'Wow, awesome',
+]
+
+onMounted(() => {
+    cummulativeSpin = 0;
+
+    if (!generatorData.powerGenerated) {
+        const box2 = document.getElementById("box-2");
+        const progressBar2 = document.getElementById("progress-bar-2");
+        const progressBar4 = document.getElementById("progress-bar-2-b");
+
+
+        const run = (box: any, progressBar: any) => {
+            let active = false;
+            // start
+            box.addEventListener("mousedown", () => {
+                active = true;
+            });
+            // stop
+            document.addEventListener("mouseup", () => {
+                active = false;
+            });
+            // run
+            window.addEventListener("mousemove", (e: any) => {
+                // mouse position
+                let mX = e.clientX;
+                let mY = e.clientY;
+                // element data
+                let boxData = box.getBoundingClientRect();
+                let boxWidth = boxData.width;
+                let boxHeight = boxData.height;
+                let l = boxData.left;
+                let t = boxData.top;
+
+                // rotation
+                let rotate = 0;
+                let radians = 180 / Math.PI;
+                let center = {
+                    x: l + (boxWidth / 2),
+                    y: t + (boxHeight / 2)
+                };
+                // arc points
+                let x = mX - center.x;
+                let y = mY - center.y;
+                let angle = Math.floor(Math.atan2(y, x) * radians);
+                let startAngle = 180;
+                const generatorGoal = 700;
+
+
+                // active status
+                if (active) {
+                    cummulativeSpin += 1
+                    rotate = angle + startAngle;
+
+                    box.style.transform = `rotate(${rotate}deg)`;
+
+                    if (cummulativeSpin === 1 ||
+                        cummulativeSpin === ((generatorGoal * 0.5)) ||
+                        cummulativeSpin === ((generatorGoal * 0.75)) ||
+                        cummulativeSpin === ((generatorGoal * 1))) {
+                        generatorData.generatorMessageIndex++
+                    }
+
+
+                    const progress = cummulativeSpin < generatorGoal ? (cummulativeSpin / generatorGoal) * 180 : 180
+                    progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
+
+                    if (cummulativeSpin >= generatorGoal && !generatorData.powerGenerated) {
+                        generatorData.powerGenerated = true
+                        bird = true
+                        birdTiming()
+                    }
+
+                }
+
+            });
+        }
+
+        run(box2, progressBar2);
+        run(box2, progressBar4);
+    }
+
+})
+
 </script>
   
 <style lang="scss" scoped>

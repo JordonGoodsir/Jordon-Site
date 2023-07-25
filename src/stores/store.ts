@@ -17,7 +17,7 @@ export const store = defineStore('counter', {
             this.count++
         },
         setGenerator(status: boolean) {
-            this.powerGenerated = status   
+            this.powerGenerated = status
         }
     },
 })
