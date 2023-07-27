@@ -55,16 +55,16 @@
 
                             <div class="flex items-end justify-between">
                                 <Crane />
-                                <div class="flex items-end">
-                                    <div id="tree_001">
+                                <div :class="['flex items-end', `mr-[${(Math.floor(Math.random()*60)+10)}px]`]">
+                                    <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
                                         <div class="bg-green-500 h-56 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-80 ml-20"></div>
                                     </div>
-                                    <div id="tree_001">
+                                    <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
                                         <div class="bg-green-500 h-56 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-96 ml-20"></div>
                                     </div>
-                                    <div id="tree_001">
+                                    <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
                                         <div class="bg-green-500 h-48 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-72 ml-20"></div>
                                     </div>
@@ -119,7 +119,6 @@ import Crane from "@/components/Crane.vue"
 
 
 // bird code
-
 let birdTimeout: any = null;
 const birdAnimation: any = {}
 let bird: boolean = false
@@ -136,7 +135,6 @@ const birdTiming = () => {
 
 
     }, ((birdAnimation?.animationTime || 1) * 1000));
-
 }
 
 onMounted(() => {
@@ -154,9 +152,8 @@ onUnmounted(() => {
 })
 
 //generator code
-
 const generatorData = reactive({
-    powerGenerated: false,
+    powerGenerated: true,
     generatorMessageIndex: 0
 })
 
