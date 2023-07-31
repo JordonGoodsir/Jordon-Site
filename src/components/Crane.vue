@@ -72,7 +72,7 @@
 
                 </div>
                 <div class="w-full bg-black h-5 flex text-white items-center justify-center text-[9px]">
-                    My skills
+                    My Top Skills
                 </div>
             </div>
         </div>

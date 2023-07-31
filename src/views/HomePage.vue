@@ -12,14 +12,15 @@
                 <li></li>
             </ul>
             <div v-if="generatorData.powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
-                <div v-if="bird" class="bird flex" :style="{ '--animationTime': `${birdAnimation?.animationTime}s` }">
-                    <div class="left-wing bird-part" />
+                <div v-if="bird" class="bird flex left-[60px]"
+                    :style="{ '--animationTime': `${birdAnimation?.animationTime}s` }">
+                    <div class="left-wing bird-part rotate-[30deg]" />
 
                     <div class="body flex">
-                        <div class="left-body bird-part" />
-                        <div class="right-body bird-part" />
+                        <div class="left-body bird-part rotate-[152deg]" />
+                        <div class="right-body bird-part rotate-[30deg]" />
                     </div>
-                    <div class="right-wing bird-part" />
+                    <div class="right-wing bird-part -rotate-[30deg]" />
                 </div>
                 <div class="flex flex-col h-full w-full justify-between">
                     <div class="flex justify-evenly gap-10">
@@ -55,7 +56,7 @@
 
                             <div class="flex items-end justify-between">
                                 <Crane />
-                                <div :class="['flex items-end', `mr-[${(Math.floor(Math.random()*60)+10)}px]`]">
+                                <div :class="['flex items-end', `mr-[${(Math.floor(Math.random() * 60) + 10)}px]`]">
                                     <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
                                         <div class="bg-green-500 h-56 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-80 ml-20"></div>
@@ -85,7 +86,7 @@
 
             <div
                 :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', generatorData.powerGenerated ? 'border-black' : 'border-white text-white']">
-                <h1 class="pointer-events-none">Welcome, <br> I'm <span :class="['text-[#ffa449]']">Jordon</span>
+                <h1 class="pointer-events-none">Welcome, <br> I'm <span :class="['text-highlight']">Jordon</span>
                 </h1>
                 <h2 class="pointer-events-none">A Software Developer</h2>
 
@@ -447,7 +448,7 @@ onMounted(() => {
 }
 
 .bird {
-    @apply absolute top-1/4 -left-[60px];
+    @apply absolute top-1/4;
     animation: screen-fly var(--animationTime) linear infinite alternate;
 
     .bird-part {
@@ -455,24 +456,22 @@ onMounted(() => {
     }
 
     .left-wing {
-        @apply rotate-[30deg] mt-1;
+        @apply mt-1;
         transform-origin: top right;
         animation: fly-left 0.5s ease-in-out infinite;
     }
 
     .body {
         .left-body {
-            @apply -rotate-[30deg] mr-2
+            @apply mr-2
         }
 
-        .right-body {
-            @apply rotate-[30deg]
-        }
+        .right-body {}
 
     }
 
     .right-wing {
-        @apply -rotate-[30deg] mt-1;
+        @apply mt-1;
         transform-origin: top left;
         animation: fly-right 0.5s ease-in-out infinite;
     }

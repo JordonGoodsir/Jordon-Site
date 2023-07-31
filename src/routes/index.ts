@@ -1,4 +1,5 @@
 import HomePage from '@/views/HomePage.vue'
+import AboutMe from '@/views/AboutMe.vue'
 import Generator from '@/views/Generator.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -6,6 +7,10 @@ const routes = [
     {
         path: '/',
         component: HomePage
+    },
+    {
+        path: '/about-me',
+        component: AboutMe
     },
     {
         path: '/hmm',
