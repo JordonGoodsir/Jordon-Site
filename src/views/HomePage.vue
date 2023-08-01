@@ -2,7 +2,7 @@
     <PageWrapper :scroll="false" :headerDark="!generatorData.powerGenerated">
         <div
             :class="[`flex transition flex justify-center items-center h-full w-full`, generatorData.powerGenerated ? 'bg-sky-blue' : 'bg-main']">
-            <ul class='moving_shapes overflow-hidden'>
+            <ul v-if="!generatorData.powerGenerated" class='moving_shapes overflow-hidden'>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -56,16 +56,16 @@
 
                             <div class="flex items-end justify-between">
                                 <Crane />
-                                <div :class="['flex items-end', `mr-[${(Math.floor(Math.random() * 60) + 10)}px]`]">
-                                    <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
+                                <div :class="'flex items-end'">
+                                    <div id="tree_001" :class="'mr-5'">
                                         <div class="bg-green-500 h-56 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-80 ml-20"></div>
                                     </div>
-                                    <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
+                                    <div id="tree_001" :class="`mr-5 pr-[${Math.floor(Math.random() * 60) + 10}px]`">
                                         <div class="bg-green-500 h-56 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-96 ml-20"></div>
                                     </div>
-                                    <div id="tree_001" :class="`pr-[${Math.floor(Math.random() * 60) + 10}px]`">
+                                    <div id="tree_001" :class="`mr-5 pr-[${Math.floor(Math.random() * 60) + 10}px]`">
                                         <div class="bg-green-500 h-48 w-56 rounded-md"></div>
                                         <div class="bg-tree-brown w-12 h-72 ml-20"></div>
                                     </div>
@@ -85,7 +85,7 @@
             </div>
 
             <div
-                :class="[' z-50 flex flex-col border-4 px-10 py-36 text-center gap-10 select-none', generatorData.powerGenerated ? 'border-black' : 'border-white text-white']">
+                :class="[' z-50 flex flex-col border-4 px-10 py-28 text-center gap-10 select-none', generatorData.powerGenerated ? 'border-black' : 'border-white text-white']">
                 <h1 class="pointer-events-none">Welcome, <br> I'm <span :class="['text-highlight']">Jordon</span>
                 </h1>
                 <h2 class="pointer-events-none">A Software Developer</h2>
@@ -98,7 +98,7 @@
                     }}
                 </p>
 
-                <div v-if="!generatorData.powerGenerated" class="container-knob-2 flex gap-20">
+                <div v-if="!generatorData.powerGenerated" class="flex gap-20">
                     <div id="progress-bar-2"></div>
                     <div id="box-2" class="box">
                         <div class="circle">
@@ -154,7 +154,7 @@ onUnmounted(() => {
 
 //generator code
 const generatorData = reactive({
-    powerGenerated: true,
+    powerGenerated: false,
     generatorMessageIndex: 0
 })
 
@@ -229,7 +229,7 @@ onMounted(() => {
 
 
                     const progress = cummulativeSpin < generatorGoal ? (cummulativeSpin / generatorGoal) * 180 : 180
-                    progressBar.style.boxShadow = `inset 0 -${progress}px cyan`;
+                    progressBar.style.boxShadow = `inset 0 -${progress}px #ffa449`;
 
                     if (cummulativeSpin >= generatorGoal && !generatorData.powerGenerated) {
                         generatorData.powerGenerated = true
@@ -273,8 +273,8 @@ onMounted(() => {
 }
 
 #box-2 .circle {
-    box-shadow: 0 0 10px cyan, inset 0 0 10px 5px cyan;
-    filter: drop-shadow(0 0 11px lightblue);
+    box-shadow: 0 0 10px #ffa449, inset 0 0 10px 5px #ffa449;
+    filter: drop-shadow(0 0 11px #ffa449);
 }
 
 
