@@ -2,7 +2,7 @@
     <PageWrapper :scroll="false" :headerDark="!generatorData.powerGenerated">
         <div
             :class="[`flex transition flex justify-center items-center h-full w-full`, generatorData.powerGenerated ? 'bg-sky-blue' : 'bg-main']">
-            <ul v-if="!generatorData.powerGenerated" class='moving_shapes overflow-hidden'>
+            <ul v-if="!generatorData.powerGenerated" id="moving-shapes" class='overflow-hidden'>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -93,8 +93,8 @@
                 <p class="pointer-events-none">
                     {{
                         generatorData.powerGenerated ?
-                        generatorMessages[generatorMessages.length - 1] :
-                        generatorMessages[generatorData.generatorMessageIndex]
+                        generatorMessages[generatorMessages.length - 1].message :
+                        generatorMessages[generatorData.generatorMessageIndex].message
                     }}
                 </p>
 
@@ -114,7 +114,7 @@
 </template>
   
 <script setup lang="ts">
-import { onMounted, nextTick, onUnmounted, reactive } from 'vue'
+import { onMounted, nextTick, onUnmounted, reactive, watch } from 'vue'
 import PageWrapper from "@/components/PageWrapper.vue"
 import Crane from "@/components/Crane.vue"
 
@@ -159,12 +159,12 @@ const generatorData = reactive({
 })
 
 let cummulativeSpin = 0
-const generatorMessages = [
-    'Looks like this sites going to need some power',
-    'This thing actually works!',
-    'This is hard work',
-    'Just a little more',
-    'Wow, awesome',
+const generatorMessages: { message: string, appendDots: number }[] = [
+    { message: 'This sites gonna need power, spin that  ⬇️', appendDots: 0 },
+    { message: 'This thing actually works!', appendDots: 13 },
+    { message: 'This is hard work', appendDots: 14 },
+    { message: 'Just a little more', appendDots: 27 },
+    { message: 'Wow, awesome', appendDots: 0 },
 ]
 
 onMounted(() => {
@@ -246,6 +246,44 @@ onMounted(() => {
         run(box2, progressBar4);
     }
 
+    //moving shapes code 
+    const dotsPhase1 = (amount: number) => {
+        let dots = document.getElementById("moving-shapes");
+
+
+        for (let i = 0; i <= amount; i++) {
+            let size = Math.floor(Math.random() * 3) + 1;
+
+            let newDot = document.createElement("LI");
+            newDot.style.width = `${size}rem`;
+            newDot.style.height = `${size}rem`;
+            newDot.style.bottom = `-${size}rem`;
+            newDot.style.position = 'relative';
+            newDot.style.left = `${Math.floor(Math.random() * 100)}%`;
+            newDot.style.clipPath = "circle(50% at 50% 50%)";
+            newDot.style.animationDuration = `${Math.floor(Math.random() * 10) + 10}s`;
+            newDot.style.animationDelay = `${Math.floor(Math.random() * 2) + 0.2}s`;
+            // newDot.style.position = 'absolute';
+            // newDot.style.listStyle = 'none';
+            // newDot.style.display = 'block';
+            // newDot.style.backgroundColor = 'whitesmoke';
+            // newDot.style.opacity = '0';
+            // newDot.style.animation = 'float infinite';
+            // newDot.style.transitionTimingFunction = 'linear';
+            // newDot.style.clipPath = 'polygon(20 % 0 %, 0 % 20 %, 30 % 50 %, 0 % 80 %, 20 % 100 %, 50 % 70 %, 80 % 100 %, 100 % 80 %, 70 % 50 %, 100 % 20 %, 80 % 0 %, 50 % 30 %)';
+            if (dots) {
+                dots.appendChild(newDot);
+            }
+        }
+    };
+
+    watch(() => generatorData.generatorMessageIndex, (newVal) => {
+        if (newVal) {
+            console.error(window)
+            dotsPhase1(generatorMessages[newVal].appendDots)
+        }
+    })
+
 })
 
 </script>
@@ -311,7 +349,7 @@ onMounted(() => {
     line-height: 250px;
 }
 
-.moving_shapes {
+#moving-shapes {
     position: absolute;
     top: 0;
     left: 0;
@@ -322,68 +360,65 @@ onMounted(() => {
     transform: translateZ(0);
 }
 
-.moving_shapes li {
+#moving-shapes li {
     position: absolute;
     list-style: none;
     display: block;
-    background-color: #eeeeee;
+    background-color: whitesmoke;
     opacity: 0;
-    bottom: -13%;
+    bottom: 1%;
     -webkit-animation: float infinite;
     animation: float infinite;
     -webkit-transition-timing-function: linear;
     transition-timing-function: linear;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
-.moving_shapes li:nth-child(1) {
-    width: 5em;
-    height: 5em;
+#moving-shapes li:nth-child(1) {
+    width: 3em;
+    height: 3em;
     left: 12.5%;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
     -webkit-animation-duration: 21s;
     animation-duration: 21s;
+    bottom: -3rem;
 }
 
-.moving_shapes li:nth-child(2) {
+#moving-shapes li:nth-child(2) {
     width: 2em;
     height: 2em;
     left: 25%;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     -webkit-animation-delay: 3s;
     animation-delay: 3s;
     -webkit-animation-duration: 22s;
     animation-duration: 22s;
+    bottom: -2rem;
 }
 
-.moving_shapes li:nth-child(3) {
+#moving-shapes li:nth-child(3) {
     width: 1em;
     height: 1em;
     left: 37.5%;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
     -webkit-animation-duration: 20s;
     animation-duration: 20s;
+    bottom: -1rem;
 }
 
-.moving_shapes li:nth-child(4) {
-    width: 6.5em;
-    height: 6.5em;
+#moving-shapes li:nth-child(4) {
+    width: 2em;
+    height: 2em;
     left: 50%;
     -webkit-animation-delay: 3s;
     animation-delay: 3s;
     -webkit-animation-duration: 26s;
     animation-duration: 26s;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    bottom: -2rem;
 }
 
-.moving_shapes li:nth-child(5) {
+#moving-shapes li:nth-child(5) {
     width: 1.9em;
     height: 1.9em;
     left: 62.5%;
@@ -391,11 +426,10 @@ onMounted(() => {
     animation-delay: 1s;
     -webkit-animation-duration: 20s;
     animation-duration: 20s;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    bottom: -1.9rem;
 }
 
-.moving_shapes li:nth-child(6) {
+#moving-shapes li:nth-child(6) {
     width: 1.8em;
     height: 1.8em;
     left: 75%;
@@ -403,11 +437,10 @@ onMounted(() => {
     animation-delay: 4s;
     -webkit-animation-duration: 19s;
     animation-duration: 19s;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    bottom: -1.8rem;
 }
 
-.moving_shapes li:nth-child(7) {
+#moving-shapes li:nth-child(7) {
     width: 1em;
     height: 1em;
     left: 87.5%;
@@ -415,9 +448,9 @@ onMounted(() => {
     animation-delay: 1.4s;
     -webkit-animation-duration: 18s;
     animation-duration: 18s;
-    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    bottom: -1.8rem;
 }
+
 
 @-webkit-keyframes float {
     0% {
