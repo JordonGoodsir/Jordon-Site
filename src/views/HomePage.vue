@@ -99,13 +99,13 @@
                 </p>
 
                 <div v-if="!generatorData.powerGenerated" class="flex gap-20">
-                    <div id="progress-bar-2"></div>
+                    <div id="progress-bar-l" class="bg-[#ffffff66]"></div>
                     <div id="box-2" class="box">
                         <div class="circle">
                             <div id="dot-2" class="dot"></div>
                         </div>
                     </div>
-                    <div id="progress-bar-2-b"></div>
+                    <div id="progress-bar-r" class="bg-[#ffffff66]"></div>
                 </div>
             </div>
 
@@ -172,8 +172,8 @@ onMounted(() => {
 
     if (!generatorData.powerGenerated) {
         const box2 = document.getElementById("box-2");
-        const progressBar2 = document.getElementById("progress-bar-2");
-        const progressBar4 = document.getElementById("progress-bar-2-b");
+        const progressBar2 = document.getElementById("progress-bar-l");
+        const progressBar4 = document.getElementById("progress-bar-r");
 
 
         const run = (box: any, progressBar: any) => {
@@ -254,7 +254,7 @@ onMounted(() => {
         for (let i = 0; i <= amount; i++) {
             let size = Math.floor(Math.random() * 3) + 1;
 
-            let newDot = document.createElement("LI");
+            let newDot = document.createElement("li");
             newDot.style.width = `${size}rem`;
             newDot.style.height = `${size}rem`;
             newDot.style.bottom = `-${size}rem`;
@@ -299,13 +299,13 @@ onMounted(() => {
     box-shadow: inset 0 0 7px 1px yellow;
 }
 
-#progress-bar-2 {
-    @apply h-44 w-9 bg-white opacity-40;
+#progress-bar-l {
+    @apply h-44 w-9;
     clip-path: polygon(0 0, 0% 100%, 100% 0);
 }
 
-#progress-bar-2-b {
-    @apply h-44 w-9 bg-white opacity-40;
+#progress-bar-r {
+    @apply h-44 w-9;
     clip-path: polygon(0 0, 100% 100%, 100% 0);
 }
 
@@ -313,11 +313,13 @@ onMounted(() => {
     @apply absolute top-0 left-0 h-full w-full z-0;
 }
 
-#moving-shapes li {
-    @apply opacity-0 block absolute list-none bg-white;
-    animation: float infinite;
-    transition-timing-function: linear;
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+#moving-shapes {
+    * {
+        @apply opacity-0 block absolute list-none bg-white;
+        animation: float infinite;
+        transition-timing-function: linear;
+        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    }
 }
 
 #moving-shapes li:nth-child(1) {

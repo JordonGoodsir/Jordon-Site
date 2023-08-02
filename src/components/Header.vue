@@ -69,7 +69,7 @@ export default {
         @apply relative block;
         border-radius: 3px;
         z-index: 1;
-        transform-origin: 5px 1px;
+        transform-origin: 5px 2.5px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
             background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
             opacity 0.55s ease;

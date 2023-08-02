@@ -482,7 +482,7 @@ body {
 
     .brick {
         @apply h-5 w-12 bg-brick-brown flex justify-center items-center text-[8px] text-black;
-        box-shadow: 0 0 4px 1px darken(#bd5858, 20%) inset;
+        box-shadow: 0 0 4px 1px darken(#bd5858, 15%) inset;
 
     }
 }
