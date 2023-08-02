@@ -3,13 +3,13 @@
         <div
             :class="[`flex transition flex justify-center items-center h-full w-full`, generatorData.powerGenerated ? 'bg-sky-blue' : 'bg-main']">
             <ul v-if="!generatorData.powerGenerated" id="moving-shapes" class='overflow-hidden'>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li class="left-[12.5%] -bottom-[3rem]"></li>
+                <li class="-bottom-[2rem]"></li>
+                <li class="left-[37.5%] -bottom-[1rem]"></li>
+                <li class="-bottom-[2rem]"></li>
+                <li class="left-[62.5%] -bottom-[2.75rem]"></li>
+                <li class="-bottom-[2.5rem]"></li>
+                <li class="left-[87.5%] -bottom-[1rem]"></li>
             </ul>
             <div v-if="generatorData.powerGenerated" class="fixed inset-0 z-10 pointer-events-none">
                 <div v-if="bird" class="bird flex left-[60px]"
@@ -263,14 +263,6 @@ onMounted(() => {
             newDot.style.clipPath = "circle(50% at 50% 50%)";
             newDot.style.animationDuration = `${Math.floor(Math.random() * 10) + 10}s`;
             newDot.style.animationDelay = `${Math.floor(Math.random() * 2) + 0.2}s`;
-            // newDot.style.position = 'absolute';
-            // newDot.style.listStyle = 'none';
-            // newDot.style.display = 'block';
-            // newDot.style.backgroundColor = 'whitesmoke';
-            // newDot.style.opacity = '0';
-            // newDot.style.animation = 'float infinite';
-            // newDot.style.transitionTimingFunction = 'linear';
-            // newDot.style.clipPath = 'polygon(20 % 0 %, 0 % 20 %, 30 % 50 %, 0 % 80 %, 20 % 100 %, 50 % 70 %, 80 % 100 %, 100 % 80 %, 70 % 50 %, 100 % 20 %, 80 % 0 %, 50 % 30 %)';
             if (dots) {
                 dots.appendChild(newDot);
             }
@@ -279,7 +271,6 @@ onMounted(() => {
 
     watch(() => generatorData.generatorMessageIndex, (newVal) => {
         if (newVal) {
-            console.error(window)
             dotsPhase1(generatorMessages[newVal].appendDots)
         }
     })
@@ -290,24 +281,11 @@ onMounted(() => {
   
 <style lang="scss" scoped>
 .box {
-    width: 200px;
-    height: 200px;
-    background-color: transparent;
-    transform-origin: center center;
-    border-radius: 50%;
-    transform: rotate(0deg)
+    @apply h-52 w-52 bg-transparent origin-center rotate-0;
 }
 
 .circle {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(70px);
+    @apply h-40 w-40 top-1/2 left-1/2 absolute rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2;
 }
 
 #box-2 .circle {
@@ -317,166 +295,83 @@ onMounted(() => {
 
 
 .dot {
-    width: 10px;
-    height: 10px;
+    @apply h-2.5 w-2.5 absolute top-20 left-5 rounded-full;
     box-shadow: inset 0 0 7px 1px yellow;
-    position: absolute;
-    top: 80px;
-    left: 20px;
-    border-radius: 50%;
 }
 
 #progress-bar-2 {
-    background-color: rgba(255, 255, 255, 0.4);
-    height: 180px;
-    width: 40px;
+    @apply h-44 w-9 bg-white opacity-40;
     clip-path: polygon(0 0, 0% 100%, 100% 0);
 }
 
 #progress-bar-2-b {
-    background-color: rgba(255, 255, 255, 0.4);
-    height: 180px;
-    width: 40px;
+    @apply h-44 w-9 bg-white opacity-40;
     clip-path: polygon(0 0, 100% 100%, 100% 0);
 }
 
-#title {
-    background-image: linear-gradient(90deg, white, white);
-    background-clip: text;
-    -webkit-background-clip: text;
-    text-transform: capitalize;
-    text-align: center;
-    line-height: 250px;
-}
-
 #moving-shapes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    @apply absolute top-0 left-0 h-full w-full z-0;
 }
 
 #moving-shapes li {
-    position: absolute;
-    list-style: none;
-    display: block;
-    background-color: whitesmoke;
-    opacity: 0;
-    bottom: 1%;
-    -webkit-animation: float infinite;
+    @apply opacity-0 block absolute list-none bg-white;
     animation: float infinite;
-    -webkit-transition-timing-function: linear;
     transition-timing-function: linear;
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
 #moving-shapes li:nth-child(1) {
-    width: 3em;
-    height: 3em;
-    left: 12.5%;
-    -webkit-animation-delay: 0s;
+    @apply h-12 w-12;
     animation-delay: 0s;
-    -webkit-animation-duration: 21s;
     animation-duration: 21s;
-    bottom: -3rem;
 }
 
 #moving-shapes li:nth-child(2) {
-    width: 2em;
-    height: 2em;
-    left: 25%;
-    -webkit-animation-delay: 3s;
+    @apply h-8 w-8 left-1/4;
     animation-delay: 3s;
-    -webkit-animation-duration: 22s;
     animation-duration: 22s;
-    bottom: -2rem;
 }
 
 #moving-shapes li:nth-child(3) {
-    width: 1em;
-    height: 1em;
-    left: 37.5%;
-    -webkit-animation-delay: 0s;
+    @apply h-4 w-4;
     animation-delay: 0s;
-    -webkit-animation-duration: 20s;
     animation-duration: 20s;
-    bottom: -1rem;
 }
 
 #moving-shapes li:nth-child(4) {
-    width: 2em;
-    height: 2em;
-    left: 50%;
-    -webkit-animation-delay: 3s;
+    @apply h-8 w-8 left-1/2;
     animation-delay: 3s;
-    -webkit-animation-duration: 26s;
     animation-duration: 26s;
-    bottom: -2rem;
 }
 
 #moving-shapes li:nth-child(5) {
-    width: 1.9em;
-    height: 1.9em;
-    left: 62.5%;
-    -webkit-animation-delay: 1s;
+    @apply h-11 w-11;
     animation-delay: 1s;
-    -webkit-animation-duration: 20s;
     animation-duration: 20s;
-    bottom: -1.9rem;
 }
 
 #moving-shapes li:nth-child(6) {
-    width: 1.8em;
-    height: 1.8em;
-    left: 75%;
-    -webkit-animation-delay: 4s;
+    @apply h-10 w-10 left-3/4;
     animation-delay: 4s;
-    -webkit-animation-duration: 19s;
     animation-duration: 19s;
-    bottom: -1.8rem;
 }
 
 #moving-shapes li:nth-child(7) {
-    width: 1em;
-    height: 1em;
-    left: 87.5%;
-    -webkit-animation-delay: 1.4s;
+    @apply h-4 w-4;
     animation-delay: 1.4s;
-    -webkit-animation-duration: 18s;
     animation-duration: 18s;
-    bottom: -1.8rem;
 }
 
-
-@-webkit-keyframes float {
-    0% {
-        -webkit-transform: translateY(0px);
-        transform: translateY(0px);
-        opacity: 0.5;
-    }
-
-    80% {
-        -webkit-transform: translateY(-100vh) rotate(630deg);
-        transform: translateY(-100vh) rotate(630deg);
-        opacity: 0;
-    }
-}
 
 @keyframes float {
     0% {
-        -webkit-transform: translateY(0px);
         transform: translateY(0px);
-        opacity: 0.5;
+        @apply opacity-50;
     }
 
     80% {
-        -webkit-transform: translateY(-100vh) rotate(630deg);
         transform: translateY(-100vh) rotate(630deg);
-        opacity: 0;
+        @apply opacity-0;
     }
 }
 
@@ -489,8 +384,7 @@ onMounted(() => {
     }
 
     .left-wing {
-        @apply mt-1;
-        transform-origin: top right;
+        @apply mt-1 origin-top-right;
         animation: fly-left 0.5s ease-in-out infinite;
     }
 
@@ -504,8 +398,7 @@ onMounted(() => {
     }
 
     .right-wing {
-        @apply mt-1;
-        transform-origin: top left;
+        @apply mt-1 origin-top-left;
         animation: fly-right 0.5s ease-in-out infinite;
     }
 }

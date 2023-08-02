@@ -16,18 +16,16 @@
                     <a href="#">
                         <li>Home</li>
                     </a>
-                    <a href="#">
-                        <li>About</li>
+                    <a class="cursor-no-drop opacity-50" href="#">
+                        <li>About - (Coming soon)</li>
                     </a>
-                    <a href="#">
-                        <li>Info</li>
+                    <a class="cursor-no-drop opacity-50" href="#">
+                        <li>Skills - (Coming soon)</li>
                     </a>
-                    <a href="#">
-                        <li>Contact</li>
+                    <a class="cursor-no-drop opacity-50" href="#">
+                        <li>Contact - (Coming soon)</li>
                     </a>
-                    <a href="https://erikterwan.com/" target="_blank">
-                        <li>Show me more</li>
-                    </a>
+
                 </ul>
             </Transition>
         </div>
@@ -67,11 +65,11 @@ export default {
     span {
         width: 33px;
         height: 4px;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         @apply relative block;
         border-radius: 3px;
         z-index: 1;
-        transform-origin: 4px 0px;
+        transform-origin: 5px 1px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
             background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
             opacity 0.55s ease;
