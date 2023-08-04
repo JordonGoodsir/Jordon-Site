@@ -14,6 +14,11 @@ const app = createApp(App)
 
 app.use(router)
 app.use(pinia)
+//@ts-ignore
+import VTooltipPlugin from 'v-tooltip'
+app.use(VTooltipPlugin)
+import 'v-tooltip/dist/v-tooltip.css'
+
 
 const theStore = store()
 
