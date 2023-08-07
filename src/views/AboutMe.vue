@@ -1,24 +1,31 @@
 <template>
     <PageWrapper>
-        <div class="bg-main flex items-center justify-center py-20">
-            <h1 class="text-highlight">-My Skills-</h1>
-        </div>
-        <div class="flex flex-wrap justify-center py-10 bg-main">
-            <div v-for="(skill, index) in triangleSkills" :key="index" v-tooltip="skill.name"
-                :class="[`triangle transition-all hover:!bg-white text-white hover:text-red-500`, index % 2 == 0 ? 'triangle-down' : 'triangle-up']"
-                :style="{ background: skill.color }">
-                <div class="flex flex-col items-center">
-                    <svg class="icon" >
+        <div class="flex flex-col">
+            <div class="bg-main flex items-center justify-center">
+                <h1 class="text-highlight">-My Skills-</h1>
+            </div>
+            <div class="flex flex-wrap justify-center bg-main px-14 py-10">
+                <div v-for="(skill, index) in triangleSkills" :key="index" v-tooltip="skill.name"
+                    :class="[`triangle transition-all text-white hover:scale-[1.1]`, index % 2 == 0 ? 'triangle-down' : 'triangle-up']"
+                    :style="{ background: skill.color }">
+                    <div class="flex flex-col items-center">
+                        <!-- <svg class="icon">
                         <use :xlink:href="`${skill.icon()}#${skill.name}`" />
-                    </svg>
+                    </svg> -->
 
-                    <!-- <img :src="skill.icon()" :class="['h-16 w-16', index % 2 == 0 ? 'mb-16' : 'mt-16']" /> -->
+                        <img :src="skill.icon()" :class="['h-16 w-16', index % 2 == 0 ? 'mb-16' : 'mt-16']" />
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            my projects
+            <div class="w-full flex flex-col items-center px-14 pt-10">
+                <h2 class="text-highlight mb-10 bg-main w-full text-center">-Challenge Projects-</h2>
+                <div class="flex flex-wrap w-full justify-center">
+                    <div class="overflow-hidden flex" v-for="project in projects" :key="project.img()">
+                        <img class="h-[250px] w-[450px] object-fill" :src="project.img()">
+                    </div>
+                </div>
+            </div>
         </div>
     </PageWrapper>
 </template>
@@ -72,10 +79,31 @@ let triangleSkills = reactive([
 
 ])
 
+let projects = reactive([
+    {
+        img: () => require('@/assets/projects/connectFour.png')
+    },
+    {
+        img: () => require('@/assets/projects/entertain.png')
+    },
+    {
+        img: () => require('@/assets/projects/monsterMashUp.png')
+    },
+    {
+        img: () => require('@/assets/projects/legacySite.png')
+    },
+
+])
+
 </script>
   
 <style lang="scss">
 .icon {
+    width: 50px;
+    height: 50px;
+}
+
+use {
     width: 50px;
     height: 50px;
 }
