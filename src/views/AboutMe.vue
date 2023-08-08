@@ -18,11 +18,36 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex flex-col items-center px-14 pt-10">
-                <h2 class="text-highlight mb-10 bg-main w-full text-center">-Challenge Projects-</h2>
-                <div class="flex flex-wrap w-full justify-center">
-                    <div class="overflow-hidden flex" v-for="project in projects" :key="project.img()">
+
+            <div class="w-full flex flex-col px-14 pt-10 gap-10">
+                <h2 class="text-highlight bg-main px-10 text-center rounded-md">-Projects-</h2>
+
+                <div class="flex flex-wrap w-full justify-center gap-10">
+                    <div class="overflow-hidden flex flex-col project relative" v-for="project in projects.normalProjects"
+                        :key="project.img()">
                         <img class="h-[250px] w-[450px] object-fill" :src="project.img()">
+                        <div class="links bg-white opacity-40 absolute inset-0  h-[250px] w-[450px] hidden">
+                            ello
+                        </div>
+                        <div class="bg-main text-white description-box h-0 p-0">
+                            {{ project.description }}
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-highlight bg-main rounded-md px-10 text-center">- Challenge Projects-</h2>
+
+                <div class="flex flex-wrap w-full justify-center gap-10">
+
+                    <div class="overflow-hidden flex flex-col project relative" @mouseover="() => hoverProject()"
+                        v-for="project in projects.challengeProjects" :key="project.img()">
+                        <img class="h-[250px] w-[450px] object-fill" :src="project.img()">
+                        <div class="links bg-white opacity-40 absolute inset-0  h-[250px] w-[450px] hidden">
+                            ello
+                        </div>
+                        <div class="bg-main text-white description-box h-0 p-0">
+                            {{ project.description }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,6 +59,14 @@
 
 import { reactive } from 'vue'
 import PageWrapper from "@/components/PageWrapper.vue"
+
+const hoverProject = () => {
+        setTimeout(() => {
+            document.querySelector('.description-box')?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }, 300)
+}
 
 let triangleSkills = reactive([
     {
@@ -79,21 +112,32 @@ let triangleSkills = reactive([
 
 ])
 
-let projects = reactive([
-    {
-        img: () => require('@/assets/projects/connectFour.png')
-    },
-    {
-        img: () => require('@/assets/projects/entertain.png')
-    },
-    {
-        img: () => require('@/assets/projects/monsterMashUp.png')
-    },
-    {
-        img: () => require('@/assets/projects/legacySite.png')
-    },
+let projects = reactive({
+    normalProjects: [
+        {
+            img: () => require('@/assets/projects/connectFour.png'),
+            description: 'me jefff this is good'
+        },
+        {
+            img: () => require('@/assets/projects/legacySite.png'),
+            description: 'me jefff this is good'
+        },
+    ],
+    challengeProjects: [
+        {
+            img: () => require('@/assets/projects/entertain.png'),
+            description: 'me jefff this is good'
 
-])
+        },
+        {
+            img: () => require('@/assets/projects/monsterMashUp.png'),
+            description: 'me jefff this is good'
+
+        },
+
+    ]
+
+})
 
 </script>
   
@@ -118,6 +162,23 @@ use {
 
 .triangle-up {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.description-box {
+    @apply transition-all duration-300 ease-in-out scroll-smooth;
+}
+
+.project:hover .description-box {
+    @apply h-auto p-10;
+}
+
+.links {
+    @apply transition-all duration-300 ease-in-out;
+}
+
+.project:hover .links {
+    @apply flex;
+
 }
 </style>
   
