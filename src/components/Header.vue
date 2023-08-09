@@ -13,15 +13,16 @@
 
             <Transition name="menu-slide">
                 <ul v-if="menuToggled" :class="['menu', headerDark ? 'bg-white text-main' : 'bg-main text-white']">
-                    <a href="#">
+                    <a href="/">
                         <li>Home</li>
+                    </a>
+                    <a class="" href="/skills">
+                        <li>Skills - (New)</li>
                     </a>
                     <a class="cursor-no-drop opacity-50" href="#">
                         <li>About - (Coming soon)</li>
                     </a>
-                    <a class="cursor-no-drop opacity-50" href="#">
-                        <li>Skills - (Coming soon)</li>
-                    </a>
+
                     <a class="cursor-no-drop opacity-50" href="#">
                         <li>Contact - (Coming soon)</li>
                     </a>

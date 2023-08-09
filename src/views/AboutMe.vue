@@ -26,27 +26,51 @@
                     <div class="overflow-hidden flex flex-col project relative" v-for="project in projects.normalProjects"
                         :key="project.img()">
                         <img class="h-[250px] w-[450px] object-fill" :src="project.img()">
-                        <div class="links bg-white opacity-40 absolute inset-0  h-[250px] w-[450px] hidden">
-                            ello
+                        <div
+                            class=" z-10 links bg-white opacity-40 absolute inset-0  h-[250px] w-[450px] hidden flex items-center justify-center">
                         </div>
-                        <div class="bg-main text-white description-box h-0 p-0">
-                            {{ project.description }}
+                        <div
+                            class="z-20 flex links absolute gap-5 inset-0 h-[250px] w-[450px] hidden flex items-center justify-center">
+                            <div @click="routeAway(project.gitHubLink)"
+                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
+                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/github.svg">
+                            </div>
+                            <div v-if="project.siteLink" @click="routeAway(project.siteLink)"
+                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
+                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/live.svg">
+                            </div>
+                        </div>
+                        <div class="bg-main text-white description-box h-0 p-0 w-[450px] overflow-hidden">
+                            <h3 class="mb-2 text-lg">{{ project.title }}</h3>
+                            <p>{{ project.description }}</p>
                         </div>
                     </div>
                 </div>
 
-                <h2 class="text-highlight bg-main rounded-md px-10 text-center">- Challenge Projects-</h2>
+                <h2 class="text-highlight bg-main rounded-md px-10 text-center">-2 Day Challenge Projects-</h2>
 
                 <div class="flex flex-wrap w-full justify-center gap-10">
 
                     <div class="overflow-hidden flex flex-col project relative" @mouseover="() => hoverProject()"
                         v-for="project in projects.challengeProjects" :key="project.img()">
                         <img class="h-[250px] w-[450px] object-fill" :src="project.img()">
-                        <div class="links bg-white opacity-40 absolute inset-0  h-[250px] w-[450px] hidden">
-                            ello
+                        <div
+                            class=" z-10 links bg-white opacity-40 absolute inset-0  h-[250px] w-[450px] hidden flex items-center justify-center">
                         </div>
-                        <div class="bg-main text-white description-box h-0 p-0">
-                            {{ project.description }}
+                        <div
+                            class="z-20 flex links absolute gap-5 inset-0 h-[250px] w-[450px] hidden flex items-center justify-center">
+                            <div @click="routeAway(project.gitHubLink)"
+                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
+                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/github.svg">
+                            </div>
+                            <div v-if="project.siteLink" @click="routeAway(project.siteLink)"
+                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
+                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/live.svg">
+                            </div>
+                        </div>
+                        <div class="bg-main text-white description-box h-0 p-0 w-[450px] overflow-hidden">
+                            <h3 class="mb-2 text-lg">{{ project.title }}</h3>
+                            <p>{{ project.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -61,11 +85,11 @@ import { reactive } from 'vue'
 import PageWrapper from "@/components/PageWrapper.vue"
 
 const hoverProject = () => {
-        setTimeout(() => {
-            document.querySelector('.description-box')?.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }, 300)
+    setTimeout(() => {
+        document.querySelector('.description-box')?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }, 300)
 }
 
 let triangleSkills = reactive([
@@ -116,28 +140,40 @@ let projects = reactive({
     normalProjects: [
         {
             img: () => require('@/assets/projects/connectFour.png'),
-            description: 'me jefff this is good'
+            title: 'Connect Four',
+            gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
+            description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
         },
         {
             img: () => require('@/assets/projects/legacySite.png'),
-            description: 'me jefff this is good'
+            title: 'My First Portfolio site',
+            siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
+            gitHubLink: 'https://github.com/JordonGoodsir/my_site',
+            description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations',
         },
     ],
     challengeProjects: [
         {
             img: () => require('@/assets/projects/entertain.png'),
-            description: 'me jefff this is good'
-
+            title: 'Quarentine Entertainment',
+            siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
+            gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
+            description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
         },
         {
             img: () => require('@/assets/projects/monsterMashUp.png'),
-            description: 'me jefff this is good'
-
+            title: 'Monster Mash Up',
+            siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
+            gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
+            description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
         },
-
     ]
 
 })
+
+const routeAway = (site: string) => {
+    window.open(site)
+}
 
 </script>
   
