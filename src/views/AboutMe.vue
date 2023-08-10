@@ -4,8 +4,8 @@
             <div class="bg-main flex items-center justify-center">
                 <h1 class="text-highlight">-My Skills-</h1>
             </div>
-            <div class="flex flex-wrap justify-center bg-main px-14 py-10">
-                <div v-for="(skill, index) in triangleSkills" :key="index" v-tooltip="skill.name"
+            <div class="flex flex-wrap justify-center bg-main px-14 py-10 gap-y-5">
+                <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
                     :class="[`triangle transition-all text-white hover:scale-[1.1]`, index % 2 == 0 ? 'triangle-down' : 'triangle-up']"
                     :style="{ background: skill.color }">
                     <div class="flex flex-col items-center">
@@ -94,19 +94,14 @@ const hoverProject = () => {
 
 let triangleSkills = reactive([
     {
-        icon: () => require('@/assets/language-logos/js.svg'),
-        color: '#F1DC4E',
-        name: "JavaScript"
-    },
-    {
         icon: () => require('@/assets/language-logos/ts.svg'),
         color: '#007ACB',
         name: "TypeScript"
     },
     {
-        icon: () => require('@/assets/language-logos/html.svg'),
-        color: '#FF5622',
-        name: "HTML"
+        icon: () => require('@/assets/language-logos/tailwind.svg'),
+        color: '#06b6d4',
+        name: "Tailwindcss"
     },
     {
         icon: () => require('@/assets/language-logos/css.svg'),
@@ -114,9 +109,19 @@ let triangleSkills = reactive([
         name: "CSS"
     },
     {
-        icon: () => require('@/assets/language-logos/sass.svg'),
-        color: '#C76395',
-        name: "SASS"
+        icon: () => require('@/assets/language-logos/docker.svg'),
+        color: '#2396ED',
+        name: "Docker"
+    },
+    {
+        icon: () => require('@/assets/language-logos/ionic.svg'),
+        color: '#367BF8',
+        name: "Ionic"
+    },
+    {
+        icon: () => require('@/assets/language-logos/vue.svg'),
+        color: '#42B882',
+        name: "Vue"
     },
     {
         icon: () => require('@/assets/language-logos/react.svg'),
@@ -124,17 +129,48 @@ let triangleSkills = reactive([
         name: "React"
     },
     {
-        icon: () => require('@/assets/language-logos/docker.svg'),
-        color: '#2396ED',
-        name: "Docker"
+        icon: () => require('@/assets/language-logos/rust.svg'),
+        color: '#7C552C',
+        name: "Rust"
     },
     {
         icon: () => require('@/assets/language-logos/nodeJS.svg'),
         color: '#7fc828',
         name: "NodeJS"
     },
-
+    {
+        icon: () => require('@/assets/language-logos/js.svg'),
+        color: '#F1DC4E',
+        name: "JavaScript"
+    },
+    {
+        icon: () => require('@/assets/language-logos/html.svg'),
+        color: '#FF5622',
+        name: "HTML"
+    },
+    {
+        icon: () => require('@/assets/language-logos/postman.svg'),
+        color: '#F66A33',
+        name: "Postman"
+    },
+    {
+        icon: () => require('@/assets/language-logos/sass.svg'),
+        color: '#C76395',
+        name: "SASS"
+    },
+    {
+        icon: () => require('@/assets/language-logos/aws.svg'),
+        color: '#FF9900',
+        name: "AWS"
+    },
+    {
+        icon: () => require('@/assets/language-logos/mongoDB.svg'),
+        color: '#00ED64',
+        name: "MongoDb"
+    },
 ])
+
+const reversedSkills = triangleSkills.reverse()
 
 let projects = reactive({
     normalProjects: [
