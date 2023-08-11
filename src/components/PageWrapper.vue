@@ -3,11 +3,12 @@
         'flex flex-col h-screen w-screen',
         scroll ? 'overflow-scroll' : 'overflow-hidden'
     ]">
-        <Header :headerDark="headerDark" />
         <div :class="[
             'flex flex-col h-full',
             scroll ? 'overflow-scroll' : 'overflow-hidden'
         ]">
+            <Header :headerDark="headerDark" :title="title" />
+
             <slot />
         </div>
     </div>
@@ -29,12 +30,13 @@ export default {
         headerDark: {
             default: true,
             type: Boolean,
+        },
+        title: {
+            default: '',
+            type: String,
         }
     },
     data() {
-        return ({
-            name: 'doggie'
-        })
     },
 }
 </script>

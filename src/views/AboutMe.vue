@@ -1,9 +1,9 @@
 <template>
-    <PageWrapper>
+    <PageWrapper title="My Skills">
         <div class="flex flex-col">
-            <div class="bg-main flex items-center justify-center">
+            <!-- <div class="bg-main flex items-center justify-center">
                 <h1 class="text-highlight">-My Skills-</h1>
-            </div>
+            </div> -->
             <div class="flex flex-wrap justify-center bg-main px-14 py-10 gap-y-5">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
                     :class="[`triangle transition-all text-white hover:scale-[1.1]`, index % 2 == 0 ? 'triangle-down' : 'triangle-up']"
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="w-full flex flex-col px-14 pt-10 gap-10">
+            <div class="w-full flex flex-col px-14 pt-10 gap-10 mb-10">
                 <h2 class="text-highlight bg-main px-10 text-center rounded-md">-Projects-</h2>
 
                 <div class="flex flex-wrap w-full justify-center gap-10">

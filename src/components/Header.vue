@@ -1,34 +1,35 @@
 <template>
-    <div role="navigation" :class="['', headerDark ? 'bg-main' : 'bg-sky-blue']">
-        <div @click="() => menuToggled = !menuToggled" :class="[
-            'menu-toggle',
-            headerDark ? 'menu-light' : 'menu-dark',
-            menuToggled ? 'menu-active' : 'menu-inactive',
+    <div class="flex flex-col">
+        <div role="navigation" :class="['', headerDark ? 'bg-main' : 'bg-sky-blue']">
+            <div @click="() => menuToggled = !menuToggled" :class="[
+                'menu-toggle',
+                headerDark ? 'menu-light' : 'menu-dark',
+                menuToggled ? 'menu-active' : 'menu-inactive',
+            ]">
+                <span></span>
+                <span></span>
+                <span></span>
+                <Transition name="menu-slide">
+                    <ul v-if="menuToggled" :class="['menu', headerDark ? 'bg-white text-main' : 'bg-main text-white']">
+                        <a href="/">
+                            <li>Home</li>
+                        </a>
+                        <a class="" href="/skills">
+                            <li>Skills - (New)</li>
+                        </a>
+                        <a class="cursor-no-drop opacity-50" href="#">
+                            <li>About - (Coming soon)</li>
+                        </a>
+                        <a class="cursor-no-drop opacity-50" href="#">
+                            <li>Contact - (Coming soon)</li>
+                        </a>
+                    </ul>
+                </Transition>
 
-        ]">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <Transition name="menu-slide">
-                <ul v-if="menuToggled" :class="['menu', headerDark ? 'bg-white text-main' : 'bg-main text-white']">
-                    <a href="/">
-                        <li>Home</li>
-                    </a>
-                    <a class="" href="/skills">
-                        <li>Skills - (New)</li>
-                    </a>
-                    <a class="cursor-no-drop opacity-50" href="#">
-                        <li>About - (Coming soon)</li>
-                    </a>
-
-                    <a class="cursor-no-drop opacity-50" href="#">
-                        <li>Contact - (Coming soon)</li>
-                    </a>
-
-                </ul>
-            </Transition>
+            </div>
+        </div>
+        <div v-if="title" class="bg-main flex items-center justify-center py-20">
+            <h1 class="text-highlight">-{{ title }}-</h1>
         </div>
     </div>
 </template>
@@ -43,7 +44,12 @@ export default {
         headerDark: {
             default: true,
             type: Boolean,
-        }
+        },
+        title: {
+            default: '',
+            type: String,
+        },
+
     },
     data() {
         return ({
@@ -56,7 +62,7 @@ export default {
   
 <style lang="scss" scoped>
 .menu-toggle {
-    @apply z-50 relative block top-14 left-14;
+    @apply z-50 block top-14 left-14 fixed;
 
     a {
         text-decoration: none;
