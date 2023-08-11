@@ -34,13 +34,11 @@
     </div>
 </template>
   
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from 'vue'
 
-export default {
-    name: 'App',
-    components: {
-    },
-    props: {
+defineProps(
+    {
         headerDark: {
             default: true,
             type: Boolean,
@@ -49,14 +47,10 @@ export default {
             default: '',
             type: String,
         },
+    },
+)
 
-    },
-    data() {
-        return ({
-            menuToggled: false
-        })
-    },
-}
+const menuToggled = ref(false)
 
 </script>
   

@@ -14,18 +14,14 @@
     </div>
 </template>
   
-<script lang="ts">
+<script setup lang="ts">
 import Header from '@/components/Header.vue'
 
-export default {
-    name: 'App',
-    components: {
-        Header
-    },
-    props: {
+defineProps(
+    {
         scroll: {
-            default: true,
-            type: Boolean
+            type: Boolean,
+            default: false
         },
         headerDark: {
             default: true,
@@ -36,9 +32,7 @@ export default {
             type: String,
         }
     },
-    data() {
-    },
-}
+)
 </script>
   
 <style lang="scss" scoped></style>
