@@ -13,27 +13,26 @@
         </div>
     </div>
 </template>
-  
+
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
 
 defineProps(
-    {
-        scroll: {
-            type: Boolean,
-            default: true
-        },
-        headerDark: {
-            default: true,
-            type: Boolean,
-        },
-        title: {
-            default: '',
-            type: String,
-        }
+  {
+    scroll: {
+      type: Boolean,
+      default: true
     },
+    headerDark: {
+      default: true,
+      type: Boolean
+    },
+    title: {
+      default: '',
+      type: String
+    }
+  }
 )
 </script>
-  
+
 <style lang="scss" scoped></style>
-  

@@ -6,30 +6,29 @@ import Generator from '@/views/Generator.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-    {
-        path: '/',
-        component: HomePage
-    },
-    {
-        path: '/skills',
-        component: AboutMe
-    },
-    {
-        path: '/contact-me',
-        component: ContactMe
-    },
-    {
-        path: '/hmm',
-        component: Generator
-    },
+  {
+    path: '/',
+    component: HomePage
+  },
+  {
+    path: '/skills',
+    component: AboutMe
+  },
+  {
+    path: '/contact-me',
+    component: ContactMe
+  },
+  {
+    path: '/hmm',
+    component: Generator
+  }
 ]
 
-
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes
 })
 
 export default (
-    router
+  router
 )

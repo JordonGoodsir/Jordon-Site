@@ -116,28 +116,28 @@
         </div>
     </div>
 </template>
-  
+
 <script lang="ts">
 
 export default {
-    name: 'App',
-    components: {
-    },
-    props: {
-        headerDark: {
-            default: true,
-            type: Boolean,
-        }
-    },
-    data() {
-        return ({
-            menuToggled: false
-        })
-    },
+  name: 'App',
+  components: {
+  },
+  props: {
+    headerDark: {
+      default: true,
+      type: Boolean
+    }
+  },
+  data () {
+    return ({
+      menuToggled: false
+    })
+  }
 }
 
 </script>
-  
+
 <style lang="scss" scoped>
 *,
 *::before,
@@ -778,4 +778,3 @@ body {
     }
 }
 </style>
-  

@@ -33,27 +33,27 @@
         </div>
     </div>
 </template>
-  
+
 <script setup lang="ts">
 import { ref } from 'vue'
 
 defineProps(
-    {
-        headerDark: {
-            default: true,
-            type: Boolean,
-        },
-        title: {
-            default: '',
-            type: String,
-        },
+  {
+    headerDark: {
+      default: true,
+      type: Boolean
     },
+    title: {
+      default: '',
+      type: String
+    }
+  }
 )
 
 const menuToggled = ref(false)
 
 </script>
-  
+
 <style lang="scss" scoped>
 .menu-toggle {
     @apply z-50 block top-14 left-14 fixed;
@@ -148,8 +148,6 @@ const menuToggled = ref(false)
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
-
-
 .menu-slide-enter-from,
 .menu-slide-leave-to {
     transform: translateX(-100%) !important
@@ -160,4 +158,3 @@ const menuToggled = ref(false)
     transform: translateX(0%)
 }
 </style>
-  

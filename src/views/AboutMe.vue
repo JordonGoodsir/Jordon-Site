@@ -90,159 +90,159 @@
         </div>
     </PageWrapper>
 </template>
-  
+
 <script setup lang="ts">
 
 import { reactive } from 'vue'
-import PageWrapper from "@/components/PageWrapper.vue"
+import PageWrapper from '@/components/PageWrapper.vue'
 
-const hoverProject = () => {
-    setTimeout(() => {
-        document.querySelector('.description-box')?.scrollIntoView({
-            behavior: 'smooth'
-        });
-    }, 300)
+const hoverProject = (): void => {
+  setTimeout(() => {
+    document.querySelector('.description-box')?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }, 300)
 }
 
-const getSvg = (name: string) => {
-    return require(`@/assets/language-logos/${name}.svg`)
+const getSvg = (name: string): string => {
+  return require(`@/assets/language-logos/${name}.svg`)
 }
 
-let triangleSkills = reactive([
-    {
-        icon: getSvg('express'),
-        color: 'black',
-        name: "Express",
-    },
-    {
-        icon: getSvg('ts'),
-        color: '#007ACB',
-        name: "TypeScript",
-    },
-    {
-        icon: getSvg('tailwind'),
-        color: '#06b6d4',
-        name: "Tailwindcss"
-    },
-    {
-        icon: getSvg('css'),
-        color: '#2096F3',
-        name: "CSS"
-    },
-    {
-        icon: getSvg('ruby'),
-        color: '#DC160A',
-        name: "Ruby"
-    },
-    {
-        icon: getSvg('docker'),
-        color: '#2396ED',
-        name: "Docker"
-    },
-    {
-        icon: getSvg('ionic'),
-        color: '#367BF8',
-        name: "Ionic"
-    },
-    {
-        icon: getSvg('vue'),
-        color: '#42B882',
-        name: "Vue"
-    },
-    {
-        icon: getSvg('react'),
-        color: '#61DAFB',
-        name: "React"
-    },
-    {
-        icon: getSvg('rust'),
-        color: '#7C552C',
-        name: "Rust"
-    },
-    {
-        icon: getSvg('nodeJS'),
-        color: '#7fc828',
-        name: "NodeJS"
-    },
-    {
-        icon: getSvg('js'),
-        color: '#F1DC4E',
-        name: "JavaScript"
-    },
-    {
-        icon: getSvg('html'),
-        color: '#FF5622',
-        name: "HTML"
-    },
-    {
-        icon: getSvg('postman'),
-        color: '#F66A33',
-        name: "Postman"
-    },
-    {
-        icon: getSvg('sass'),
-        color: '#C76395',
-        name: "SASS"
-    },
-    {
-        icon: getSvg('aws'),
-        color: '#FF9900',
-        name: "AWS"
-    },
-    {
-        icon: getSvg('mongoDB'),
-        color: '#00ED64',
-        name: "MongoDb"
-    },
+const triangleSkills = reactive([
+  {
+    icon: getSvg('express'),
+    color: 'black',
+    name: 'Express'
+  },
+  {
+    icon: getSvg('ts'),
+    color: '#007ACB',
+    name: 'TypeScript'
+  },
+  {
+    icon: getSvg('tailwind'),
+    color: '#06b6d4',
+    name: 'Tailwindcss'
+  },
+  {
+    icon: getSvg('css'),
+    color: '#2096F3',
+    name: 'CSS'
+  },
+  {
+    icon: getSvg('ruby'),
+    color: '#DC160A',
+    name: 'Ruby'
+  },
+  {
+    icon: getSvg('docker'),
+    color: '#2396ED',
+    name: 'Docker'
+  },
+  {
+    icon: getSvg('ionic'),
+    color: '#367BF8',
+    name: 'Ionic'
+  },
+  {
+    icon: getSvg('vue'),
+    color: '#42B882',
+    name: 'Vue'
+  },
+  {
+    icon: getSvg('react'),
+    color: '#61DAFB',
+    name: 'React'
+  },
+  {
+    icon: getSvg('rust'),
+    color: '#7C552C',
+    name: 'Rust'
+  },
+  {
+    icon: getSvg('nodeJS'),
+    color: '#7fc828',
+    name: 'NodeJS'
+  },
+  {
+    icon: getSvg('js'),
+    color: '#F1DC4E',
+    name: 'JavaScript'
+  },
+  {
+    icon: getSvg('html'),
+    color: '#FF5622',
+    name: 'HTML'
+  },
+  {
+    icon: getSvg('postman'),
+    color: '#F66A33',
+    name: 'Postman'
+  },
+  {
+    icon: getSvg('sass'),
+    color: '#C76395',
+    name: 'SASS'
+  },
+  {
+    icon: getSvg('aws'),
+    color: '#FF9900',
+    name: 'AWS'
+  },
+  {
+    icon: getSvg('mongoDB'),
+    color: '#00ED64',
+    name: 'MongoDb'
+  }
 ])
 
 const reversedSkills = triangleSkills.reverse()
 
-let projects = reactive({
-    normalProjects: [
-        {
-            img: () => require('@/assets/projects/connectFour.png'),
-            title: 'Connect Four',
-            gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
-            techStack: ['ruby'],
-            description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
-        },
-        {
-            img: () => require('@/assets/projects/legacySite.png'),
-            title: 'My First Portfolio site',
-            siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
-            gitHubLink: 'https://github.com/JordonGoodsir/my_site',
-            techStack: ['html', 'css', 'sass', 'js'],
-            description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations',
-        },
-    ],
-    challengeProjects: [
-        {
-            img: () => require('@/assets/projects/entertain.png'),
-            title: 'Quarentine Entertainment',
-            siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
-            gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
-            techStack: ['html', 'css', 'sass', 'js'],
-            description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
-        },
-        {
-            img: () => require('@/assets/projects/monsterMashUp.png'),
-            title: 'Monster Mash Up',
-            siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
-            gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
-            techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
-            description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
-        },
-    ]
+const projects = reactive({
+  normalProjects: [
+    {
+      img: () => require('@/assets/projects/connectFour.png'),
+      title: 'Connect Four',
+      gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
+      techStack: ['ruby'],
+      description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
+    },
+    {
+      img: () => require('@/assets/projects/legacySite.png'),
+      title: 'My First Portfolio site',
+      siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
+      gitHubLink: 'https://github.com/JordonGoodsir/my_site',
+      techStack: ['html', 'css', 'sass', 'js'],
+      description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations'
+    }
+  ],
+  challengeProjects: [
+    {
+      img: () => require('@/assets/projects/entertain.png'),
+      title: 'Quarentine Entertainment',
+      siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
+      gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
+      techStack: ['html', 'css', 'sass', 'js'],
+      description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
+    },
+    {
+      img: () => require('@/assets/projects/monsterMashUp.png'),
+      title: 'Monster Mash Up',
+      siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
+      gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
+      techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
+      description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
+    }
+  ]
 
 })
 
-const routeAway = (site: string) => {
-    window.open(site)
+const routeAway = (site: string): void => {
+  window.open(site)
 }
 
 </script>
-  
+
 <style lang="scss">
 .icon {
     width: 50px;
@@ -283,4 +283,3 @@ use {
 
 }
 </style>
-  

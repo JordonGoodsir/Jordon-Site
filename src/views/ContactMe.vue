@@ -9,12 +9,10 @@
         </div>
     </PageWrapper>
 </template>
-  
-<script setup lang="ts">
-import PageWrapper from "@/components/PageWrapper.vue"
 
+<script setup lang="ts">
+import PageWrapper from '@/components/PageWrapper.vue'
 
 </script>
-  
+
 <style lang="scss"></style>
-  
