@@ -21,7 +21,7 @@ defineProps(
     {
         scroll: {
             type: Boolean,
-            default: false
+            default: true
         },
         headerDark: {
             default: true,

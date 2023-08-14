@@ -13,7 +13,7 @@
                         <use :xlink:href="`${skill.icon()}#${skill.name}`" />
                     </svg> -->
 
-                        <img :src="skill.icon()" :class="['h-16 w-16', index % 2 == 0 ? 'mb-16' : 'mt-16']" />
+                        <img :src="skill.icon" :class="['h-16 w-16', index % 2 == 0 ? 'mb-16' : 'mt-16']" />
 
                     </div>
                 </div>
@@ -32,17 +32,23 @@
                         <div
                             class="z-20 flex links absolute gap-5 inset-0 h-[250px] w-[450px] hidden flex items-center justify-center">
                             <div @click="routeAway(project.gitHubLink)"
-                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
-                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/github.svg">
+                                class="rounded-full bg-white h-14 w-14 hover:bg-highlight flex items-center justify-center">
+                                <img class="h-10 w-10" src="@/assets/icons/github.svg">
                             </div>
                             <div v-if="project.siteLink" @click="routeAway(project.siteLink)"
-                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
-                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/live.svg">
+                                class="rounded-full bg-white h-14 w-14 hover:bg-highlight flex items-center justify-center">
+                                <img class="h-10 w-10" src="@/assets/icons/live.svg">
                             </div>
                         </div>
                         <div class="bg-main text-white description-box h-0 p-0 w-[450px] overflow-hidden">
                             <h3 class="mb-2 text-lg">{{ project.title }}</h3>
-                            <p>{{ project.description }}</p>
+                            <p class="mb-3">{{ project.description }}</p>
+
+                            <h3 class="mb-2 text-lg">Tech Stack</h3>
+                            <div class="flex gap-2">
+                                <img v-for="(tech, index) in project.techStack" :key="index" :src="getSvg(tech)"
+                                    class="h-8 w-8">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -60,17 +66,23 @@
                         <div
                             class="z-20 flex links absolute gap-5 inset-0 h-[250px] w-[450px] hidden flex items-center justify-center">
                             <div @click="routeAway(project.gitHubLink)"
-                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
-                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/github.svg">
+                                class="rounded-full bg-white hover:bg-highlight h-14 w-14 flex items-center justify-center">
+                                <img class="h-10 w-10" src="@/assets/icons/github.svg">
                             </div>
                             <div v-if="project.siteLink" @click="routeAway(project.siteLink)"
-                                class="rounded-full bg-white h-14 w-14 flex items-center justify-center">
-                                <img class="h-10 w-10 hover:opacity-60" src="@/assets/icons/live.svg">
+                                class="rounded-full bg-white hover:bg-highlight h-14 w-14 flex items-center justify-center">
+                                <img class="h-10 w-10" src="@/assets/icons/live.svg">
                             </div>
                         </div>
                         <div class="bg-main text-white description-box h-0 p-0 w-[450px] overflow-hidden">
                             <h3 class="mb-2 text-lg">{{ project.title }}</h3>
-                            <p>{{ project.description }}</p>
+                            <p class="mb-3">{{ project.description }}</p>
+
+                            <h3 class="mb-2 text-lg">Tech Stack</h3>
+                            <div class="flex gap-2">
+                                <img v-for="(tech, index) in project.techStack" :key="index" :src="getSvg(tech)"
+                                    class="h-8 w-8">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,79 +104,93 @@ const hoverProject = () => {
     }, 300)
 }
 
+const getSvg = (name: string) => {
+    return require(`@/assets/language-logos/${name}.svg`)
+}
+
 let triangleSkills = reactive([
     {
-        icon: () => require('@/assets/language-logos/ts.svg'),
-        color: '#007ACB',
-        name: "TypeScript"
+        icon: getSvg('express'),
+        color: 'black',
+        name: "Express",
     },
     {
-        icon: () => require('@/assets/language-logos/tailwind.svg'),
+        icon: getSvg('ts'),
+        color: '#007ACB',
+        name: "TypeScript",
+    },
+    {
+        icon: getSvg('tailwind'),
         color: '#06b6d4',
         name: "Tailwindcss"
     },
     {
-        icon: () => require('@/assets/language-logos/css.svg'),
+        icon: getSvg('css'),
         color: '#2096F3',
         name: "CSS"
     },
     {
-        icon: () => require('@/assets/language-logos/docker.svg'),
+        icon: getSvg('ruby'),
+        color: '#DC160A',
+        name: "Ruby"
+    },
+    {
+        icon: getSvg('docker'),
         color: '#2396ED',
         name: "Docker"
     },
     {
-        icon: () => require('@/assets/language-logos/ionic.svg'),
+        icon: getSvg('ionic'),
         color: '#367BF8',
         name: "Ionic"
     },
     {
-        icon: () => require('@/assets/language-logos/vue.svg'),
+        icon: getSvg('vue'),
         color: '#42B882',
         name: "Vue"
     },
     {
-        icon: () => require('@/assets/language-logos/react.svg'),
+        icon: getSvg('react'),
         color: '#61DAFB',
         name: "React"
     },
     {
-        icon: () => require('@/assets/language-logos/rust.svg'),
+        icon: getSvg('rust'),
         color: '#7C552C',
         name: "Rust"
     },
     {
-        icon: () => require('@/assets/language-logos/nodeJS.svg'),
+        icon: getSvg('nodeJS'),
         color: '#7fc828',
         name: "NodeJS"
     },
     {
-        icon: () => require('@/assets/language-logos/js.svg'),
+        icon: getSvg('js'),
         color: '#F1DC4E',
         name: "JavaScript"
     },
     {
-        icon: () => require('@/assets/language-logos/html.svg'),
+        icon: getSvg('html'),
         color: '#FF5622',
         name: "HTML"
     },
     {
-        icon: () => require('@/assets/language-logos/postman.svg'),
+        icon: getSvg('postman'),
         color: '#F66A33',
         name: "Postman"
     },
     {
-        icon: () => require('@/assets/language-logos/sass.svg'),
+        icon: getSvg('sass'),
         color: '#C76395',
         name: "SASS"
     },
     {
-        icon: () => require('@/assets/language-logos/aws.svg'),
+        icon: getSvg('aws'),
         color: '#FF9900',
         name: "AWS"
     },
     {
-        icon: () => require('@/assets/language-logos/mongoDB.svg'),
+        icon: getSvg('mongoDB'),
         color: '#00ED64',
         name: "MongoDb"
     },
@@ -178,6 +204,7 @@ let projects = reactive({
             img: () => require('@/assets/projects/connectFour.png'),
             title: 'Connect Four',
             gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
+            techStack: ['ruby'],
             description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
         },
         {
@@ -185,6 +212,7 @@ let projects = reactive({
             title: 'My First Portfolio site',
             siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
             gitHubLink: 'https://github.com/JordonGoodsir/my_site',
+            techStack: ['html', 'css', 'sass', 'js'],
             description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations',
         },
     ],
@@ -194,6 +222,7 @@ let projects = reactive({
             title: 'Quarentine Entertainment',
             siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
             gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
+            techStack: ['html', 'css', 'sass', 'js'],
             description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
         },
         {
@@ -201,6 +230,7 @@ let projects = reactive({
             title: 'Monster Mash Up',
             siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
             gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
+            techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
             description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
         },
     ]
