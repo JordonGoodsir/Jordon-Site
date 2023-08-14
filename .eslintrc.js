@@ -11,8 +11,6 @@ module.exports = {
         {
             "env": {
                 "node": true,
-                "vue/setup-compiler-macros": true,
-                "vue/multi-word-component-names": "off",
             },
             "files": [
                 ".eslintrc.{js,cjs}"
@@ -30,5 +28,7 @@ module.exports = {
         "vue"
     ],
     "rules": {
+        "vue/setup-compiler-macros": true,
+        "vue/multi-word-component-names": "off",
     }
 }
