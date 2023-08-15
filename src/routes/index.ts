@@ -1,6 +1,7 @@
 import HomePage from '@/views/HomePage.vue'
-import AboutMe from '@/views/AboutMe.vue'
+import Skills from '@/views/Skills.vue'
 import ContactMe from '@/views/ContactMe.vue'
+import CarrerAndExperience from '@/views/CarrerAndExperience.vue'
 
 import Generator from '@/views/Generator.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -12,7 +13,11 @@ const routes = [
   },
   {
     path: '/skills',
-    component: AboutMe
+    component: Skills
+  },
+  {
+    path: '/carrer-and-expeirence',
+    component: CarrerAndExperience
   },
   {
     path: '/contact-me',

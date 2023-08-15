@@ -18,6 +18,9 @@
                             <li>Skills - (New)</li>
                         </a>
                         <a class="cursor-no-drop opacity-50" href="#">
+                            <li>Carrer and Experience - (Coming soon)</li>
+                        </a>
+                        <a class="cursor-no-drop opacity-50" href="#">
                             <li>About - (Coming soon)</li>
                         </a>
                         <a class="cursor-no-drop opacity-50" href="#">
