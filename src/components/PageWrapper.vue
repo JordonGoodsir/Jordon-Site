@@ -1,6 +1,6 @@
 <template>
     <div :class="[
-        'flex flex-col h-screen w-screen',
+        'flex flex-col min-h-screen min-w-screen h-screen w-screen',
         scroll ? 'overflow-scroll' : 'overflow-hidden'
     ]">
         <div :class="[

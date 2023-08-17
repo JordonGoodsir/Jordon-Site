@@ -16,7 +16,7 @@ const routes = [
     component: Skills
   },
   {
-    path: '/carrer-and-expeirence',
+    path: '/path',
     component: CarrerAndExperience
   },
   {
