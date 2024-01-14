@@ -11,20 +11,8 @@
                 <span></span>
                 <Transition name="menu-slide">
                     <ul v-if="menuToggled" :class="['menu', headerDark ? 'bg-white text-main' : 'bg-main text-white']">
-                        <a href="/">
-                            <li>Home</li>
-                        </a>
-                        <a class="" href="/skills">
-                            <li>Skills - (New)</li>
-                        </a>
-                        <a class="cursor-no-drop opacity-50" href="#">
-                            <li>Carrer and Experience - (Coming soon)</li>
-                        </a>
-                        <a class="cursor-no-drop opacity-50" href="#">
-                            <li>About - (Coming soon)</li>
-                        </a>
-                        <a class="cursor-no-drop opacity-50" href="#">
-                            <li>Contact - (Coming soon)</li>
+                        <a :href="menuItem.path" v-for="menuItem in menuItems" :key="menuItem.name" :class="menuItem.path === '#' ? 'cursor-no-drop opacity-50' : 'cursor-pointer'">
+                            <li>{{ menuItem.name }}</li>
                         </a>
                     </ul>
                 </Transition>
@@ -54,6 +42,26 @@ defineProps(
 )
 
 const menuToggled = ref(false)
+
+const menuItems = [{
+  name: 'Home',
+  path: '/'
+},
+{
+  name: 'Skills',
+  path: '/skills'
+}, {
+  name: 'Carrer and experience',
+  path: '#'
+}, {
+  name: 'About',
+  path: '#'
+}, {
+  name: 'Contact',
+  path: '#'
+}
+
+]
 
 </script>
 
@@ -138,7 +146,7 @@ const menuToggled = ref(false)
 }
 
 .menu {
-    @apply fixed list-none antialiased pl-14 pr-24 left-0 top-0 bottom-0 pt-[125px];
+    @apply fixed list-none antialiased px-14 left-0 top-0 bottom-0 pt-[125px];
 
     li {
         padding: 10px 0;
