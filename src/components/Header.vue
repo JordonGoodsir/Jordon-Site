@@ -49,7 +49,7 @@ const menuItems = [{
 },
 {
   name: 'Skills',
-  path: '/skills'
+  path: '#'
 }, {
   name: 'Carrer and experience',
   path: '#'

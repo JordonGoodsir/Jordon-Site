@@ -1,7 +1,7 @@
 <template>
   <PageWrapper
     :scroll="false"
-    :header-dark="!generatorData.powerGenerated"
+    :has-padding="false"
   >
     <div
       :class="[`flex transition flex justify-center items-center h-full w-full`, generatorData.powerGenerated ? 'bg-sky-blue' : 'bg-main']"
