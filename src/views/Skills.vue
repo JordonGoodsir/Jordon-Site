@@ -1,17 +1,11 @@
 <template>
-    <PageWrapper title="My Skills">
+    <PageWrapper>
         <div class="flex flex-col">
-            <!-- <div class="bg-main flex items-center justify-center">
-                <h1 class="text-highlight">-My Skills-</h1>
-            </div> -->
             <div class="flex flex-wrap justify-center bg-main px-14 py-10 gap-y-5">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
                     :class="[`triangle transition-all text-white hover:scale-[1.1]`, index % 2 == 0 ? 'triangle-down' : 'triangle-up']"
                     :style="{ background: skill.color }">
                     <div class="flex flex-col items-center">
-                        <!-- <svg class="icon">
-                        <use :xlink:href="`${skill.icon()}#${skill.name}`" />
-                    </svg> -->
 
                         <img :src="skill.icon" :class="['h-16 w-16', index % 2 == 0 ? 'mb-16' : 'mt-16']" />
 
