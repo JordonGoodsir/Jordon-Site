@@ -1,6 +1,7 @@
 <template>
     <PageWrapper>
       <!-- Page being re designed in figma -->
+      <!-- more design progression -->
         <div class="flex flex-col">
             <div class="flex flex-wrap justify-center bg-main px-14 py-10 gap-y-5">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
