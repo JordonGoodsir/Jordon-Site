@@ -1,13 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 
 h1 {
     font-size: 6em;
-    font-family: "oswald", sans-serif;
+    // font-family: "oswald", sans-serif;
 }
 
 h2 {
     font-size: 3.5em;
-    font-family: "oswald", sans-serif;
+    // font-family: "oswald", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small,
+strong {
+    font-family: "inter";
 }

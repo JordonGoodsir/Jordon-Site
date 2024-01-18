@@ -2,20 +2,26 @@
     <PageWrapper>
       <!-- Page being re designed in figma -->
       <!-- more design progression -->
-        <div class="flex flex-col">
-            <div class="flex flex-wrap justify-center bg-main px-14 py-10 gap-y-5">
+        <div class="flex flex-col w-full items-center">
+
+          <div class="flex items-center justify-between bg-[#F0F9F] h-[300px] w-full border-b-2 border-black">
+            <img src="@/assets/header-images/left-header-img.png"/>
+            <h1 class="text-4xl tracking-[8px] mb-10">Skills and Projects</h1>
+            <img src="@/assets/header-images/right-header-img.png"/>
+          </div>
+          <div class="w-[1127px] overflow-scroll -mt-[80px]">
+            <div class="flex overflow-scoll gap-5 w-full">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
-                    :class="[`triangle transition-all text-white hover:scale-[1.1]`, index % 2 == 0 ? 'triangle-down' : 'triangle-up']"
+                class="h-[250px] min-w-[150px] w-[150px] gap-5 rounded-md items-center justify-center flex"
                     :style="{ background: skill.color }">
                     <div class="flex flex-col items-center">
-
-                        <img :src="skill.icon" :class="['h-16 w-16', index % 2 == 0 ? 'mb-16' : 'mt-16']" />
-
+                        <img :src="skill.icon" :class="['h-16 w-16 select-none']" />
                     </div>
                 </div>
             </div>
+          </div>
 
-            <div class="w-full flex flex-col px-14 pt-10 gap-10 mb-10">
+            <!-- <div class="w-full flex flex-col px-14 pt-10 gap-10 mb-10">
                 <h2 class="text-highlight bg-main px-10 text-center rounded-md">-Projects-</h2>
 
                 <div class="flex flex-wrap w-full justify-center gap-10">
@@ -82,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </PageWrapper>
 </template>
@@ -92,13 +98,13 @@
 import { reactive } from 'vue'
 import PageWrapper from '@/components/PageWrapper.vue'
 
-const hoverProject = (): void => {
-  setTimeout(() => {
-    document.querySelector('.description-box')?.scrollIntoView({
-      behavior: 'smooth'
-    })
-  }, 300)
-}
+// const hoverProject = (): void => {
+//   setTimeout(() => {
+//     document.querySelector('.description-box')?.scrollIntoView({
+//       behavior: 'smooth'
+//     })
+//   }, 300)
+// }
 
 const getSvg = (name: string): string => {
   return require(`@/assets/language-logos/${name}.svg`)
@@ -194,48 +200,48 @@ const triangleSkills = reactive([
 
 const reversedSkills = triangleSkills.reverse()
 
-const projects = reactive({
-  normalProjects: [
-    {
-      img: () => require('@/assets/projects/connectFour.png'),
-      title: 'Connect Four',
-      gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
-      techStack: ['ruby'],
-      description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
-    },
-    {
-      img: () => require('@/assets/projects/legacySite.png'),
-      title: 'My First Portfolio site',
-      siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
-      gitHubLink: 'https://github.com/JordonGoodsir/my_site',
-      techStack: ['html', 'css', 'sass', 'js'],
-      description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations'
-    }
-  ],
-  challengeProjects: [
-    {
-      img: () => require('@/assets/projects/entertain.png'),
-      title: 'Quarentine Entertainment',
-      siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
-      gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
-      techStack: ['html', 'css', 'sass', 'js'],
-      description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
-    },
-    {
-      img: () => require('@/assets/projects/monsterMashUp.png'),
-      title: 'Monster Mash Up',
-      siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
-      gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
-      techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
-      description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
-    }
-  ]
+// const projects = reactive({
+//   normalProjects: [
+//     {
+//       img: () => require('@/assets/projects/connectFour.png'),
+//       title: 'Connect Four',
+//       gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
+//       techStack: ['ruby'],
+//       description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
+//     },
+//     {
+//       img: () => require('@/assets/projects/legacySite.png'),
+//       title: 'My First Portfolio site',
+//       siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
+//       gitHubLink: 'https://github.com/JordonGoodsir/my_site',
+//       techStack: ['html', 'css', 'sass', 'js'],
+//       description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations'
+//     }
+//   ],
+//   challengeProjects: [
+//     {
+//       img: () => require('@/assets/projects/entertain.png'),
+//       title: 'Quarentine Entertainment',
+//       siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
+//       gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
+//       techStack: ['html', 'css', 'sass', 'js'],
+//       description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
+//     },
+//     {
+//       img: () => require('@/assets/projects/monsterMashUp.png'),
+//       title: 'Monster Mash Up',
+//       siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
+//       gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
+//       techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
+//       description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
+//     }
+//   ]
 
-})
+// })
 
-const routeAway = (site: string): void => {
-  window.open(site)
-}
+// const routeAway = (site: string): void => {
+//   window.open(site)
+// }
 
 </script>
 
