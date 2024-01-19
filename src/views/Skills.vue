@@ -9,7 +9,7 @@
             <h1 class="text-4xl tracking-[8px] mb-10">Skills and Projects</h1>
             <img src="@/assets/header-images/right-header-img.png"/>
           </div>
-          <div class="w-[1127px] overflow-scroll -mt-[80px]">
+          <div class="w-[1127px] overflow-scroll -mt-[80px] mb-20">
             <div class="flex overflow-scoll gap-5 w-full">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
                 class="h-[250px] min-w-[150px] w-[150px] gap-5 rounded-md items-center justify-center flex"
@@ -18,6 +18,23 @@
                         <img :src="skill.icon" :class="['h-16 w-16 select-none']" />
                     </div>
                 </div>
+            </div>
+          </div>
+
+          <div class="flex w-[1127px] flex-col items-center justify-center mb-20">
+            <div class="flex w-full gap-32 items-center">
+              <div class="flex items-center">
+                <div class="h-[450px] w-[380px] bg-gray-500"/>
+                <div class="h-[300px] w-[300px] bg-red-500 -ml-[150px]"/>
+              </div>
+
+              <div class="flex flex-col">
+                <h3>ello</h3>
+              <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat sed nunc quis molestie. Maecenas cursus dui elit, ut commodo libero feugiat vel. Etiam mollis leo vel velit finibus porta. Suspendisse placerat nisi a libero commodo cursus. Proin sit amet mollis eros. Nunc lacinia magna ac ante accumsan consectetur. Cras mattis accumsan risus, et posuere nisi porttitor eget.</p>
+
+              </div>
+
             </div>
           </div>
 
