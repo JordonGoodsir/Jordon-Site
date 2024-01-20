@@ -1,7 +1,7 @@
 <template>
     <PageWrapper>
       <!-- Page being re designed in figma -->
-      <!-- more design progression -->
+      <!-- more design progression + 2 -->
         <div class="flex flex-col w-full items-center">
 
           <div class="flex items-center justify-between bg-[#F0F9F] h-[300px] w-full border-b-2 border-black">
