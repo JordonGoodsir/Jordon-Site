@@ -9,34 +9,37 @@
             <h1 class="text-4xl tracking-[8px] mb-10">Skills and Projects</h1>
             <img src="@/assets/header-images/right-header-img.png"/>
           </div>
-          <div class="w-[1127px] overflow-scroll -mt-[80px] mb-20">
+          <div class="w-[1127px]">
+          <div class=" overflow-scroll -mt-[80px] mb-20">
             <div class="flex overflow-scoll gap-5 w-full">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
                 class="h-[250px] min-w-[150px] w-[150px] gap-5 rounded-md items-center justify-center flex"
                     :style="{ background: skill.color }">
                     <div class="flex flex-col items-center">
-                        <img :src="skill.icon" :class="['h-16 w-16 select-none']" />
+                        <img :src="skill.icon" :class="['h-10 w-10 select-none']" />
                     </div>
                 </div>
             </div>
           </div>
 
-          <div class="flex w-[1127px] flex-col items-center justify-center mb-20">
-            <div class="flex w-full gap-32 items-center">
-              <div class="flex items-center">
-                <div class="h-[450px] w-[380px] bg-gray-500"/>
-                <div class="h-[300px] w-[300px] bg-red-500 -ml-[150px]"/>
-              </div>
+          <div class="relative mb-20 w-fit">
+            <h3>Projects</h3>
+            <div class="h-px w-3/4 -right-1/4 absolute bottom-0 bg-black"/>
+          </div>
+          <div class="flex flex-col items-center justify-center mb-20 gap-20">
+            <div class="flex w-full gap-20 items-center" v-for="project in projects"
+                        :key="project.img()">
+                <img  :src="project.img()" class="h-[250px] w-[500px] bg-gray-500 object-fill"/>
 
               <div class="flex flex-col">
-                <h3>ello</h3>
+                <h3>{{ project.title}}</h3>
               <br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat sed nunc quis molestie. Maecenas cursus dui elit, ut commodo libero feugiat vel. Etiam mollis leo vel velit finibus porta. Suspendisse placerat nisi a libero commodo cursus. Proin sit amet mollis eros. Nunc lacinia magna ac ante accumsan consectetur. Cras mattis accumsan risus, et posuere nisi porttitor eget.</p>
-
+                <p class="w-[34rem]">{{ project.description }}</p>
               </div>
 
             </div>
           </div>
+        </div>
 
             <!-- <div class="w-full flex flex-col px-14 pt-10 gap-10 mb-10">
                 <h2 class="text-highlight bg-main px-10 text-center rounded-md">-Projects-</h2>
@@ -114,14 +117,6 @@
 
 import { reactive } from 'vue'
 import PageWrapper from '@/components/PageWrapper.vue'
-
-// const hoverProject = (): void => {
-//   setTimeout(() => {
-//     document.querySelector('.description-box')?.scrollIntoView({
-//       behavior: 'smooth'
-//     })
-//   }, 300)
-// }
 
 const getSvg = (name: string): string => {
   return require(`@/assets/language-logos/${name}.svg`)
@@ -217,44 +212,40 @@ const triangleSkills = reactive([
 
 const reversedSkills = triangleSkills.reverse()
 
-// const projects = reactive({
-//   normalProjects: [
-//     {
-//       img: () => require('@/assets/projects/connectFour.png'),
-//       title: 'Connect Four',
-//       gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
-//       techStack: ['ruby'],
-//       description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
-//     },
-//     {
-//       img: () => require('@/assets/projects/legacySite.png'),
-//       title: 'My First Portfolio site',
-//       siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
-//       gitHubLink: 'https://github.com/JordonGoodsir/my_site',
-//       techStack: ['html', 'css', 'sass', 'js'],
-//       description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations'
-//     }
-//   ],
-//   challengeProjects: [
-//     {
-//       img: () => require('@/assets/projects/entertain.png'),
-//       title: 'Quarentine Entertainment',
-//       siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
-//       gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
-//       techStack: ['html', 'css', 'sass', 'js'],
-//       description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
-//     },
-//     {
-//       img: () => require('@/assets/projects/monsterMashUp.png'),
-//       title: 'Monster Mash Up',
-//       siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
-//       gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
-//       techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
-//       description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
-//     }
-//   ]
-
-// })
+const projects = reactive([
+  {
+    img: () => require('@/assets/projects/connectFour.png'),
+    title: 'Connect Four',
+    gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
+    techStack: ['ruby'],
+    description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
+  },
+  {
+    img: () => require('@/assets/projects/legacySite.png'),
+    title: 'My First Portfolio site',
+    siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
+    gitHubLink: 'https://github.com/JordonGoodsir/my_site',
+    techStack: ['html', 'css', 'sass', 'js'],
+    description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations'
+  },
+  {
+    img: () => require('@/assets/projects/entertain.png'),
+    title: 'Quarentine Entertainment',
+    siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
+    gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
+    techStack: ['html', 'css', 'sass', 'js'],
+    description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
+  },
+  {
+    img: () => require('@/assets/projects/monsterMashUp.png'),
+    title: 'Monster Mash Up',
+    siteLink: 'https://monster-mash-05c26b5af67b.herokuapp.com/',
+    gitHubLink: 'https://github.com/JordonGoodsir/monsterMash',
+    techStack: ['html', 'css', 'sass', 'js', 'mongoDB', 'express'],
+    description: 'A 2 person, 2 day project for CoderAcademy. A site to make your very own Frankenstein\'s monster and take them on a journey'
+  }
+]
+)
 
 // const routeAway = (site: string): void => {
 //   window.open(site)
