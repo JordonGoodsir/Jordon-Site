@@ -1,7 +1,7 @@
 <template>
     <div :class="[
         'flex flex-col min-h-screen min-w-screen w-screen',
-        scroll ? ' min-h-screen overflow-auto' : 'h-screen overflow-hidden',
+        scroll ? ' min-h-screen overflow-y-auto' : 'h-screen overflow-hidden',
         {'p-5' : hasPadding}
     ]">
             <slot />

@@ -5,12 +5,12 @@
         <div class="flex flex-col w-full items-center">
 
           <div class="flex items-center justify-between bg-[#F0F9F] h-[300px] w-full border-b-2 border-black">
-            <img src="@/assets/header-images/left-header-img.png"/>
+            <img src="@/assets/header-images/left-header-img.png" class="z-10"/>
             <h1 class="text-4xl tracking-[8px] mb-10">Skills and Projects</h1>
-            <img src="@/assets/header-images/right-header-img.png"/>
+            <img src="@/assets/header-images/right-header-img.png" class="z-10"/>
           </div>
-          <div class="w-[1127px]">
-          <div class=" overflow-scroll -mt-[80px] mb-20">
+          <div class="max-w-[1127px]">
+          <div class="overflow-scroll -mt-[80px] mb-10">
             <div class="flex overflow-scoll gap-5 w-full">
                 <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
                 class="h-[250px] min-w-[150px] w-[150px] gap-5 rounded-md items-center justify-center flex"
@@ -22,21 +22,25 @@
             </div>
           </div>
 
-          <div class="relative mb-20 w-fit">
-            <h3>Projects</h3>
-            <div class="h-px w-3/4 -right-1/4 absolute bottom-0 bg-black"/>
+          <div class="relative mb-10 w-fit">
+            <h3 class="text-3xl">Projects</h3>
+            <div class="h-px w-3/4 -right-1/4 absolute bottom-[-5px] bg-black"/>
           </div>
-          <div class="flex flex-col items-center justify-center mb-20 gap-20">
+          <div class="flex flex-col items-center justify-center mb-20 gap-10">
             <div class="flex w-full gap-20 items-center" v-for="project in projects"
                         :key="project.img()">
                 <img  :src="project.img()" class="h-[250px] w-[500px] bg-gray-500 object-fill"/>
 
               <div class="flex flex-col">
-                <h3>{{ project.title}}</h3>
+                <h3 class="text-2xl">{{ project.title}}</h3>
               <br>
                 <p class="w-[34rem]">{{ project.description }}</p>
+                <div class="flex justify-end w-full">
+                <div class="border border-2 border-black w-fit items-center justify-center flex p-2">
+                  <i class="uil uil-comments"/>hello
+                </div>
               </div>
-
+              </div>
             </div>
           </div>
         </div>
@@ -218,7 +222,7 @@ const projects = reactive([
     title: 'Connect Four',
     gitHubLink: 'https://github.com/JordonGoodsir/Connect-Four-Terminal-app',
     techStack: ['ruby'],
-    description: 'My first project ever programing. Inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
+    description: 'My first project ever programing project, accidently picking the most difficult idea of the cohort. This being inspired by my days at univerity, playing connect 4 with a random person next to me trying to survive a mandatory 3 hour lecture.'
   },
   {
     img: () => require('@/assets/projects/legacySite.png'),
@@ -226,7 +230,7 @@ const projects = reactive([
     siteLink: 'https://jordongoodsir.netlify.app/portfolio.html',
     gitHubLink: 'https://github.com/JordonGoodsir/my_site',
     techStack: ['html', 'css', 'sass', 'js'],
-    description: 'My first portfolio site, a month into leaning to code. I learned a great many things in making this, hover the standouts were css transitions and animations'
+    description: 'My first portfolio site, a month into leaning to program. I learned a great many things in making this, hover the standouts were css transitions, animations and the wonder of flexbox and grid.'
   },
   {
     img: () => require('@/assets/projects/entertain.png'),
@@ -234,7 +238,7 @@ const projects = reactive([
     siteLink: 'https://quarantine-entertainment.netlify.app/index.html',
     gitHubLink: 'https://github.com/JordonGoodsir/Hackathon',
     techStack: ['html', 'css', 'sass', 'js'],
-    description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem.'
+    description: 'A 2 person, 2 day project for CoderAcademy. A site made in the height of covid to ease the lockdown bordem. This concept gave us a great amount of freedom in what we made, making varous random activities. did you beat the box game? or generate enough power to fuel the menu screen?'
   },
   {
     img: () => require('@/assets/projects/monsterMashUp.png'),
