@@ -30,3 +30,9 @@ declare module '@vue/runtime-core' {
 }
 
 app.mount('#app')
+
+// commented out in package json
+
+    // "parserOptions": {
+    //   "parser": "@typescript-eslint/parser"
+    // },

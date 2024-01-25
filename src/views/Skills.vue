@@ -1,51 +1,55 @@
 <template>
-    <PageWrapper>
-      <!-- Page being re designed in figma -->
-      <!-- more design progression + 2 -->
-        <div class="flex flex-col w-full items-center">
+  <PageWrapper>
+    <!-- Page being re designed in figma -->
+    <!-- more design progression + 2 -->
+    <div class="flex flex-col w-full items-center">
 
-          <div class="flex items-center justify-between bg-[#F0F9F] h-[300px] w-full border-b-2 border-black">
-            <img src="@/assets/header-images/left-header-img.png" class="z-10"/>
-            <h1 class="text-4xl tracking-[8px] mb-10">Skills and Projects</h1>
-            <img src="@/assets/header-images/right-header-img.png" class="z-10"/>
-          </div>
-          <div class="max-w-[1127px]">
-          <div class="overflow-scroll -mt-[80px] mb-10">
-            <div class="flex overflow-scoll gap-5 w-full">
-                <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
-                class="h-[250px] min-w-[150px] w-[150px] gap-5 rounded-md items-center justify-center flex"
-                    :style="{ background: skill.color }">
-                    <div class="flex flex-col items-center">
-                        <img :src="skill.icon" :class="['h-10 w-10 select-none']" />
-                    </div>
-                </div>
-            </div>
-          </div>
-
-          <div class="relative mb-10 w-fit">
-            <h3 class="text-3xl">Projects</h3>
-            <div class="h-px w-3/4 -right-1/4 absolute bottom-[-5px] bg-black"/>
-          </div>
-          <div class="flex flex-col items-center justify-center mb-20 gap-10">
-            <div class="flex w-full gap-20 items-center" v-for="project in projects"
-                        :key="project.img()">
-                <img  :src="project.img()" class="h-[250px] w-[500px] bg-gray-500 object-fill"/>
-
-              <div class="flex flex-col">
-                <h3 class="text-2xl">{{ project.title}}</h3>
-              <br>
-                <p class="w-[34rem]">{{ project.description }}</p>
-                <div class="flex justify-end w-full">
-                <div class="border border-2 border-black w-fit items-center justify-center flex p-2">
-                  <i class="uil uil-comments"/>hello
-                </div>
-              </div>
+      <div class="flex items-center justify-between bg-[#F0F9F] h-[300px] w-full border-b-2 border-black">
+        <img src="@/assets/header-images/left-header-img.png" class="z-10" />
+        <h1 class="text-4xl tracking-[8px] mb-10">Skills and Projects</h1>
+        <img src="@/assets/header-images/right-header-img.png" class="z-10" />
+      </div>
+      <div class="max-w-[1127px]">
+        <div class="overflow-scroll -mt-[80px] mb-10">
+          <div class="flex overflow-scoll gap-5 w-full">
+            <div v-for="(skill, index) in reversedSkills" :key="index" v-tooltip="skill.name"
+              class="h-[250px] min-w-[150px] w-[150px] gap-5 rounded-md items-center justify-center flex"
+              :style="{ background: skill.color }">
+              <div class="flex flex-col items-center">
+                <img :src="skill.icon" :class="['h-10 w-10 select-none']" />
               </div>
             </div>
           </div>
         </div>
 
-            <!-- <div class="w-full flex flex-col px-14 pt-10 gap-10 mb-10">
+        <div class="relative mb-10 w-fit">
+          <h3 class="text-3xl">Projects</h3>
+          <div class="h-px w-3/4 -right-1/4 absolute bottom-[-5px] bg-black" />
+        </div>
+        <div class="flex flex-col items-center justify-center mb-20 gap-10">
+          <div class="flex w-full gap-20 items-center" v-for="project in projects" :key="project.img()">
+            <img :src="project.img()" class="h-[250px] w-[500px] bg-gray-500 object-fill" />
+
+            <div class="flex flex-col">
+              <h3 class="text-2xl">{{ project.title }}</h3>
+              <br>
+              <p class="w-[34rem]">{{ project.description }}</p>
+              <div class="flex justify-end w-full gap-5">
+                <div class="border border-2 border-black w-fit items-center justify-center flex p-2"
+                  v-if="project?.siteLink">
+                  <i class="uil uil-window text-3xl" />
+                </div>
+                <div class="border border-2 border-black w-fit items-center justify-center flex p-2"
+                  v-if="project?.gitHubLink">
+                  <i class="uil uil-github" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="w-full flex flex-col px-14 pt-10 gap-10 mb-10">
                 <h2 class="text-highlight bg-main px-10 text-center rounded-md">-Projects-</h2>
 
                 <div class="flex flex-wrap w-full justify-center gap-10">
@@ -113,8 +117,8 @@
                     </div>
                 </div>
             </div> -->
-        </div>
-    </PageWrapper>
+    </div>
+  </PageWrapper>
 </template>
 
 <script setup lang="ts">
@@ -259,41 +263,41 @@ const projects = reactive([
 
 <style lang="scss">
 .icon {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 use {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .triangle {
-    @apply h-52 w-52 flex items-center justify-center -mx-10;
+  @apply h-52 w-52 flex items-center justify-center -mx-10;
 }
 
 .triangle-down {
-    clip-path: polygon(1% 2%, 98% 2%, 49% 99%);
+  clip-path: polygon(1% 2%, 98% 2%, 49% 99%);
 }
 
 .triangle-up {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
 .description-box {
-    @apply transition-all duration-300 ease-in-out scroll-smooth;
+  @apply transition-all duration-300 ease-in-out scroll-smooth;
 }
 
 .project:hover .description-box {
-    @apply h-auto p-10;
+  @apply h-auto p-10;
 }
 
 .links {
-    @apply transition-all duration-300 ease-in-out;
+  @apply transition-all duration-300 ease-in-out;
 }
 
 .project:hover .links {
-    @apply flex;
+  @apply flex;
 
 }
 </style>
