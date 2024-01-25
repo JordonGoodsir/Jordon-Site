@@ -34,14 +34,14 @@
               <h3 class="text-2xl">{{ project.title }}</h3>
               <br>
               <p class="w-[34rem]">{{ project.description }}</p>
-              <div class="flex justify-end w-full gap-5">
-                <div class="border border-2 border-black w-fit items-center justify-center flex p-2"
+              <div class="flex justify-end w-full gap-5 mt-5">
+                <div class="border border-2 border-black w-fit items-center justify-center flex px-3 py-2"
                   v-if="project?.siteLink">
-                  <i class="uil uil-window text-3xl" />
+                  <i class="uil uil-window text-xl" />
                 </div>
-                <div class="border border-2 border-black w-fit items-center justify-center flex p-2"
+                <div class="border border-2 border-black w-fit items-center justify-center flex px-3 py-2"
                   v-if="project?.gitHubLink">
-                  <i class="uil uil-github" />
+                  <i class="uil uil-github text-xl" />
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import HomePage from '@/views/HomePage.vue'
-import Skills from '@/views/Skills.vue'
+import MySkills from '@/views/MySkills.vue'
 import ContactMe from '@/views/ContactMe.vue'
 import CarrerAndExperience from '@/views/CarrerAndExperience.vue'
 
@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/skills',
-    component: Skills
+    component: MySkills
   },
   {
     path: '/path',

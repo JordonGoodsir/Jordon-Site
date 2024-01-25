@@ -49,9 +49,6 @@
       "eslint:recommended",
       "@vue/typescript"
     ],
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser"
-    },
     "rules": {}
   },
   "browserslist": [
