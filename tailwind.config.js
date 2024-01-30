@@ -7,13 +7,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'main': '#211d1b',
-        'highlight': '#ffa449',
-        'sky-blue': '#ddeeff',
-        'tree-brown': '#A52A2A',
-        'brick-brown': '#bd5858',
+        'main': '#161A1D',
+        'main-gradient': '#ffa449',
+        // 'sky-blue': '#ddeeff',
+        // 'tree-brown': '#A52A2A',
+        // 'brick-brown': '#bd5858',
       }
     },
+    keyframes: {
+      flashingType: {
+        '0%': { opacity: '0' },
+        '100%': { opacity: '1' },
+      }
+    }
   },
 
   plugins: [],
