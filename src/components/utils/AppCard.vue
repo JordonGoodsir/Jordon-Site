@@ -1,5 +1,5 @@
 <template>
-    <div class="rounded border">
+    <div class="rounded border border-black">
         <slot/>
     </div>
 

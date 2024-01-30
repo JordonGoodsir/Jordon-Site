@@ -18,7 +18,17 @@ module.exports = {
       flashingType: {
         '0%': { opacity: '0' },
         '100%': { opacity: '1' },
-      }
+      },
+      hover: {
+        '0%': { transform: 'translateY(0px)' },
+        '50%': { transform: 'translateY(-3px)' },
+        '100%': { transform: 'translateY(0px)' },
+      },
+      maddness: {
+        '0%': { opacity: '0' },
+        '50%': { opacity: '1' },
+        '100%': { opacity: '0' },
+      },
     }
   },
 
