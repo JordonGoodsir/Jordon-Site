@@ -1,5 +1,5 @@
 <template>
-    <div class="px-2.5 py-2 bg-white rounded flex items-center justify-center cursor-pointer">
+    <div class="px-2 py-1 bg-white rounded flex items-center justify-center cursor-pointer">
         <slot/>
     </div>
 
