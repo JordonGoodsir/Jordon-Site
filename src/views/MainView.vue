@@ -3,6 +3,10 @@
 
         <!-- Hero Banner -->
         <section class="h-screen w-full bg-main relative">
+
+            <!-- moving shapes -->
+            <ul id="moving-shapes" class="overflow-hidden"/>
+
             <!-- links -->
             <div class="absolute flex gap-2 top-0 w-full justify-end px-8 pt-5">
                 <CustomButton class="font-semibold">Contact</CustomButton>
@@ -20,8 +24,8 @@
                     <transition enter-active-class="duration-300 ease-out" enter-from-class="transform opacity-0"
                         enter-to-class="opacity-100" leave-active-class="duration-200 ease-in"
                         leave-from-class="opacity-100" leave-to-class="transform opacity-0">
-                        <span v-if="activeHeroText !== heroText"
-                            class="font-bold test text-transparent bg-clip-text animate-[flashingType_0.500s_ease-in-out_infinite] -ml-1 text-5xl md:text-9xl">
+                        <span 
+                            :class="['font-bold test text-transparent bg-clip-text animate-[flashingType_0.500s_ease-in-out_infinite] -ml-1 text-[35px] sm:text-[83px] md:text-[115px] transition-all duration-700', {'!text-[0px]' : activeHeroText === heroText}]">
                             |
                         </span>
                     </transition>
@@ -97,6 +101,51 @@ onMounted(() => {
             }, 150 * letterIndex)
         })
     }
+})
+
+// ======================================
+// moving shapes
+// ======================================
+const spawnDots = (amount: number): void => {
+    const dots = document.getElementById('moving-shapes')
+
+    for (let i = 0; i <= amount; i++) {
+        const size = Math.floor(Math.random() * 3) + 1
+
+        const newDot = document.createElement('li')
+        newDot.style.width = `${size}rem`
+        newDot.style.height = `${size}rem`
+        newDot.style.bottom = `-${size}rem`
+        newDot.style.position = 'absolute'
+        newDot.style.bottom = `-${size}rem`
+        newDot.style.left = `${Math.floor(Math.random() * 100)}%`
+        newDot.style.animationDuration = `${Math.floor(Math.random() * 10) + 10}s`
+        newDot.style.animationDelay = `${Math.floor(Math.random() * 3) + 0.2}s`
+        if (dots != null) {
+            dots.appendChild(newDot)
+        }
+    }
+}
+
+const timer = (time: number) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true)
+        }, time)
+    })
+}
+
+onMounted(async () => {
+    const maxSpawn: number = 5
+    let timesSpawned: number = 0
+
+    while (maxSpawn !== timesSpawned) {
+        await timer(2000)
+        timesSpawned += 1
+        spawnDots(Math.floor(Math.random() * 5))
+    }
+
+
 })
 
 // ======================================
@@ -267,5 +316,30 @@ onMounted(() => {
 <style lang="scss">
 .test {
     background: linear-gradient(180deg, rgb(67, 198, 172) 0%, rgb(248, 255, 174) 100%);
+}
+
+#moving-shapes {
+    @apply absolute top-0 left-0 h-full w-full z-0;
+}
+
+#moving-shapes {
+    * {
+        @apply opacity-0 block absolute list-none bg-white;
+        animation: float infinite;
+        transition-timing-function: linear;
+        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+        @apply opacity-50;
+    }
+
+    80% {
+        transform: translateY(-100vh) rotate(630deg);
+        @apply opacity-0;
+    }
 }
 </style>
