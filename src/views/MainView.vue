@@ -6,7 +6,7 @@
         <!-- links -->
         <div class="sticky top-0 w-full z-40 shadow">
 
-            <div class="flex justify-between z-20 px-8 py-5 relative">
+            <div class="flex justify-between z-20 px-8 py-5 relative items-center">
                 <img src="@/assets/logo.png" class="scale-75">
                 <div class="flex gap-2">
                     <CustomButton class="font-semibold" @click="openEmail">Contact</CustomButton>
