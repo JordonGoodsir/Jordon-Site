@@ -1,20 +1,32 @@
 <template>
     <div class="flex flex-col items-center h-fit w-full gap-12 pb-12">
 
+        <div class="absolute w-full top-0 bg-main h-[82px]" />
+
+        <!-- links -->
+        <div class="sticky top-0 w-full z-40 shadow">
+
+            <div class="flex justify-between z-20 px-8 py-5 relative">
+                <img src="@/assets/logo.png" class="scale-75">
+                <div class="flex gap-2">
+                    <CustomButton class="font-semibold" @click="openEmail">Contact</CustomButton>
+                    <CustomButton @click="openLink('https://github.com/JordonGoodsir')"> <i
+                            class="uil uil-github text-2xl" />
+                    </CustomButton>
+                    <CustomButton @click="openLink('https://www.linkedin.com/in/jordon-goodsir-61466a1a5/')"> <i
+                            class="uil uil-linkedin text-2xl" />
+                    </CustomButton>
+                </div>
+            </div>
+            <div class="absolute w-full h-full z-10 bg-main top-0" />
+
+        </div>
+
         <!-- Hero Banner -->
-        <section class="h-screen w-full bg-main relative">
+        <section class="h-[calc(100vh-62px)] w-full bg-main relative -mt-12">
 
             <!-- moving shapes -->
-            <ul id="moving-shapes" class="overflow-hidden"/>
-
-            <!-- links -->
-            <div class="absolute flex gap-2 top-0 w-full justify-end px-8 pt-5">
-                <CustomButton class="font-semibold">Contact</CustomButton>
-                <CustomButton> <i class="uil uil-github text-2xl" />
-                </CustomButton>
-                <CustomButton> <i class="uil uil-linkedin text-2xl" />
-                </CustomButton>
-            </div>
+            <ul id="moving-shapes" class="overflow-hidden z-50 relative" />
 
             <!-- hero text -->
             <div class="flex items-center justify-center h-full w-full">
@@ -24,24 +36,29 @@
                     <transition enter-active-class="duration-300 ease-out" enter-from-class="transform opacity-0"
                         enter-to-class="opacity-100" leave-active-class="duration-200 ease-in"
                         leave-from-class="opacity-100" leave-to-class="transform opacity-0">
-                        <span 
-                            :class="['font-bold test text-transparent bg-clip-text animate-[flashingType_0.500s_ease-in-out_infinite] -ml-1 text-[35px] sm:text-[83px] md:text-[115px] transition-all duration-700', {'!text-[0px]' : activeHeroText === heroText}]">
+                        <span
+                            :class="['font-bold test text-transparent bg-clip-text animate-[flashingType_0.500s_ease-in-out_infinite] -ml-1 text-[35px] sm:text-[83px] md:text-[115px] transition-all duration-700', { '!text-[0px]': activeHeroText === heroText }]">
                             |
                         </span>
                     </transition>
 
                 </h1>
             </div>
+            <i @click="scrollToId('body')"
+                class="uil uil-angle-down text-6xl bottom-5 absolute text-white left-1/2 -translate-x-1/2 cursor-pointer" />
         </section>
 
         <!-- body -->
-        <div class="max-w-screen-xl px-8 w-full gap-12 flex flex-col">
+        <div class="max-w-screen-xl px-8 w-full gap-12 flex flex-col -mt-12 pt-12 relative">
+            <div id="body" class="absolute -top-[82px]" />
             <!-- projects -->
-            <div class="flex flex-wrap">
-                <ProjectCard v-for="project in projects" :text="project.name" :description="project.description"
-                    :image="() => require(`@/assets/projects/${project.image}`)" :key="project.name" />
+            <div class="flex flex-col gap-5">
+                <h2 class="text-4xl font-bold">Professional Projects</h2>
 
-
+                <div class="flex flex-wrap">
+                    <ProjectCard v-for="project in projects" :text="project.name" :description="project.description"
+                        :image="() => require(`@/assets/projects/${project.image}`)" :key="project.name" />
+                </div>
             </div>
 
             <!-- tech stack -->
@@ -58,16 +75,7 @@
             <div class="flex flex-col items-center mt-28 text-center w-full">
                 <h2 class="text-4xl font-bold text-center">Project need building?</h2>
                 <div class="flex flex-col items-center justify-center w-full">
-
-                    <div class=" mb-28 mt-20 relative rounded-full bg-[#43C6AC] px-10 py-6 max-w-sm w-full cursor-pointer">
-                        <h2 class="text-4xl text-white font-semibold">Talk to me</h2>
-                        <div
-                            :class="[`absolute font-semibold text-base animate-[maddness_3.5s_ease-in-out_infinite] whitespace-nowrap`, maddness[maddnessStep].position]">
-                            {{ maddness[maddnessStep].text }}
-                        </div>
-
-                    </div>
-
+                    <MaddnessButton text="Talk to me" @click="openEmail" href="mailto:jordon.goodsir1@gmail.com" />
                 </div>
             </div>
 
@@ -80,6 +88,24 @@ import CustomButton from '@/components/utils/CustomButton.vue'
 import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import { onMounted, ref } from 'vue';
+import MaddnessButton from '@/components/utils/MaddnessButton.vue';
+
+
+// ======================================
+// Contact
+// ======================================
+
+const openEmail = () => {
+    window.open('mailto:jordon.goodsir1@gmail.com')
+}
+
+const scrollToId = (id: string) => {
+    const element = document.getElementById(id)
+
+    if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+    }
+}
 
 
 // ======================================
@@ -269,48 +295,6 @@ const stacks = [
     },
 ]
 
-// ======================================
-// contact maddness
-// ======================================
-
-const maddness = [
-    {
-        text: 'Click me',
-        position: 'right-[-25px] top-[-40px]'
-    },
-    {
-        text: 'Do it',
-        position: 'left-[-25px] top-[90px]'
-    },
-    {
-        text: 'You know you want to',
-        position: 'right-[-25px] bottom-[-50px]'
-    },
-    {
-        text: `You're going to click it arn't you`,
-        position: 'right-[-0px] bottom-[-80px]'
-    },
-    {
-        text: 'Whats the worst that can happen',
-        position: 'left-[-35px] top-[-40px]'
-    }
-]
-
-const maddnessStep = ref(0)
-
-onMounted(() => {
-    setInterval(() => {
-
-        let generatedNumber = Math.floor(Math.random() * 5)
-
-        while (generatedNumber === maddnessStep.value) {
-            generatedNumber = Math.floor(Math.random() * 5)
-        }
-        maddnessStep.value = generatedNumber
-
-    }, 3500)
-})
-
 </script>
 
 <style lang="scss">
@@ -341,5 +325,11 @@ onMounted(() => {
         transform: translateY(-100vh) rotate(630deg);
         @apply opacity-0;
     }
+}
+
+.blur {
+    transition: opacity .2s ease;
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
 }
 </style>
