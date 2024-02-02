@@ -10,7 +10,7 @@
             </div>
 
             <div class="flex flex-col">
-                <p class="font-bold text-gray-500">years</p>
+                <p class="font-bold text-gray-500">Status</p>
                 <h4 class="font-bold text-5xl">{{ status }}</h4>
             </div>
         </div>
