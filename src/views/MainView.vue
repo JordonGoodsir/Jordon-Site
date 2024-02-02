@@ -42,8 +42,6 @@
                 class="uil uil-angle-down text-6xl bottom-5 absolute text-white left-1/2 -translate-x-1/2 cursor-pointer" />
         </section>
 
-
-
         <!-- body -->
         <div class="max-w-screen-xl px-8 w-full gap-12 flex flex-col -mt-12 pt-12 relative">
             <div id="body" class="absolute -top-[82px]" />
@@ -190,17 +188,17 @@ onMounted(async () => {
 const projects = [
     {
         name: 'Always Here',
-        description: 'good',
+        description: 'Addressing Childrens Mental Health with a Companion',
         image: 'together.png'
     },
     {
         name: 'Phoenix',
-        description: 'good',
+        description: 'An AI chatbot builder design for none technical users.',
         image: 'phoenix.png'
     },
     {
         name: 'SimConverse',
-        description: 'good',
+        description: 'Training Health Professionals Communication Skills with AI',
         image: 'SimConverse.png'
     }
 ]
