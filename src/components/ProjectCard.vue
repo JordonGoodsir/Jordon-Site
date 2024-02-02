@@ -4,7 +4,7 @@
             class="h-64 overflow-hidden flex items-center justify-center group-hover:animate-[hover_4s_ease-in-out_infinite]">
             <img class="object-cover h-full w-full" :src="image()" />
         </AppCard>
-        <AppCard class="flex items-center justify-between select-none cursor-pointer group gap-8 group-hover:bg-main group-hover:text-white topography px-6 py-3">
+        <AppCard class="flex items-center justify-between select-none cursor-pointer group gap-8 group-hover:bg-main group-hover:text-white topography duration-500 px-6 py-3">
             <div class="flex flex-col">
                 <h4 class="text-3xl font-semibold">{{ text }}</h4>
                 <p>{{ description }}</p>

@@ -21,7 +21,6 @@
         <section id="hero-banner" class="h-screen w-full bg-main relative -mt-12 z-20">
             <!-- moving shapes -->
             <ul id="moving-shapes" class="overflow-hidden relative" />
-
             <!-- hero text -->
             <div class="flex items-center justify-center h-full w-full">
                 <h1 id="hero-text"
@@ -35,7 +34,6 @@
                             |
                         </span>
                     </transition>
-
                 </h1>
             </div>
             <i @click="scrollToId('body')"
@@ -77,99 +75,7 @@
         </div>
     </div>
     <transition name="slide">
-        <div class="flex flex-col items-center w-full h-full gap-12 pb-12 fixed top-0 z-50 min-h-full w-full bg-white gap-12 pb-12 overflow-y-auto overflow-x-hidden"
-            v-if="activeProject">
-
-            <!-- nav -->
-            <div class="h-[62px] flex items-center w-full px-8 gap-5 shadow sticky top-0 bg-white">
-                <div class="h-[62px] flex gap-5 items-center">
-                    <i class="uil uil-arrow-left text-3xl" @click="() => activeProject = undefined" />
-                    <h4 class="text-lg font-semibold">{{ activeProject }}</h4>
-                </div>
-            </div>
-
-            <div class="max-w-screen-xl px-8 w-full gap-16 flex flex-col">
-                <ProjectHeader :heading="projectPages[activeProject].heading"
-                    :description="projectPages[activeProject].description" :skills="projectPages[activeProject].skills"
-                    :stack="projectPages[activeProject].stack" :live-site="projectPages[activeProject].liveSite" />
-                <template v-if="activeProject === ProProject.AlwaysHere">
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <img src="@/assets/ProjectImages/Together/icons.png" />
-
-                        <div class="flex flex-col justify-center gap-5">
-                            <h3 class="text-3xl font-bold">How it started</h3>
-                            <p>After completing a bootcamp at CoderAcademy, I was setup with a slew of interviews. However
-                                by far the best interview was at Always here, a technical test that I flew through and the
-                                best interviewers bringing forward amazing energy. Not only this, the company was founded on
-                                the basis to help families mental health post Covid-19, one couldent ask for a better cause.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-5">
-
-                        <div class="order-2 md:order-1 flex flex-col justify-center gap-5">
-                            <h3 class="text-3xl font-bold">My Approach</h3>
-                            <p>Being completely new to the workforce and to coding, aside form my bootcamp, I saw only one
-                                approach, learn. Myself along with 2 other interns embarked on hours of trial and error,
-                                thrown throughly in the deep end, learning from our mentors as best we could. Although
-                                imposter syndrome may have kicked in a few times in those early days, I feel as though it
-                                only made me stronger and better developer.</p>
-                        </div>
-
-
-
-                        <img class="h-auto order-1 md:order-2" src="@/assets/ProjectImages/Together/onboarding.png" />
-
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="flex h-96 justify-center">
-                            <img class="rotate-12" src="@/assets/ProjectImages/Together/chat.png" />
-                            <img class="rotate-12 -ml-5" src="@/assets/ProjectImages/Together/companionChat.png" />
-                        </div>
-
-                        <div class="flex flex-col justify-center gap-5">
-                            <h3 class="text-3xl font-bold">Learning Experiences</h3>
-                            <p>I learned a alot at my time with the Always Here team not only techically, but how to truly
-                                colaborate as a team.
-                                <br>
-                                <br>
-                                Techinically speaking, some of the things I learned include a completely new stack, the
-                                importance of building reuasable components and
-                                How to develop on IOS/Android and all the annoying nuances
-                                that came with them (like having your app rejected from the store over one word).
-                                <br>
-                                <br>
-
-                                More broadly I learned to be even more curious about how things work and to ask questions in
-                                bulk, doing the things you can do and saving up a few questions for when someones free. Oh
-                                and I also learned that having a office dog is amazing (miss you axe).
-                            </p>
-                        </div>
-                    </div>
-
-                </template>
-
-                <div v-if="activeProject === ProProject.Phoenix">
-                    <!-- how it started -->
-                    <!-- approach -->
-                    <!-- learning experiences -->
-
-                </div>
-
-                <div v-if="activeProject === ProProject.SimConverse">
-                    <!-- how it started -->
-                    <!-- approach -->
-                    <!-- learning experiences -->
-
-                </div>
-                <ProjectOutcome :years="projectPages[activeProject].years" :status="projectPages[activeProject].status"
-                    :summary="projectPages[activeProject].summary" />
-
-            </div>
-        </div>
+        <CurrentProject :active-project="activeProject" @close="() => activeProject = undefined" />
     </transition>
 </template>
 
@@ -179,74 +85,13 @@ import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import { onMounted, ref } from 'vue';
 import MaddnessButton from '@/components/utils/MaddnessButton.vue';
-import ProjectHeader from '@/components/project/ProjectHeader.vue'
-import ProjectOutcome from '@/components/project/ProjectOutcome.vue'
 import { openLink } from '@/utils/globals'
 
 
-// ======================================
-// Project Pages
-// ======================================
-
-// eslint-disable-next-line no-unused-vars
-enum ProProject {
-    // eslint-disable-next-line no-unused-vars
-    AlwaysHere = 'Always Here',
-    // eslint-disable-next-line no-unused-vars
-    SimConverse = 'SimConverse',
-    // eslint-disable-next-line no-unused-vars
-    Phoenix = 'Phoenix'
-}
+import CurrentProject, { ProProject } from '@/components/project/CurrentProject.vue'
 
 const activeProject = ref<ProProject | undefined>(undefined)
 
-
-type Project = {
-    // eslint-disable-next-line no-unused-vars
-    [key in ProProject]: {
-        years: string,
-        status: string,
-        summary: string,
-        heading: string,
-        description: string,
-        stack: string[],
-        skills: string[]
-        liveSite: string
-    }
-}
-
-const projectPages: Project = {
-    [ProProject.AlwaysHere]: {
-        years: '2+ Years',
-        status: 'Paused',
-        summary: `Always Here faced many obsicles, ultimately leading to its pause. However one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked intrest in the investors abroad and has potential. Working on Always Here was the best introduction to the workforce anyone could ask for, meeting life long friends and learning a hell of a lot, leaving me only wanting to learn more.`,
-        heading: 'A New Approach to Childrens Mental Health',
-        description: 'Mental health and wellbeing app for families',
-        stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS'],
-        skills: ['Teamwork', 'Communication', 'Web Development', 'App Developmnet (IOS/Android)'],
-        liveSite: 'https://www.alwayshere.io/'
-    },
-    [ProProject.Phoenix]: {
-        years: '2+ Years',
-        status: 'Canceled',
-        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget mollis est. Nunc in sollicitudin magna. Nullam ut luctus nisi. Vestibulum mauris risus, pretium non feugiat eget, placerat quis velit. Suspendisse mauris sem, efficitur ac sem blandit, varius tincidunt ante. Pellentesque mattis blandit hendrerit. Suspendisse efficitur eget diam ut fermentum. Vestibulum volutpat rutrum finibus. In at gravida metus, ut placerat ante. Sed condimentum arcu id ante dictum, et mattis justo sollicitudin. Duis efficitur justo vitae augue tincidunt, at iaculis mauris placerat. Etiam libero turpis, egestas non diam nec, ornare ultrices libero.',
-        heading: 'An AI chatbot builder design for none technical users',
-        description: 'An internal tool that rose from the ashes for always here',
-        stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS', 'Tailwind Css'],
-        skills: ['Teamwork', 'Communication', 'Web Development'],
-        liveSite: 'https://www.alwayshere.io/'
-    },
-    [ProProject.SimConverse]: {
-        years: '1+ Year',
-        status: 'Ongoing',
-        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget mollis est. Nunc in sollicitudin magna. Nullam ut luctus nisi. Vestibulum mauris risus, pretium non feugiat eget, placerat quis velit. Suspendisse mauris sem, efficitur ac sem blandit, varius tincidunt ante. Pellentesque mattis blandit hendrerit. Suspendisse efficitur eget diam ut fermentum. Vestibulum volutpat rutrum finibus. In at gravida metus, ut placerat ante. Sed condimentum arcu id ante dictum, et mattis justo sollicitudin. Duis efficitur justo vitae augue tincidunt, at iaculis mauris placerat. Etiam libero turpis, egestas non diam nec, ornare ultrices libero.',
-        heading: 'Training Health Professionals Communication Skills with AI',
-        description: 'A training platform for medical students',
-        stack: ['Vue', 'Css', 'Scss', 'TypeScript', 'Rust', 'AWS'],
-        skills: ['Web Development', 'Teamwork', 'Communication'],
-        liveSite: 'https://www.alwayshere.io/'
-    },
-}
 
 // ======================================
 // Scroll
