@@ -131,7 +131,7 @@ import ProjectOutcome from '@/components/project/ProjectOutcome.vue'
 // Project Pages
 // ======================================
 
-const activeProject = ref('Always Here')
+const activeProject = ref('')
 
 // const projectPages = {
 //     'Always Here': {
