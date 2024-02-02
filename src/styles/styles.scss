@@ -13,3 +13,7 @@ small,
 strong {
     font-family: "inter";
 }
+
+p { 
+    @apply text-base
+}

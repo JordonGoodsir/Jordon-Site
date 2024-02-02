@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-col items-center h-fit w-full gap-12 pb-12">
-
+    <div :class="['flex flex-col items-center h-fit w-full gap-12 pb-12', { 'overflow-hidden h-screen': activeProject }]">
         <!-- links -->
         <div class="sticky top-0 z-30 w-full h-0">
-            <div :class="['flex justify-between px-8 py-5 relative items-center transition-colors', {'bg-main' : scrolledPastHeader}]">
+            <div
+                :class="['flex justify-between px-8 py-5 relative items-center transition-colors', { 'bg-main': scrolledPastHeader }]">
                 <img src="@/assets/logo.png" class="scale-75">
                 <div class="flex gap-2">
                     <CustomButton class="font-semibold" @click="openEmail">Contact</CustomButton>
@@ -50,7 +50,8 @@
                 <h2 class="text-4xl font-bold">Professional Projects</h2>
 
                 <div class="flex flex-wrap">
-                    <ProjectCard v-for="project in projects" :text="project.name" :description="project.description"
+                    <ProjectCard @click="() => activeProject = project.name" v-for="project in projects"
+                        :text="project.name" :description="project.description"
                         :image="() => require(`@/assets/projects/${project.image}`)" :key="project.name" />
                 </div>
             </div>
@@ -75,6 +76,45 @@
 
         </div>
     </div>
+    <transition name="slide">
+        <div class="flex flex-col items-center w-full gap-12 pb-12 fixed top-0 z-50 min-h-full w-full bg-white gap-12 pb-12"
+            v-if="activeProject">
+
+            <!-- nav -->
+            <div class="h-[62px] flex items-center w-full px-8 gap-5 shadow sticky top-0">
+                <i class="uil uil-arrow-left text-3xl" @click="() => activeProject = ''" />
+                <h4 class="text-lg font-semibold">{{ activeProject }}</h4>
+            </div>
+
+            <div class="max-w-screen-xl px-8  w-full gap-12 flex flex-col">
+                <ProjectHeader heading="Fast app even faster flows" description="you wouldent believe how fast this was"
+                    :skills="['teamwork', 'good', 'comms']" :stack="['Vue', 'Css', 'Scss', 'Tailwind']" />
+
+                <div v-if="activeProject === 'Always Here'">
+
+                </div>
+
+                <div v-if="activeProject === 'Phoenix'">
+
+                </div>
+
+                <div v-if="activeProject === 'SimConverse'">
+
+                </div>
+                <ProjectOutcome years="5+ Years" status="Failed"
+                    summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget mollis est. Nunc in sollicitudin magna. Nullam ut luctus nisi. Vestibulum mauris risus, pretium non feugiat eget, placerat quis velit. Suspendisse mauris sem, efficitur ac sem blandit, varius tincidunt ante. Pellentesque mattis blandit hendrerit. Suspendisse efficitur eget diam ut fermentum. Vestibulum volutpat rutrum finibus. In at gravida metus, ut placerat ante. Sed condimentum arcu id ante dictum, et mattis justo sollicitudin. Duis efficitur justo vitae augue tincidunt, at iaculis mauris placerat. Etiam libero turpis, egestas non diam nec, ornare ultrices libero." />
+
+            </div>
+
+            <!-- catchy header -->
+            <!-- catchy desc -->
+
+            <!-- skills -->
+            <!-- stack -->
+
+            <!-- outcome -->
+        </div>
+    </transition>
 </template>
 
 <script setup lang="ts">
@@ -83,13 +123,38 @@ import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import { onMounted, ref } from 'vue';
 import MaddnessButton from '@/components/utils/MaddnessButton.vue';
+import ProjectHeader from '@/components/project/ProjectHeader.vue'
+import ProjectOutcome from '@/components/project/ProjectOutcome.vue'
+
+
+// ======================================
+// Project Pages
+// ======================================
+
+const activeProject = ref('Always Here')
+
+// const projectPages = {
+//     'Always Here': {
+//         years: '2+ Years',
+//         status: 'Canceled',
+//         summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget mollis est. Nunc in sollicitudin magna. Nullam ut luctus nisi. Vestibulum mauris risus, pretium non feugiat eget, placerat quis velit. Suspendisse mauris sem, efficitur ac sem blandit, varius tincidunt ante. Pellentesque mattis blandit hendrerit. Suspendisse efficitur eget diam ut fermentum. Vestibulum volutpat rutrum finibus. In at gravida metus, ut placerat ante. Sed condimentum arcu id ante dictum, et mattis justo sollicitudin. Duis efficitur justo vitae augue tincidunt, at iaculis mauris placerat. Etiam libero turpis, egestas non diam nec, ornare ultrices libero.',
+//         heading: 'something catchy',
+//         description: 'something catchyer',
+//         stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS'],
+//         skills: ['Teamwork', 'Communication', '']
+//     }
+// }
+
+// ======================================
+// Scroll
+// ======================================
 
 onMounted(() => {
     window.addEventListener("scroll", function () {
         const heroBanner = document.getElementById("hero-banner");
         if (heroBanner && window.scrollY > (heroBanner.offsetTop + heroBanner.offsetHeight) - 50) {
             scrolledPastHeader.value = true
-        } else { 
+        } else {
             scrolledPastHeader.value = false
         }
     });
@@ -334,9 +399,13 @@ const stacks = [
     }
 }
 
-.blur {
-    transition: opacity .2s ease;
-    -webkit-backdrop-filter: blur(100px);
-    backdrop-filter: blur(100px);
+.slide-enter-active,
+.slide-leave-active {
+    transition: transform 0.3s ease-in-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    transform: translateX(200%)
 }
 </style>
