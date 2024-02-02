@@ -1,12 +1,9 @@
 <template>
     <div class="flex flex-col items-center h-fit w-full gap-12 pb-12">
 
-        <div class="absolute w-full top-0 bg-main h-[82px]" />
-
         <!-- links -->
-        <div class="sticky top-0 w-full z-40 shadow">
-
-            <div class="flex justify-between z-20 px-8 py-5 relative items-center">
+        <div class="sticky top-0 z-30 w-full h-0">
+            <div :class="['flex justify-between px-8 py-5 relative items-center transition-colors', {'bg-main' : scrolledPastHeader}]">
                 <img src="@/assets/logo.png" class="scale-75">
                 <div class="flex gap-2">
                     <CustomButton class="font-semibold" @click="openEmail">Contact</CustomButton>
@@ -18,15 +15,12 @@
                     </CustomButton>
                 </div>
             </div>
-            <div class="absolute w-full h-full z-10 bg-main top-0" />
-
         </div>
 
         <!-- Hero Banner -->
-        <section class="h-[calc(100vh-62px)] w-full bg-main relative -mt-12">
-
+        <section id="hero-banner" class="h-screen w-full bg-main relative -mt-12 z-20">
             <!-- moving shapes -->
-            <ul id="moving-shapes" class="overflow-hidden z-50 relative" />
+            <ul id="moving-shapes" class="overflow-hidden relative" />
 
             <!-- hero text -->
             <div class="flex items-center justify-center h-full w-full">
@@ -47,6 +41,8 @@
             <i @click="scrollToId('body')"
                 class="uil uil-angle-down text-6xl bottom-5 absolute text-white left-1/2 -translate-x-1/2 cursor-pointer" />
         </section>
+
+
 
         <!-- body -->
         <div class="max-w-screen-xl px-8 w-full gap-12 flex flex-col -mt-12 pt-12 relative">
@@ -89,6 +85,20 @@ import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import { onMounted, ref } from 'vue';
 import MaddnessButton from '@/components/utils/MaddnessButton.vue';
+
+onMounted(() => {
+    window.addEventListener("scroll", function () {
+        const heroBanner = document.getElementById("hero-banner");
+        if (heroBanner && window.scrollY > (heroBanner.offsetTop + heroBanner.offsetHeight) - 50) {
+            scrolledPastHeader.value = true
+        } else { 
+            scrolledPastHeader.value = false
+        }
+    });
+
+})
+
+const scrolledPastHeader = ref(false)
 
 
 // ======================================
@@ -142,7 +152,6 @@ const spawnDots = (amount: number): void => {
         newDot.style.width = `${size}rem`
         newDot.style.height = `${size}rem`
         newDot.style.bottom = `-${size}rem`
-        newDot.style.position = 'absolute'
         newDot.style.bottom = `-${size}rem`
         newDot.style.left = `${Math.floor(Math.random() * 100)}%`
         newDot.style.animationDuration = `${Math.floor(Math.random() * 10) + 10}s`
@@ -308,7 +317,7 @@ const stacks = [
 
 #moving-shapes {
     * {
-        @apply opacity-0 block absolute list-none bg-white;
+        @apply opacity-0 block absolute list-none bg-white z-30;
         animation: float infinite;
         transition-timing-function: linear;
         clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
