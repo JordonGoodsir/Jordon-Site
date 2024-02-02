@@ -198,7 +198,7 @@ enum ProProject {
     Phoenix = 'Phoenix'
 }
 
-const activeProject = ref<ProProject | undefined>(ProProject.AlwaysHere)
+const activeProject = ref<ProProject | undefined>(undefined)
 
 
 type Project = {
