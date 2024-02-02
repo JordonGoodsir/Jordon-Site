@@ -430,7 +430,7 @@ const stacks = [
     },
     {
         name: 'AWS',
-        img: 'AWS.svg',
+        img: 'Aws.svg',
         link: 'https://aws.amazon.com/'
 
     },
