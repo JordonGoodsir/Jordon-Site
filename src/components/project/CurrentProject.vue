@@ -3,7 +3,7 @@
         v-if="activeProject">
 
         <!-- nav -->
-        <div class="h-[62px] flex items-center w-full px-8 gap-5 shadow sticky top-0 bg-white">
+        <div class="h-[62px] flex items-center w-full px-8 gap-5 shadow sticky top-0 bg-white z-50">
             <div class="h-[62px] flex gap-5 items-center">
                 <i class="uil uil-arrow-left text-3xl" @click="() => $emit('close')" />
                 <h4 class="text-lg font-semibold">{{ activeProject }}</h4>
