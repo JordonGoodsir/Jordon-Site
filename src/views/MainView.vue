@@ -1,5 +1,5 @@
 <template>
-    <div :class="['flex flex-col items-center h-fit w-full gap-12 pb-12', { 'overflow-hidden h-screen': activeProject }]">
+    <div :class="['flex flex-col items-center h-fit w-full gap-12 pb-12', { 'overflow-hidden': activeProject }]">
         <!-- links -->
         <div class="sticky top-0 z-30 w-full h-0">
             <div
@@ -83,14 +83,25 @@
 import CustomButton from '@/components/utils/CustomButton.vue'
 import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import MaddnessButton from '@/components/utils/MaddnessButton.vue';
 import { openLink } from '@/utils/globals'
-
-
+import { useRouter, useRoute } from 'vue-router'
 import CurrentProject, { ProProject } from '@/components/project/CurrentProject.vue'
 
+// ======================================
+// Init
+// ======================================
+
+const router = useRouter()
+const route = useRoute()
+
 const activeProject = ref<ProProject | undefined>(undefined)
+watch(() => activeProject.value, (newVal) => {
+    if (newVal) {
+        router.push({ query: { project: newVal } })
+    }
+})
 
 
 // ======================================
@@ -98,6 +109,13 @@ const activeProject = ref<ProProject | undefined>(undefined)
 // ======================================
 
 onMounted(() => {
+    window.onpopstate = function () {
+        if (!route.query?.project) {
+            activeProject.value = undefined
+        }
+    };
+
+
     window.addEventListener("scroll", function () {
         const heroBanner = document.getElementById("hero-banner");
         if (heroBanner && window.scrollY > (heroBanner.offsetTop + heroBanner.offsetHeight) - 50) {
@@ -133,7 +151,7 @@ const scrollToId = (id: string) => {
 // hero banner
 // ======================================
 
-const heroText = 'A Software \n Deloper'
+const heroText = 'A Software \n Developer'
 const activeHeroText = ref('')
 
 onMounted(() => {
