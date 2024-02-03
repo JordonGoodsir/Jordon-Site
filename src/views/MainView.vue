@@ -65,12 +65,8 @@
             </div>
 
             <!-- contact -->
-            <div class="flex flex-col items-center mt-28 text-center w-full">
-                <h2 class="text-4xl font-bold text-center">Project need building?</h2>
-                <div class="flex flex-col items-center justify-center w-full">
-                    <MaddnessButton text="Talk to me" @click="openEmail" href="mailto:jordon.goodsir1@gmail.com" />
-                </div>
-            </div>
+            <MaddnessButton />
+
 
         </div>
     </div>
@@ -85,7 +81,7 @@ import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import { onMounted, ref, watch } from 'vue';
 import MaddnessButton from '@/components/utils/MaddnessButton.vue';
-import { openLink } from '@/utils/globals'
+import { openLink, openEmail } from '@/utils/globals'
 import { useRouter, useRoute } from 'vue-router'
 import CurrentProject, { ProProject } from '@/components/project/CurrentProject.vue'
 
@@ -100,6 +96,9 @@ const activeProject = ref<ProProject | undefined>(undefined)
 watch(() => activeProject.value, (newVal) => {
     if (newVal) {
         router.push({ query: { project: newVal } })
+    } else {
+        router.push({ path: '/' })
+        activeProject.value = undefined
     }
 })
 
@@ -109,6 +108,8 @@ watch(() => activeProject.value, (newVal) => {
 // ======================================
 
 onMounted(() => {
+
+    // on back button press remove active project
     window.onpopstate = function () {
         if (!route.query?.project) {
             activeProject.value = undefined
@@ -133,10 +134,6 @@ const scrolledPastHeader = ref(false)
 // ======================================
 // Contact
 // ======================================
-
-const openEmail = () => {
-    window.open('mailto:jordon.goodsir1@gmail.com')
-}
 
 const scrollToId = (id: string) => {
     const element = document.getElementById(id)

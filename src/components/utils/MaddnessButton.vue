@@ -1,30 +1,27 @@
 <template>
-    <div class=" mb-28 mt-20 relative rounded-full bg-[#43C6AC] px-10 py-6 max-w-sm w-full cursor-pointer">
-        <h2 class="text-4xl text-white font-semibold">{{ text }}</h2>
-        <div
-            :class="[`absolute font-semibold text-base animate-[maddness_3.5s_ease-in-out_infinite] whitespace-nowrap`, maddness[maddnessStep].position]">
-            {{ maddness[maddnessStep].text }}
+    <div class="flex flex-col items-center mt-28 text-center w-full">
+        <h2 class="text-4xl font-bold text-center">Project need building?</h2>
+        <div class="flex flex-col items-center justify-center w-full">
+            <div class=" mb-28 mt-20 relative rounded-full bg-[#43C6AC] px-10 py-6 max-w-sm w-full cursor-pointer"
+                @click="openEmail()">
+                <h2 class="text-4xl text-white font-semibold">Talk to me</h2>
+                <div
+                    :class="[`absolute font-semibold text-base animate-[maddness_3.5s_ease-in-out_infinite] whitespace-nowrap`, maddness[maddnessStep].position]">
+                    {{ maddness[maddnessStep].text }}
+                </div>
+            </div>
         </div>
-
     </div>
 </template>
 
 <script setup lang="ts">
 
-import { ref, onMounted, defineProps } from 'vue'
+import { ref, onMounted } from 'vue'
+import { openEmail } from '@/utils/globals'
 
 // ======================================
 // contact maddness
 // ======================================
-
-defineProps(
-    {
-        text: {
-            type: String,
-            default: ''
-        },
-    }
-)
 
 const maddness = [
     {

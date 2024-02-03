@@ -35,6 +35,8 @@
             <ProjectOutcome :years="projectPages[activeProject].years" :status="projectPages[activeProject].status"
                 :summary="projectPages[activeProject].summary" />
 
+            <MaddnessButton />
+
         </div>
     </div>
 </template>
@@ -56,7 +58,8 @@ export enum ProProject {
 import { PropType, defineProps } from 'vue'
 import ProjectHeader from './ProjectHeader.vue';
 import ProjectOutcome from './ProjectOutcome.vue';
-import AlwaysHere from '@/components/project/project-boides/AlwaysHere.vue'
+import AlwaysHere from '@/components/project/project-boides/AlwaysHere.vue';
+import MaddnessButton from '@/components/utils/MaddnessButton.vue';
 
 defineProps(
     {
@@ -101,7 +104,7 @@ const projectPages: Project = {
         status: 'Canceled',
         summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget mollis est. Nunc in sollicitudin magna. Nullam ut luctus nisi. Vestibulum mauris risus, pretium non feugiat eget, placerat quis velit. Suspendisse mauris sem, efficitur ac sem blandit, varius tincidunt ante. Pellentesque mattis blandit hendrerit. Suspendisse efficitur eget diam ut fermentum. Vestibulum volutpat rutrum finibus. In at gravida metus, ut placerat ante. Sed condimentum arcu id ante dictum, et mattis justo sollicitudin. Duis efficitur justo vitae augue tincidunt, at iaculis mauris placerat. Etiam libero turpis, egestas non diam nec, ornare ultrices libero.',
         heading: 'An AI chatbot builder design for none technical users',
-        description: 'An internal tool that rose from the ashes for always here',
+        description: 'An internal tool that rose from the ashes for Always Here',
         stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS', 'Tailwind Css'],
         skills: ['Teamwork', 'Communication', 'Web Development'],
         liveSite: 'https://www.alwayshere.io/'
