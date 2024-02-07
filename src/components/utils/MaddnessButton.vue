@@ -67,6 +67,6 @@ onMounted(() => {
 .topography-madness {
     background-image: url('@/assets/topography-animated.svg');
     background-repeat: repeat;
-    @apply bg-[length:130px_130px] md:bg-[length:155px_155px]
+    @apply bg-[length:140px_140px] md:bg-[length:155px_155px]
 }
 </style>
