@@ -52,8 +52,11 @@
 
                 More broadly I learned to be even more curious about how things work and to ask questions in
                 bulk, doing the things you can do and saving up a few questions for when someones free. Oh
-                and I also learned that having a office dog is amazing (miss you axe).
+                and I also learned that having a office dog is amazing (miss you axe <img class="rounded h-4 inline-block"
+                    src="@/assets/axe.png" />
+                ).
             </p>
+
         </div>
     </div>
 </template>
