@@ -6,7 +6,7 @@
     }
     .animated-topo-path {
         stroke-dasharray: 100;
-        animation: dash 28s infinite;
+        animation: dash 35s infinite;
     }
 
 @keyframes dash {
