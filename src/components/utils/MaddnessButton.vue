@@ -37,11 +37,11 @@ const maddness = [
         position: 'right-[-25px] bottom-[-50px]'
     },
     {
-        text: `You're going to click it arn't you`,
+        text: `You're going to click it aren't you`,
         position: 'right-[-0px] bottom-[-80px]'
     },
     {
-        text: 'Whats the worst that can happen',
+        text: `What's the worst that can happen`,
         position: 'left-[-20px] top-[-40px]'
     }
 ]
