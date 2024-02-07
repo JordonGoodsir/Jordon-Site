@@ -1,21 +1,14 @@
 
             
 <template>
-
-
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <img src="@/assets/projects/SimConverse.png" />
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
-            <p>After learning the stack of the main app Always Here I
-                graduated to collaborate on the admin tool, Phoenix. At the time it was not known as Phoenix, but
-                rather just "the admin tool" and at one stage its logo was my face.
-                <br>
-                <br>
-                Anyway, although daunting at first to be working on two project at the same time I was somewhat
-                exited.
-                Turns out its wasn't so bad and the excitement was warranted, as this is where I was introduced
-                to Tailwind Css (the best).
+            <p>After Always Here's demise, it was time for something new. That is when SimConverse came around, myself and
+                few members from my old team were task with reinventing the style of SimConverse and thats just what we did.
+                learning the stack and the code base as quickly as we could, flipping the product in only a short time.
+
             </p>
         </div>
     </div>
@@ -24,12 +17,17 @@
 
         <div class="order-2 md:order-1 flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">My Approach</h3>
-            <p>Once again still being new to the whole workforce and programming thing I, committed myself to
-                learning all I could. This mainly consisted
-                of learning how Tailwind Css worked and at first doubting its greatness as I had to go back and
-                forth between the documentation for each css class which I already knew. Little did I know that
-                this
-                would speed up my development time substantially in the future.
+            <p>In this case I had a stable foundation of knowledge, and I intended on using it,
+                making the most readable and reusable code as
+                possible. Adhering to the <a href="https://dev.to/berryjam/introducing-atomic-design-in-vuejs-1l2h"
+                    target="_blank">Atomic</a>
+                ideology with each
+                component I crafted. With plans to expand my skill set to design (which was used to make this site in
+                figma), inspired by
+                <a href="https://www.linkedin.com/in/bepaterson/" target="_blank">Ben Paterson</a> and <a
+                    href="https://www.linkedin.com/in/bepaterson/" target="_blank">Joel Tankard</a>,
+                who were always a pleasure to work with and made amazing
+                designs.
             </p>
         </div>
 
@@ -43,20 +41,10 @@
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">Learning Experiences</h3>
-            <p>My time working on Phoenix was a good one, learning to enjoy the creation process and joys of Tailwind.
-                <br>
-                <br>
-                Technically, this project was confusing at first, as there was a lot of functionality especially
-                the drag and drop. Having at
-                least 120 unique interactions on the page as it was a flow builder with many different types of
-                blocks. With this in mind optimization was definitely a challenge, learning to pay close attention
-                to every block of code to shave off as
-                much latency as I could.
-                <br>
-                <br>
-                More broadly, I learned that you can have fun with the creation process of a product, did I mention that
-                before it was
-                Phoenix the logo was my face? and that Tailwind Css was the way to go.
+            <p> I learned that I should always be trying to improve the code I write, by exploring difference tools,
+                ideologies and revisiting fundamentals of programming. This being because there are always new useful tools and
+                updates being released for example in Vue 3.4 they came out with "Define Model" a useful macro which can
+                save countless lines of code and is easily readable.
             </p>
         </div>
     </div>

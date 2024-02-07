@@ -10,4 +10,8 @@ import '@/styles/styles.scss'
 
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+a { 
+  @apply text-blue-500 underline;
+}
+</style>

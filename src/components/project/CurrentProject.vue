@@ -98,17 +98,17 @@ const projectPages: Project = {
         description: 'An internal tool that rose from the ashes for Always Here',
         stack: ['Vue', 'PWA', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS', 'Tailwind Css'],
         skills: ['Teamwork', 'Communication', 'Web Development', 'Feature Management'],
-        liveSite: 'https://www.alwayshere.io/'
+        liveSite: ''
     },
     [ProProject.SimConverse]: {
         years: '1+ Year',
         status: 'Ongoing',
-        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget mollis est. Nunc in sollicitudin magna. Nullam ut luctus nisi. Vestibulum mauris risus, pretium non feugiat eget, placerat quis velit. Suspendisse mauris sem, efficitur ac sem blandit, varius tincidunt ante. Pellentesque mattis blandit hendrerit. Suspendisse efficitur eget diam ut fermentum. Vestibulum volutpat rutrum finibus. In at gravida metus, ut placerat ante. Sed condimentum arcu id ante dictum, et mattis justo sollicitudin. Duis efficitur justo vitae augue tincidunt, at iaculis mauris placerat. Etiam libero turpis, egestas non diam nec, ornare ultrices libero.',
+        summary: 'Although my journey at SimConverse was cut short due to management reconstruction taking out an entire team. My time at SimConverse was defiantly worth wile allowing me to put to use my skills, learn more about the fundamentals of programming and spark more interest in new innovations',
         heading: 'Training Health Professionals Communication Skills with AI',
         description: 'A training platform for medical students',
-        stack: ['Vue', 'Css', 'Scss', 'TypeScript', 'Rust', 'AWS'],
+        stack: ['Vue', 'Css', 'Scss', 'TypeScript', 'Rust', 'AWS', 'Tailwind', 'Aframe'],
         skills: ['Web Development', 'Teamwork', 'Communication'],
-        liveSite: 'https://www.alwayshere.io/'
+        liveSite: 'https://www.simconverse.com/'
     },
 }
 
