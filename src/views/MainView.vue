@@ -24,13 +24,13 @@
             <!-- hero text -->
             <div class="flex items-center justify-center h-full w-full">
                 <h1 id="hero-text"
-                    class="text-5xl sm:text-8xl md:text-9xl font-bold test text-transparent bg-clip-text text-center whitespace-pre-line">
+                    class="text-5xl sm:text-8xl md:text-9xl font-bold main-gradient text-transparent bg-clip-text text-center whitespace-pre-line">
                     {{ activeHeroText }}
                     <transition enter-active-class="duration-300 ease-out" enter-from-class="transform opacity-0"
                         enter-to-class="opacity-100" leave-active-class="duration-200 ease-in"
                         leave-from-class="opacity-100" leave-to-class="transform opacity-0">
                         <span
-                            :class="['font-bold test text-transparent bg-clip-text animate-[flashingType_0.500s_ease-in-out_infinite] -ml-1 text-[35px] sm:text-[83px] md:text-[115px] transition-all duration-700', { '!text-[0px]': activeHeroText === heroText }]">
+                            :class="['font-bold main-gradient text-transparent bg-clip-text animate-[flashingType_0.500s_ease-in-out_infinite] -ml-1 text-[35px] sm:text-[83px] md:text-[115px] transition-all duration-700', { '!text-[0px]': activeHeroText === heroText }]">
                             |
                         </span>
                     </transition>
@@ -329,7 +329,7 @@ const stacks = [
 </script>
 
 <style lang="scss">
-.test {
+.main-gradient {
     background: linear-gradient(180deg, rgb(67, 198, 172) 0%, rgb(248, 255, 174) 100%);
 }
 

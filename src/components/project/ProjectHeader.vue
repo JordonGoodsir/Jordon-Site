@@ -18,7 +18,7 @@
             </div>
 
             <div v-if="liveSite" @click="() => openLink(liveSite)"
-                class="rounded-full bg-main w-full py-5 flex items-center justify-center gap-2 text-white text-base mt-5">
+                class="rounded-full bg-main w-full py-5 flex items-center justify-center gap-2 text-white text-base mt-5 cursor-pointer">
                 <p class="text-xl">Website</p>
                 <i class="uil uil-external-link-alt text-lg" />
             </div>
