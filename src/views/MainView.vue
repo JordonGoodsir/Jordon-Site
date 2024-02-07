@@ -66,8 +66,6 @@
 
             <!-- contact -->
             <MaddnessButton />
-
-
         </div>
     </div>
     <transition name="slide">
