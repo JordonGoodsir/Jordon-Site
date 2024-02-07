@@ -34,7 +34,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="flex h-96 justify-center">
             <img class="rotate-12" src="@/assets/ProjectImages/Together/chat.png" />
-            <img class="rotate-12 -ml-5" src="@/assets/ProjectImages/Together/companionChat.png" />
+            <img class="rotate-12 -ml-10 md:-ml-5" src="@/assets/ProjectImages/Together/companionChat.png" />
         </div>
 
         <div class="flex flex-col justify-center gap-5">
@@ -52,9 +52,8 @@
 
                 More broadly I learned to be even more curious about how things work and to ask questions in
                 bulk, doing the things you can do and saving up a few questions for when someones free. Oh
-                and I also learned that having a office dog is amazing (miss you axe <img class="rounded h-4 inline-block"
+                and I also learned that having a office dog is amazing (miss you axe). <img class="rounded h-8 inline-block"
                     src="@/assets/axe.png" />
-                ).
             </p>
 
         </div>

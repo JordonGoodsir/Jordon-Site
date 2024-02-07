@@ -65,7 +65,6 @@ onMounted(() => {
 
 <style>
 .topography {
-    /* background: white; */
     background-image: url('@/assets/topography.svg');
     background-repeat: repeat;
     background-size: 155px 155px;
