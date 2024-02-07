@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
   <style type="text/css">
+
+    svg { 
+        transform: unset !important;
+    }
     .animated-topo-path {
         stroke-dasharray: 100;
         animation: dash 28s infinite;
