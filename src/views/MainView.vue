@@ -281,15 +281,14 @@ const stacks = [
 
     },
     {
+        name: 'AWS',
+        img: 'AwsCloud.svg',
+        link: 'https://aws.amazon.com/'
+    },
+    {
         name: 'Figma',
         img: 'Figma.svg',
         link: 'https://www.figma.com/design/'
-
-    },
-    {
-        name: 'AWS',
-        img: 'Aws.svg',
-        link: 'https://aws.amazon.com/'
 
     },
     {
