@@ -32,7 +32,6 @@
 
 <script lang="ts">
 
-// eslint-disable-next-line no-unused-vars
 export enum ProProject {
     // eslint-disable-next-line no-unused-vars
     AlwaysHere = 'Always Here',
@@ -103,7 +102,7 @@ const projectPages: Project = {
     [ProProject.SimConverse]: {
         years: '1+ Year',
         status: 'Ongoing',
-        summary: 'Although my journey at SimConverse was cut short due to management reconstruction taking out an entire team. My time at SimConverse was defiantly worth wile allowing me to put to use my skills, learn more about the fundamentals of programming and spark more interest in new innovations',
+        summary: 'Although my journey at SimConverse was cut short due to management reconstruction taking out an entire team. My time at SimConverse was defiantly worth wile, allowing me to put to use my skills, learn more about the fundamentals of programming and spark more interest in new innovations',
         heading: 'Training Health Professionals Communication Skills with AI',
         description: 'A training platform for medical students',
         stack: ['Vue', 'Css', 'Scss', 'TypeScript', 'Rust', 'AWS', 'Tailwind', 'Aframe'],

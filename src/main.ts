@@ -8,16 +8,11 @@ import { store } from '@/stores/store'
 import '@/styles/styles.scss'
 import '@/styles/tailwind.css'
 
-// @ts-expect-error because idk
-import VTooltipPlugin from 'v-tooltip'
-import 'v-tooltip/dist/v-tooltip.css'
-
 const pinia = createPinia()
 const app = createApp(App)
 
 app.use(router)
 app.use(pinia)
-app.use(VTooltipPlugin)
 
 const theStore = store()
 
@@ -30,9 +25,3 @@ declare module '@vue/runtime-core' {
 }
 
 app.mount('#app')
-
-// commented out in package json
-
-    // "parserOptions": {
-    //   "parser": "@typescript-eslint/parser"
-    // },
