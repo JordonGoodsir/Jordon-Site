@@ -10,7 +10,7 @@
                     <CustomButton @click="openLink('https://github.com/JordonGoodsir')"> <i
                             class="uil uil-github text-2xl" />
                     </CustomButton>
-                    <CustomButton @click="openLink('https://www.linkedin.com/in/jordon-goodsir-61466a1a5/')"> <i
+                    <CustomButton @click="openLink('https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile')"> <i
                             class="uil uil-linkedin text-2xl" />
                     </CustomButton>
                 </div>
