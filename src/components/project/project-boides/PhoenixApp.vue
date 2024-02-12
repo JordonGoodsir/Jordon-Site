@@ -12,7 +12,7 @@
                 <br>
                 <br>
                 Anyway, although daunting at first to be working on two project at the same time I was somewhat
-                exited.
+                excited.
                 Turns out its wasn't so bad and the excitement was warranted, as this is where I was introduced
                 to Tailwind Css (the best).
             </p>

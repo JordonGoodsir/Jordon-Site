@@ -92,7 +92,7 @@ const projectPages: Project = {
     [ProProject.Phoenix]: {
         years: '2+ Years',
         status: 'Canceled',
-        summary: 'Although Phoenix met its demise at the hands of funding, I thoroughly enjoyed the process of making it. It taught to always look for new tools that can help optimize in development and to be exited for what comes next. One thing to keep in mind though, you never know what can happen, I mean, this tool was named Phoenix for a reason.',
+        summary: 'Although Phoenix met its demise at the hands of funding, I thoroughly enjoyed the process of making it. It taught to always look for new tools that can help optimize in development and to be excited for what comes next. One thing to keep in mind though, you never know what can happen, I mean, this tool was named Phoenix for a reason.',
         heading: 'An AI chatbot builder design for none technical users',
         description: 'An internal tool that rose from the ashes for Always Here',
         stack: ['Vue', 'PWA', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS', 'Tailwind Css'],
