@@ -23,7 +23,7 @@
 
         <div class="order-2 md:order-1 flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">My Approach</h3>
-            <p>Once again still being new to the whole workforce and programming thing I, committed myself to
+            <p>Once again still being new to the whole workforce and programming thing, I committed myself to
                 learning all I could. This mainly consisted
                 of learning how Tailwind Css worked and at first doubting its greatness as I had to go back and
                 forth between the documentation for each css class which I already knew. Little did I know that
