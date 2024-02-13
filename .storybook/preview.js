@@ -1,3 +1,7 @@
+// gloabl css
+import '../src/styles/styles.scss'
+import '../src/styles/tailwind.css'
+
 /** @type { import('@storybook/vue3').Preview } */
 const preview = {
   parameters: {
