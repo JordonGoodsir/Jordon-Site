@@ -1,26 +1,10 @@
 <template>
     <div :class="['flex flex-col items-center h-fit w-full gap-12 pb-12', { 'overflow-hidden': activeProject }]">
-        <!-- links -->
-        <div class="sticky top-0 z-30 w-full h-0">
-            <div
-                :class="['flex justify-between px-8 py-5 relative items-center transition-colors', { 'bg-main': scrolledPastHeader }]">
-                <img src="@/assets/logo.png" class="scale-75">
-                <div class="flex gap-2">
-                    <CustomButton class="font-semibold" @click="openEmail">Contact</CustomButton>
-                    <CustomButton @click="openLink('https://github.com/JordonGoodsir')"> <i
-                            class="uil uil-github text-2xl" />
-                    </CustomButton>
-                    <CustomButton @click="openLink('https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile')"> <i
-                            class="uil uil-linkedin text-2xl" />
-                    </CustomButton>
-                </div>
-            </div>
-        </div>
+        <MainHeader :headerColor="scrolledPastHeader ? 'bg-main' : ''" />
 
         <!-- Hero Banner -->
         <section id="hero-banner" class="h-screen w-full bg-main relative -mt-12 z-20">
-            <!-- moving shapes -->
-            <ul id="moving-shapes" class="overflow-hidden relative" />
+            <MovingDots />
             <!-- hero text -->
             <div class="flex items-center justify-center h-full w-full">
                 <h1 id="hero-text"
@@ -68,20 +52,22 @@
             <MaddnessButton />
         </div>
     </div>
-    <transition name="slide">
+    <transition enter-active-class="transition-transform duration-300 ease-in-out" leave-active-class="transition-transform duration-300 ease-in-out" enter-from-class="translate-x-[200%]" leave-to-class="translate-x-[200%]">
         <CurrentProject :active-project="activeProject" @close="() => activeProject = undefined" />
     </transition>
 </template>
 
 <script setup lang="ts">
-import CustomButton from '@/components/utils/CustomButton.vue'
 import LanguageCard from '@/components/LanguageCard.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import { onMounted, ref, watch } from 'vue';
 import MaddnessButton from '@/components/utils/MaddnessButton.vue';
-import { openLink, openEmail } from '@/utils/globals'
+import { openLink } from '@/utils/globals'
+import { projects, stacks } from '@/utils/variables'
 import { useRouter, useRoute } from 'vue-router'
 import CurrentProject, { ProProject } from '@/components/project/CurrentProject.vue'
+import MainHeader from '@/components/MainHeader.vue';
+import MovingDots from '@/components/MovingDots.vue';
 
 // ======================================
 // Init
@@ -162,206 +148,10 @@ onMounted(() => {
         })
     }
 })
-
-// ======================================
-// moving shapes
-// ======================================
-const spawnDots = (amount: number): void => {
-    const dots = document.getElementById('moving-shapes')
-
-    for (let i = 0; i <= amount; i++) {
-        const size = Math.floor(Math.random() * 3) + 1
-
-        const newDot = document.createElement('li')
-        newDot.style.width = `${size}rem`
-        newDot.style.height = `${size}rem`
-        newDot.style.bottom = `-${size}rem`
-        newDot.style.bottom = `-${size}rem`
-        newDot.style.left = `${Math.floor(Math.random() * 100)}%`
-        newDot.style.animationDuration = `${Math.floor(Math.random() * 10) + 10}s`
-        newDot.style.animationDelay = `${Math.floor(Math.random() * 3) + 0.2}s`
-        if (dots != null) {
-            dots.appendChild(newDot)
-        }
-    }
-}
-
-const timer = (time: number) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(true)
-        }, time)
-    })
-}
-
-onMounted(async () => {
-    const maxSpawn: number = 5
-    let timesSpawned: number = 0
-
-    while (maxSpawn !== timesSpawned) {
-        await timer(2000)
-        timesSpawned += 1
-        spawnDots(Math.floor(Math.random() * 5))
-    }
-
-
-})
-
-// ======================================
-// Projects
-// ======================================
-
-const projects = [
-    {
-        name: 'Always Here',
-        description: 'Addressing Childrens Mental Health with a Companion',
-        image: 'together.png'
-    },
-    {
-        name: 'Phoenix',
-        description: 'An AI chatbot builder design for none technical users',
-        image: 'phoenix.png'
-    },
-    {
-        name: 'SimConverse',
-        description: 'Training Health Professionals Communication Skills with AI',
-        image: 'SimConverse.png'
-    }
-]
-
-// ======================================
-// tech stacks
-// ======================================
-
-const stacks = [
-    {
-        name: 'Vue',
-        img: 'Vue.svg',
-        link: 'https://vuejs.org/'
-    },
-    {
-        name: 'MongoDB',
-        img: 'Mongodb.svg',
-        link: 'https://www.mongodb.com/'
-
-    },
-    {
-        name: 'React',
-        img: 'React.svg',
-        link: 'https://react.dev/'
-    },
-    {
-        name: 'Tailwind',
-        img: 'Tailwind.svg',
-        link: 'https://tailwindcss.com/'
-
-    },
-    {
-        name: 'TypeScript',
-        img: 'Typescript.svg',
-        link: 'https://www.typescriptlang.org/'
-
-    },
-    {
-        name: 'Ionic',
-        img: 'Ionic.svg',
-        link: 'https://ionicframework.com/'
-
-    },
-    {
-        name: 'Html',
-        img: 'Html.svg',
-        link: 'https://www.w3schools.com/html/'
-
-    },
-    {
-        name: 'Ruby',
-        img: 'Ruby.svg',
-        link: 'https://www.ruby-lang.org/en/'
-
-    },
-    {
-        name: 'Figma',
-        img: 'Figma.svg',
-        link: 'https://www.figma.com/design/'
-
-    },
-    {
-        name: 'AWS',
-        img: 'AwsCloud.svg',
-        link: 'https://aws.amazon.com/'
-    },
-    {
-        name: 'Sass',
-        img: 'Sass.svg',
-        link: 'https://sass-lang.com/'
-
-    },
-    {
-        name: 'Python',
-        img: 'Python.svg',
-        link: 'https://www.python.org/'
-
-    },
-    {
-        name: 'JavaScript',
-        img: 'Javascript.svg',
-        link: 'https://en.wikipedia.org/wiki/JavaScript'
-
-    },
-    {
-        name: 'Express',
-        img: 'Express.svg',
-        link: 'https://expressjs.com/'
-
-    },
-    {
-        name: 'Cordova',
-        img: 'Cordova.svg',
-        link: 'https://cordova.apache.org/'
-
-    },
-]
-
 </script>
 
 <style lang="scss">
 .main-gradient {
     background: linear-gradient(180deg, rgb(67, 198, 172) 0%, rgb(248, 255, 174) 100%);
-}
-
-#moving-shapes {
-    @apply absolute top-0 left-0 h-full w-full z-0;
-}
-
-#moving-shapes {
-    * {
-        @apply opacity-0 block absolute list-none bg-white z-30;
-        animation: float infinite;
-        transition-timing-function: linear;
-        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-        @apply opacity-50;
-    }
-
-    80% {
-        transform: translateY(-100vh) rotate(630deg);
-        @apply opacity-0;
-    }
-}
-
-.slide-enter-active,
-.slide-leave-active {
-    transition: transform 0.3s ease-in-out;
-}
-
-.slide-enter-from,
-.slide-leave-to {
-    transform: translateX(200%)
 }
 </style>
