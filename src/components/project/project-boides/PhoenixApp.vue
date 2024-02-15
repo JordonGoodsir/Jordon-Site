@@ -2,7 +2,7 @@
             
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <img src="@/assets/ProjectImages/Phoenix/logo.png" />
+        <img src="@/assets/ProjectImages/Phoenix/logo.png" alt="Phoenix's logo" />
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>

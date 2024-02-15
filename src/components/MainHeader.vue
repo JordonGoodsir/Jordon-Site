@@ -1,8 +1,7 @@
 <template>
     <div class="sticky top-0 z-30 w-full h-0">
-        <!-- { 'bg-main': scrolledPastHeader } -->
         <div :class="['flex justify-between px-8 py-5 relative items-center transition-colors', headerColor]">
-            <img src="@/assets/logo.png" class="scale-75">
+            <img src="@/assets/logo.png" class="scale-75" alt="Jordon Goodsir's logo">
             <div class="flex gap-2">
                 <CustomButton class="font-semibold" @click="openEmail">Contact</CustomButton>
                 <CustomButton @click="openLink('https://github.com/JordonGoodsir')"> <i class="uil uil-github text-2xl" />

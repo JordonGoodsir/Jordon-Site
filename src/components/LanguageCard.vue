@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group gap-y-1.5 cursor-pointer">
         <AppCard class="h-40 flex items-center justify-center group-hover:animate-[hover_4s_ease-in-out_infinite] shadow">
-            <img :src="image()" />
+            <img :src="image()" :alt="`an image of ${text}'s' logo`" />
         </AppCard>
         <AppCard
             class="text-center h-10 flex items-center justify-center select-none group-hover:bg-main group-hover:text-white transition-colors shadow topography">

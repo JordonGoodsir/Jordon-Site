@@ -2,7 +2,7 @@
             
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <img src="@/assets/projects/SimConverse.png" />
+        <img src="@/assets/projects/SimConverse.png" alt="SimConverse's logo" />
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
             <p>After Always Here's demise, it was time for something new. That is when SimConverse came around, myself and
@@ -31,12 +31,12 @@
             </p>
         </div>
 
-        <img src="@/assets/ProjectImages/SimConverse/site-map.svg" class="h-auto order-1 md:order-2" />
+        <img src="@/assets/ProjectImages/SimConverse/site-map.svg" alt="SimConverse's site map"  class="h-auto order-1 md:order-2" />
 
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <img src="@/assets/ProjectImages/SimConverse/stage-based.svg" />
+        <img src="@/assets/ProjectImages/SimConverse/stage-based.svg" alt="SimConverse's approach"  />
 
 
         <div class="flex flex-col justify-center gap-5">

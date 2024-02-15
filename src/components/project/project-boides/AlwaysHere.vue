@@ -2,7 +2,7 @@
             
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <img src="@/assets/ProjectImages/Together/icons.png" />
+        <img src="@/assets/ProjectImages/Together/icons.png" alt="Always here's app icons" />
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
@@ -27,14 +27,14 @@
 
 
 
-        <img class="h-auto order-1 md:order-2" src="@/assets/ProjectImages/Together/onboarding.png" />
+        <img class="h-auto order-1 md:order-2" src="@/assets/ProjectImages/Together/onboarding.png" alt="Always here's onboarding process" />
 
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="flex h-96 justify-center">
-            <img class="rotate-12" src="@/assets/ProjectImages/Together/chat.png" />
-            <img class="rotate-12 -ml-10 md:-ml-5" src="@/assets/ProjectImages/Together/companionChat.png" />
+            <img class="rotate-12" src="@/assets/ProjectImages/Together/chat.png" alt="Always here's app in phone frame" />
+            <img class="rotate-12 -ml-10 md:-ml-5" src="@/assets/ProjectImages/Together/companionChat.png" alt="Always here's app in phone frame" />
         </div>
 
         <div class="flex flex-col justify-center gap-5">
@@ -53,7 +53,7 @@
                 More broadly I learned to be even more curious about how things work and to ask questions in
                 bulk, doing the things you can do and saving up a few questions for when someones free. Oh
                 and I also learned that having a office dog is amazing (miss you axe). <img class="rounded h-8 inline-block"
-                    src="@/assets/axe.png" />
+                    src="@/assets/axe.png" alt="a picture of Axe, the office dog" />
             </p>
 
         </div>
