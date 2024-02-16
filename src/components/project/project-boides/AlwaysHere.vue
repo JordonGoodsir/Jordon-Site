@@ -6,7 +6,7 @@
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
-            <p>After completing a bootcamp at CoderAcademy, I was setup with a slew of interviews. However
+            <p>After completing a bootcamp at CoderAcademy, I was set up with a slew of interviews. However
                 by far the best interview was at Always here, a technical test that I flew through and the
                 best interviewers bringing forward amazing energy. Not only this, the company was founded on
                 the basis to help families mental health post Covid-19, one couldn't ask for a better cause.
@@ -39,7 +39,7 @@
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">Learning Experiences</h3>
-            <p>I learned a a lot at my time with the Always Here team not only technically, but how to truly
+            <p>I learned a lot at my time with the Always Here team not only technically, but how to truly
                 collaborate as a team.
                 <br>
                 <br>
@@ -52,7 +52,7 @@
 
                 More broadly I learned to be even more curious about how things work and to ask questions in
                 bulk, doing the things you can do and saving up a few questions for when someones free. Oh
-                and I also learned that having a office dog is amazing (miss you axe). <img class="rounded h-8 inline-block"
+                and I also learned that having an office dog is amazing (miss you axe). <img class="rounded h-8 inline-block"
                     src="@/assets/axe.png" alt="a picture of Axe, the office dog" />
             </p>
 

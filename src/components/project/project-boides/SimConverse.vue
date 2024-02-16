@@ -6,7 +6,7 @@
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
             <p>After Always Here's demise, it was time for something new. That is when SimConverse came around, myself and
-                few members from my old team were task with reinventing the style of SimConverse and thats just what we did.
+                a few members from my old team were tasked with reinventing the style of SimConverse and that's just what we did.
                 learning the stack and the code base as quickly as we could, flipping the product in only a short time.
 
             </p>
