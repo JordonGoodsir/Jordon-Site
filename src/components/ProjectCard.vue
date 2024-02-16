@@ -41,6 +41,6 @@ defineProps(
     background: white;
     background-image: url('@/assets/topography.svg');
     background-repeat: repeat;
-    @apply bg-[length:155px_155px]
+    @apply bg-[length:160px_160px]
 }
 </style>
