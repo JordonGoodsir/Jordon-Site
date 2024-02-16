@@ -5,7 +5,7 @@
         </AppCard>
         <AppCard
             class="text-center h-10 flex items-center justify-center select-none group-hover:bg-main group-hover:text-white transition-colors shadow topography">
-            {{ text }} <i class="uil uil-external-link-alt ml-1" />
+            {{ text }} <unicon name="external-link-alt" class="group-hover:fill-white ml-1" height="16" width="16" />
         </AppCard>
     </div>
 </template>

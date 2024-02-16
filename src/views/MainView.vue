@@ -20,8 +20,9 @@
                     </transition>
                 </h1>
             </div>
-            <i @click="scrollToId('body')"
-                class="uil uil-angle-down text-6xl bottom-5 absolute text-white left-1/2 -translate-x-1/2 cursor-pointer" />
+            <unicon @click="scrollToId('body')"
+            name="angle-down"
+                class="text-6xl bottom-5 absolute left-1/2 -translate-x-1/2 cursor-pointer fill-white" height="55" width="55" />
         </section>
 
         <!-- body -->

@@ -20,7 +20,7 @@
             <div v-if="liveSite" @click="() => openLink(liveSite)"
                 class="rounded-full bg-main w-full py-5 flex items-center justify-center gap-2 text-white text-base mt-5 cursor-pointer">
                 <p class="text-xl">Website</p>
-                <i class="uil uil-external-link-alt text-lg" />
+                <unicon name="external-link-alt" class="fill-white" height="18" width="18" />
             </div>
         </div>
 

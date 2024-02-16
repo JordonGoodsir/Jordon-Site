@@ -9,7 +9,7 @@
                 <h2 class="text-3xl font-semibold">{{ text }}</h2>
                 <p>{{ description }}</p>
             </div>
-                <i class="uil uil-arrow-right ml-1 text-4xl" />
+                <unicon name="arrow-right" class="ml-1 group-hover:fill-white" height="36" width="36" />
         </AppCard>
     </div>
 </template>
