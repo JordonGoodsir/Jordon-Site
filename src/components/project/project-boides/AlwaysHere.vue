@@ -2,6 +2,12 @@
             
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- gasp scroll trigger line -->
+        <!-- https://gsap.com/docs/v3/Plugins/ScrollTrigger/ -->
+
+        <!-- grasp flip -->
+        <!-- https://gsap.com/docs/v3/Plugins/Flip/ -->
+
         <img src="@/assets/ProjectImages/Together/icons.png" alt="Always here's app icons" />
 
         <div class="flex flex-col justify-center gap-5">
