@@ -20,19 +20,54 @@
                     </transition>
                 </h1>
             </div>
-            <unicon @click="scrollToId('body')" name="angle-down"
-                class="text-6xl bottom-5 absolute left-1/2 -translate-x-1/2 cursor-pointer fill-white" height="55"
-                width="55" />
+
+
+            <!-- lines -->
+
+            <div class="w-full absolute bottom-0 left-1/2 -translate-x-1/2 overflow-hidden pt-6">
+
+                <div class="flex justify-center">
+                    <svg width="4" height="40" viewBox="0 0 4 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path id="white-line" d="M2 2L1.99998 40" stroke="white" stroke-width="4" stroke-linecap="round" />
+                    </svg>
+                    <div id="white-arrow" @click="scrollToId('body')"
+                        class="absolute top-[20px] -left-[2px] -mt-[20px] h-full w-full">
+                        <div class="flex flex-col h-full">
+                            <div class="flex w-full justify-center">
+                                <svg class="" width="30" height="17" viewBox="0 0 30 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 2L15 15" stroke="white" stroke-width="4" stroke-linecap="round" />
+                                    <path d="M15 14.9998L28 1.99982" stroke="white" stroke-width="4"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="bg-main h-full w-full" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- <svg class="hidden" width="597" height="608" viewBox="0 0 597 608" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path id="line"
-                d="M329.51 6C487.524 315.541 477.078 414.931 298.171 304.171C190.902 246.918 180.456 346.309 266.832 602.342"
-                stroke="black" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <div class="h-[608px]">
-            <div id="box" class="h-5 w-5 bg-red-500" />
-        </div> -->
+
+        <div class="relative flex justify-center w-full -mt-12">
+
+            <svg width="4" height="348" viewBox="0 0 4 348" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="line" d="M2 2L1.99998 346" stroke="black" stroke-width="4" stroke-linecap="round" />
+            </svg>
+            <div id="black-arrow" class="absolute top-0 -left-[2px] h-full w-full">
+                <div class="flex flex-col h-full">
+                    <div class="flex w-full justify-center">
+                        <svg id="arrow" class="-mt-[7px] opacity-0" width="30" height="17" viewBox="0 0 30 17" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 2L15 15" stroke="black" stroke-width="4" stroke-linecap="round" />
+                            <path d="M15 14.9998L28 1.99982" stroke="black" stroke-width="4" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="bg-white h-full w-full" />
+                </div>
+            </div>
+
+        </div>
 
         <!-- body -->
         <div class="max-w-screen-xl px-8 w-full gap-12 flex flex-col -mt-12 pt-12 relative">
@@ -90,7 +125,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 onMounted(() => {
-    // gsap.to("#box", { scrollTrigger: { trigger: '#box', scrub: true }, duration: 2, motionPath: "#line" })
+    const whiteTl = gsap.timeline()
+    whiteTl.to("#white-arrow", { scrollTrigger: { trigger: '#white-arrow', start: "0", end: "150", scrub: true }, motionPath: "#white-line" })
+    whiteTl.from("#white-arrow", { opacity: 1 })
+    whiteTl.to("#white-arrow", {
+        scrollTrigger: {
+            trigger: '#black-arrow', scrub: true, start: 50, end: 150
+        }, opacity: 0
+    })
+
+    const blackTL = gsap.timeline()
+    blackTL.to("#black-arrow", { scrollTrigger: { trigger: '#black-arrow', start: "150", scrub: true }, motionPath: "#line" })
+    blackTL.from("#arrow", { opacity: 0 })
+    blackTL.to("#arrow", {
+        scrollTrigger: {
+            trigger: '#black-arrow',
+            start: 100,
+        }, opacity: 1
+    })
 
     const elements = gsap.utils.toArray('.scroll-in');
 
@@ -98,7 +150,7 @@ onMounted(() => {
 
     elements.forEach(element => {
         //@ts-ignore
-        gsap.to(element, { scrollTrigger: { trigger: element, toggleActions: 'restart none none none' }, y: 0, duration: 0.5, opacity: 1, delay: 0.1 })
+        gsap.to(element, { scrollTrigger: { trigger: element, toggleActions: 'play none none reset' }, y: 0, duration: 0.5, opacity: 1, delay: 0.1 })
 
     })
 
@@ -159,6 +211,7 @@ const scrollToId = (id: string) => {
     const element = document.getElementById(id)
 
     if (element) {
+        // research better way to scroll in so its timed
         element.scrollIntoView({ behavior: "smooth" })
     }
 }
