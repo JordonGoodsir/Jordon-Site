@@ -51,13 +51,13 @@
 
         <div id="black-line-container" class="relative flex justify-center w-full -mt-12">
 
-            <svg id="black-line" width="4" height="348" viewBox="0 0 4 348" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg id="black-line" class="-mb-[7px]" width="4" height="348" viewBox="0 0 4 348" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id="line" d="M2 2L1.99998 346" stroke="black" stroke-width="4" stroke-linecap="round" />
             </svg>
             <div id="black-arrow" class="absolute top-0 -left-[2px] h-full w-full">
                 <div class="flex flex-col h-full">
                     <div class="flex w-full justify-center">
-                        <svg class="-mt-[7px]" width="30" height="17" viewBox="0 0 30 17" fill="none"
+                        <svg width="30" height="17" viewBox="0 0 30 17" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 2L15 15" stroke="black" stroke-width="4" stroke-linecap="round" />
                             <path d="M15 14.9998L28 1.99982" stroke="black" stroke-width="4" stroke-linecap="round" />
@@ -148,8 +148,8 @@ onMounted(() => {
         scrollTrigger: {
             trigger: '#black-arrow',
             scrub: true,
-            start: 100,
-            end: 120,
+            start: 165,
+            end: 185,
         }, opacity: 1
     })
     blackTL.to("#black-arrow", { scrollTrigger: { trigger: '#black-arrow', start: "150", scrub: true }, motionPath: "#line" })
@@ -253,4 +253,5 @@ onMounted(() => {
 <style lang="scss">
 .main-gradient {
     background: linear-gradient(180deg, rgb(67, 198, 172) 0%, rgb(248, 255, 174) 100%);
-}</style>
+}
+</style>
