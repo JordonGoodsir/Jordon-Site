@@ -24,17 +24,17 @@
 
             <!-- lines -->
 
-            <div class="w-full absolute bottom-0 left-1/2 -translate-x-1/2 overflow-hidden pt-6">
-
+            <div class="w-full absolute bottom-0 left-1/2 -translate-x-1/2 overflow-hidden pt-6 z-10">
                 <div class="flex justify-center">
-                    <svg width="4" height="40" viewBox="0 0 4 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path id="white-line" d="M2 2L1.99998 40" stroke="white" stroke-width="4" stroke-linecap="round" />
+                    <svg class="relative" width="4" height="42" viewBox="0 0 4 42" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path id="white-line" d="M2 2L1.99998 42" stroke="white" stroke-width="4" stroke-linecap="round" />
                     </svg>
-                    <div id="white-arrow" @click="scrollToId('body')"
+                    <div id="white-arrow-wrapper" @click="scrollToId('body')"
                         class="absolute top-[20px] -left-[2px] -mt-[20px] h-full w-full">
                         <div class="flex flex-col h-full">
                             <div class="flex w-full justify-center">
-                                <svg class="" width="30" height="17" viewBox="0 0 30 17" fill="none"
+                                <svg id="white-arrow" width="30" height="17" viewBox="0 0 30 17" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2 2L15 15" stroke="white" stroke-width="4" stroke-linecap="round" />
                                     <path d="M15 14.9998L28 1.99982" stroke="white" stroke-width="4"
@@ -51,14 +51,14 @@
 
         <div id="black-line-container" class="relative flex justify-center w-full -mt-12">
 
-            <svg id="black-line" class="-mb-[7px]" width="4" height="348" viewBox="0 0 4 348" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg id="black-line" class="-mb-[7px]" width="4" height="348" viewBox="0 0 4 348" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path id="line" d="M2 2L1.99998 346" stroke="black" stroke-width="4" stroke-linecap="round" />
             </svg>
             <div id="black-arrow" class="absolute top-0 -left-[2px] h-full w-full">
                 <div class="flex flex-col h-full">
                     <div class="flex w-full justify-center">
-                        <svg width="30" height="17" viewBox="0 0 30 17" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 2L15 15" stroke="black" stroke-width="4" stroke-linecap="round" />
                             <path d="M15 14.9998L28 1.99982" stroke="black" stroke-width="4" stroke-linecap="round" />
                         </svg>
@@ -134,11 +134,11 @@ onMounted(() => {
     //         },
 
     const whiteTl = gsap.timeline()
-    whiteTl.to("#white-arrow", { scrollTrigger: { trigger: '#white-arrow', start: "0", end: "150", scrub: true }, motionPath: "#white-line" })
+    whiteTl.to("#white-arrow-wrapper", { scrollTrigger: { trigger: '#white-arrow-wrapper', start: "0", end: "150", scrub: true }, motionPath: "#white-line" })
     whiteTl.from("#white-arrow", { opacity: 1 })
     whiteTl.to("#white-arrow", {
         scrollTrigger: {
-            trigger: '#black-arrow', scrub: true, start: 50, end: 150
+            trigger: '#white-arrow-wrapper', scrub: true, start: 50, end: 150,
         }, opacity: 0
     })
 

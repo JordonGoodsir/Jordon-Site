@@ -1,5 +1,5 @@
 <template>
-    <ul id="moving-shapes" class="overflow-hidden relative" />
+    <ul id="moving-shapes" class="overflow-hidden relative z-50" />
 </template>
 
 <script setup lang="ts">
@@ -44,7 +44,7 @@ onMounted(async () => {
 
 <style lang="scss">
 #moving-shapes {
-    @apply absolute top-0 left-0 h-full w-full z-0;
+    @apply absolute top-0 left-0 h-full w-full z-20;
 }
 
 #moving-shapes {
