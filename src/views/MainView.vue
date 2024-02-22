@@ -31,7 +31,7 @@
                         <path id="white-line" d="M2 2L1.99998 42" stroke="white" stroke-width="4" stroke-linecap="round" />
                     </svg>
                     <div id="white-arrow-wrapper" @click="scrollToId('body')"
-                        class="absolute top-[20px] -left-[2px] -mt-[20px] h-full w-full">
+                        class="absolute top-[20px] -left-[2px] -mt-[20px] h-full w-full pointer-events-auto cursor-pointer">
                         <div class="flex flex-col h-full">
                             <div class="flex w-full justify-center">
                                 <svg id="white-arrow" width="30" height="17" viewBox="0 0 30 17" fill="none"

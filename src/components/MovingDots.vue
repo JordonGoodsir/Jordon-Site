@@ -44,7 +44,7 @@ onMounted(async () => {
 
 <style lang="scss">
 #moving-shapes {
-    @apply absolute top-0 left-0 h-full w-full z-20;
+    @apply absolute top-0 left-0 h-full w-full z-20 pointer-events-none;
 }
 
 #moving-shapes {
