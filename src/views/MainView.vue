@@ -2,6 +2,13 @@
     <div :class="['flex flex-col items-center h-fit w-full gap-12 pb-12', { 'overflow-hidden': activeProject }]">
         <MainHeader :headerColor="scrolledPastHeader ? 'bg-main' : ''" />
 
+        <!-- plan for new site -->
+        <!-- use svg create to make cool sroll down effect with gsap -->
+        <!-- with react -->
+        <!-- insipration -->
+        <!-- https://codepen.io/creativeocean/pen/qBbBLyB -->
+
+
         <!-- Hero Banner -->
         <section id="hero-banner" class="h-screen w-full bg-main relative -mt-12 z-20">
             <MovingDots />
