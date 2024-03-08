@@ -1,19 +1,7 @@
 
             
 <template>
-    <svg width="597" height="608" viewBox="0 0 597 608" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path id="line"
-            d="M329.51 6C487.524 315.541 477.078 414.931 298.171 304.171C190.902 246.918 180.456 346.309 266.832 602.342"
-            stroke="black" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-    <div id="box" class="h-5 w-5 bg-red-500" />
-
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- gasp scroll trigger line -->
-        <!-- https://gsap.com/docs/v3/Plugins/ScrollTrigger/ -->
-
-        <!-- grasp flip -->
-        <!-- https://gsap.com/docs/v3/Plugins/Flip/ -->
 
         <img src="@/assets/ProjectImages/Together/icons.png" alt="Always here's app icons" />
 
