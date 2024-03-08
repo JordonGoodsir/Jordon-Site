@@ -82,7 +82,7 @@ const projectPages: Project = {
     [ProProject.AlwaysHere]: {
         years: '2+ Years',
         status: 'Paused',
-        summary: `Always Here faced many obstacles, ultimately leading to its pause. However one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked interest in the investors abroad and has potential. Working on Always Here was the best introduction to the workforce anyone could ask for, meeting life long friends and learning a hell of a lot, leaving me only wanting to learn more.`,
+        summary: `"Always Here" faced many obstacles, ultimately leading to its pause of development. However one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked interest in the investors abroad with it's potential. Working on Always Here was the best introduction to the workforce anyone could ask for, meeting life long friends and learning a hell of a lot, inspiring to learn even more.`,
         heading: `A New Approach to Children's Mental Health`,
         description: 'Mental health and wellbeing app for families',
         stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS'],

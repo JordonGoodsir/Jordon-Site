@@ -8,9 +8,9 @@
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
             <p>After completing a bootcamp at CoderAcademy, I was set up with a slew of interviews. However
-                by far the best interview was at Always here, a technical test that I flew through and the
+                by far the best interview was at "Always Here", a technical test that I flew through and the
                 best interviewers bringing forward amazing energy. Not only this, the company was founded on
-                the basis to help families mental health post Covid-19, one couldn't ask for a better cause.
+                the basis to help families mental with their health post Covid-19, one couldn't ask for a better cause.
             </p>
         </div>
     </div>
@@ -21,10 +21,10 @@
         <div class="order-2 md:order-1 flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">My Approach</h3>
             <p>Being completely new to the workforce and to coding, aside form my bootcamp, I saw only one
-                approach, learn. Myself along with 2 other interns embarked on hours of trial and error,
+                approach... <strong>learn</strong>. Myself along with two other interns embarked on hours of trial and error,
                 thrown thoroughly in the deep end, learning from our mentors as best we could. Although
-                imposter syndrome may have kicked in a few times in those early days, I feel as though it
-                only made me stronger and better developer.</p>
+                imposter syndrome may have set in a few times in the early days, I feel as though it
+                only made me a better developer.</p>
         </div>
 
 
@@ -43,20 +43,20 @@
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">Learning Experiences</h3>
-            <p>I learned a lot at my time with the Always Here team not only technically, but how to truly
-                collaborate as a team.
+            <p>I learned a lot during my time with the "Always Here" team not only technically, but
+                collaboratively as a team.
                 <br>
                 <br>
                 Technically speaking, some of the things I learned include a completely new stack, the
                 importance of building reusable components and
-                How to develop on IOS/Android and all the annoying nuances
+                how to develop on IOS/Android and all the annoying nuances
                 that came with them (like having your app rejected from the store over one word).
                 <br>
                 <br>
 
-                More broadly I learned to be even more curious about how things work and to ask questions in
-                bulk, doing the things you can do and saving up a few questions for when someones free. Oh
-                and I also learned that having an office dog is amazing (miss you axe). <img
+                More broadly I learned to be even more curious about how things work, and to ask questions in
+                bulk, completing the tasks that were achievable and making a list of questions to ask when the time was right. Oh
+                and I also learned that having an office dog is amazing (miss you Axe). <img
                     class="rounded h-8 inline-block" src="@/assets/axe.png" alt="a picture of Axe, the office dog" />
             </p>
 
