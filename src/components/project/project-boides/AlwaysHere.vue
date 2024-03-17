@@ -21,7 +21,8 @@
         <div class="order-2 md:order-1 flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">My Approach</h3>
             <p>Being completely new to the workforce and to coding, aside form my bootcamp, I saw only one
-                approach... <strong>learn</strong>. Myself along with two other interns embarked on hours of trial and error,
+                approach... <strong>learn</strong>. Myself along with two other interns embarked on hours of trial and
+                error,
                 thrown thoroughly in the deep end, learning from our mentors as best we could. Although
                 imposter syndrome may have set in a few times in the early days, I feel as though it
                 only made me a better developer.</p>
@@ -47,15 +48,16 @@
                 collaboratively as a team.
                 <br>
                 <br>
-                Technically speaking, some of the things I learned include a completely new stack, the
-                importance of building reusable components and
-                how to develop on IOS/Android and all the annoying nuances
-                that came with them (like having your app rejected from the store over one word).
+                In terms of technical ability, my skill set expanded exponentially. Learning not only about the intricacies
+                of cross-browser integration but also cross-platform, with Always Here being accessible on iOS/Android in
+                their respective app store and across all major browsers. The App’s level of accessibility taught me the
+                importance of tested and reusable components.
                 <br>
                 <br>
 
                 More broadly I learned to be even more curious about how things work, and to ask questions in
-                bulk, completing the tasks that were achievable and making a list of questions to ask when the time was right. Oh
+                bulk, completing the tasks that were achievable and making a list of questions to ask when the time was
+                right. Oh
                 and I also learned that having an office dog is amazing (miss you Axe). <img
                     class="rounded h-8 inline-block" src="@/assets/axe.png" alt="a picture of Axe, the office dog" />
             </p>
@@ -63,14 +65,3 @@
         </div>
     </div>
 </template>
-
- 
-
-
-<script setup lang="ts">
-
-
-
-
-
-</script>

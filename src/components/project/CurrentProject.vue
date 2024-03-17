@@ -82,7 +82,7 @@ const projectPages: Project = {
     [ProProject.AlwaysHere]: {
         years: '2+ Years',
         status: 'Paused',
-        summary: `"Always Here" faced many obstacles, ultimately leading to its pause of development. However one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked interest in the investors abroad with it's potential. Working on Always Here was the best introduction to the workforce anyone could ask for, meeting life long friends and learning a hell of a lot, inspiring to learn even more.`,
+        summary: `"Always Here" faced many obstacles, ultimately leading to its pause in development. However there is always a silver lining, one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked interest in investors abroad with its potential. This being said even if the company were to go completely under, the knowledge I gained, learning from the team, and building a worthwhile application was invaluable. Learning cross-platform best practices, a whole new stack, and how to best collaborate with a team. Not to mention meeting lifelong friends and inspiring me to learn even more`,
         heading: `A New Approach to Children's Mental Health`,
         description: 'Mental health and wellbeing app for families',
         stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS'],
@@ -91,8 +91,8 @@ const projectPages: Project = {
     },
     [ProProject.Phoenix]: {
         years: '2+ Years',
-        status: 'Canceled',
-        summary: 'Although Phoenix met its demise at the hands of funding, I thoroughly enjoyed the process of making it. It taught to always look for new tools that can help optimize in development and to be excited for what comes next. One thing to keep in mind though, you never know what can happen, I mean, this tool was named Phoenix for a reason.',
+        status: 'Completed',
+        summary: `Although Phoenix's status is complete, It does not undermine its utility, having a significant impact, allowing non-technical staff to create conversation AI flows for the always-here users and provided vital guard rails to ensure safety standards were met. I thoroughly enjoyed the creation process. it taught me to always look for new tools that can help optimize development and to be excited for what comes next. One thing to keep in mind though, is that you never know what can happen, I mean, this tool was named Phoenix for a reason.`,
         heading: 'An AI chatbot builder design for none technical users',
         description: 'An internal tool that rose from the ashes for Always Here',
         stack: ['Vue', 'PWA', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS', 'Tailwind Css'],
