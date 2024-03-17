@@ -1,10 +1,6 @@
 <template>
     <div :class="['flex flex-col items-center h-fit w-full gap-12 pb-12', { 'overflow-hidden': activeProject }]">
         <MainHeader :headerColor="scrolledPastHeader ? 'bg-main' : ''" />
-
-        <!-- plan for new site -->
-        <!-- use svg create to make cool sroll down effect with gsap -->
-        <!-- with react -->
         <!-- insipration -->
         <!-- https://codepen.io/creativeocean/pen/qBbBLyB -->
 
@@ -132,13 +128,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 onMounted(() => {
-    // markers: {
-    //             startColor: "purple",
-    //             endColor: "fuchsia",
-    //             fontSize: "4rem",
-    //             indent: 100,
-    //             fontWeight: "bold",
-    //         },
 
     const whiteTl = gsap.timeline()
     whiteTl.to("#white-arrow-wrapper", { scrollTrigger: { trigger: '#white-arrow-wrapper', start: "0", end: "150", scrub: true }, motionPath: "#white-line" })

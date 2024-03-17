@@ -7,7 +7,7 @@
                 <CustomButton @click="openLink('https://github.com/JordonGoodsir')"> <unicon name="github" height="24" width="24" />
                 </CustomButton>
                 <CustomButton
-                    @click="openLink('https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile')">
+                    @click="openLink('https://au.linkedin.com/in/jordon-goodsir-61466a1a5')">
                     <unicon name="linkedin" height="24" width="24" />
                 </CustomButton>
             </div>
