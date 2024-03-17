@@ -24,7 +24,7 @@
                 component I crafted. With plans turned to expanding my skill set to design (which was used to make this site in
                 figma), which was inspired by
                 <a href="https://www.linkedin.com/in/bepaterson/" target="_blank">Ben Paterson</a> and <a
-                    href="https://www.linkedin.com/in/bepaterson/" target="_blank">Joel Tankard</a>,
+                    href="https://www.linkedin.com/in/joel-tankard-13657130/" target="_blank">Joel Tankard</a>,
                 who were always a pleasure to work with and made amazing
                 designs.
             </p>
