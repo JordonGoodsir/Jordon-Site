@@ -7,10 +7,12 @@
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">How it started</h3>
-            <p>After completing a bootcamp at CoderAcademy, I was set up with a slew of interviews. However
-                by far the best interview was at "Always Here", a technical test that I flew through and the
-                best interviewers bringing forward amazing energy. Not only this, the company was founded on
-                the basis to help families mental with their health post Covid-19, one couldn't ask for a better cause.
+            <p>After completing a bootcamp at CoderAcademy, I was set up with a slew of interviews. However,
+                by far, the best interview was at "Always Here", consisting of a technical test that I flew through with the
+                best interviewers bringing forward amazing energy. Not only this, the company was founded on the basis of
+                helping families mental with their health post-Covid-19, one couldn't ask for a better cause or a better
+                environment to improve.
+
             </p>
         </div>
     </div>
@@ -20,12 +22,12 @@
 
         <div class="order-2 md:order-1 flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">My Approach</h3>
-            <p>Being completely new to the workforce and to coding, aside form my bootcamp, I saw only one
-                approach... <strong>learn</strong>. Myself along with two other interns embarked on hours of trial and
-                error,
-                thrown thoroughly in the deep end, learning from our mentors as best we could. Although
-                imposter syndrome may have set in a few times in the early days, I feel as though it
-                only made me a better developer.</p>
+            <p>Being completely new to the workforce and to programming, aside from my education, I saw only one approach...
+                <strong>learn</strong>. Two other interns and I embarked on hours of trial and error,
+                thrown thoroughly into the deep end, learning from our mentors as best we could. This being said imposter
+                syndrome promptly ensued in the early days, and although it was difficult, looking back I feel as though it
+                only made me a better developer.
+            </p>
         </div>
 
 
@@ -44,8 +46,8 @@
 
         <div class="flex flex-col justify-center gap-5">
             <h3 class="text-3xl font-bold">Learning Experiences</h3>
-            <p>I learned a lot during my time with the "Always Here" team not only technically, but
-                collaboratively as a team.
+            <p>During my time with the team "Always Here" I learned a lot, not only technically in my progression from
+                Intern -> Junior -> Frontend Developer but also broader lessons that I will carry throughout my career.
                 <br>
                 <br>
                 In terms of technical ability, my skill set expanded exponentially. Learning not only about the intricacies
@@ -55,13 +57,11 @@
                 <br>
                 <br>
 
-                More broadly I learned to be even more curious about how things work, and to ask questions in
-                bulk, completing the tasks that were achievable and making a list of questions to ask when the time was
-                right. Oh
+                More broadly I learned to be even more curious about how things work and to not feel restricted by your
+                role, as especially in the startup industry it is necessary to “wear many hats”. Oh
                 and I also learned that having an office dog is amazing (miss you Axe). <img
                     class="rounded h-8 inline-block" src="@/assets/axe.png" alt="a picture of Axe, the office dog" />
             </p>
 
         </div>
-    </div>
-</template>
+</div></template>

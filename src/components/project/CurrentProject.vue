@@ -82,7 +82,7 @@ const projectPages: Project = {
     [ProProject.AlwaysHere]: {
         years: '2+ Years',
         status: 'Paused',
-        summary: `"Always Here" faced many obstacles, ultimately leading to its pause in development. However there is always a silver lining, one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked interest in investors abroad with its potential. This being said even if the company were to go completely under, the knowledge I gained from the team, and the building a worthwhile application was invaluable. Learning cross-platform best practices, a whole new stack, and how to best collaborate with a team. Not to mention meeting lifelong friends and inspiring me to learn even more`,
+        summary: `"Always Here" faced many obstacles, ultimately leading to its pause in development. However, in its time, it reached over 40,000 families, each one experiencing their very own digital companion. This impact was not unnoticed, one feature of the app 'LiveChat Counseling' a chat service between trained psychologists and children, sparked interest in investors abroad with its potential, giving the company hope. This being said, even if the company were to go completely under, the experience of building a worthwhile application and receiving the best introduction to the workforce possible was invaluable. Learning cross-platform best practices, a whole new stack, and how to best collaborate with a team, not to mention meeting lifelong friends inspiring me to learn even more.`,
         heading: `A New Approach to Children's Mental Health`,
         description: 'Mental health and wellbeing app for families',
         stack: ['Vue', 'Ionic', 'Capacitor', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS'],
@@ -92,7 +92,7 @@ const projectPages: Project = {
     [ProProject.Phoenix]: {
         years: '2+ Years',
         status: 'Completed',
-        summary: `Although Phoenix's status is complete, It does not undermine its utility, having a significant impact, allowing non-technical staff to create conversation AI flows for the always-here users and provided vital guard rails to ensure safety standards were met. I thoroughly enjoyed the creation process. it taught me to always look for new tools that can help optimize development and to be excited for what comes next. One thing to keep in mind though, is that you never know what can happen, I mean, this tool was named Phoenix for a reason.`,
+        summary: `Although Phoenix's status is complete, It does not undermine its utility, having a significant impact, allowing non-technical staff to create conversation AI flows for the always-here users and providing vital guard rails to ensure safety standards were met. I thoroughly enjoyed the creation process as it taught me to always look for new tools that can help optimize development and to be excited for what comes next. One thing to keep in mind is that you never know what can happen, I mean, this tool was named Phoenix for a reason.`,
         heading: 'An AI chatbot builder design for none technical users',
         description: 'An internal tool that rose from the ashes for Always Here',
         stack: ['Vue', 'PWA', 'Css', 'Scss', 'TypeScript', 'PWA', 'Express', 'MongoDB', 'AWS', 'Tailwind Css'],
@@ -102,7 +102,7 @@ const projectPages: Project = {
     [ProProject.SimConverse]: {
         years: '1+ Year',
         status: 'Ongoing',
-        summary: 'Although my journey at SimConverse was cut short due to management reconstruction taking out an entire team. My time at SimConverse was definitely worthwhile, allowing me to put to use my skills, learn more about the fundamentals of programming and spark more interest in new innovations',
+        summary: 'Although my journey at SimConverse was cut short due to management reconstruction taking out an entire team. My time at SimConverse was worthwhile, allowing me to put my skills to use, re-structuring the frontend code base with a new custom component library and to implement in-browser VR functionality to simulate medical scenarios for university students. This allowed me to revisit the fundamentals of programming and spark more interest in new innovations.',
         heading: 'Training Health Professionals Communication Skills with AI',
         description: 'A training platform for medical students',
         stack: ['Vue', 'Css', 'Scss', 'TypeScript', 'Rust', 'AWS', 'Tailwind', 'Aframe'],
